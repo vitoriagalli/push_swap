@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store_flags.c                                      :+:      :+:    :+:   */
+/*   .store_flags.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 02:39:03 by vscabell          #+#    #+#             */
-/*   Updated: 2020/08/18 02:29:12 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:50:38 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ static void	store_zero_minus(const char *format, t_flags *flags)
 {
 	while (format[flags->index] == '-' || format[flags->index] == '0')
 	{
-		flags->minus = format[flags->index] == '-' ? 1 : flags->minus;
-		flags->zero = (format[flags->index] == '0' && !flags->minus) ? 1 : 0;
+		if (format[flags->index] == '-')
+			flags->minus = 1;
+		if (format[flags->index] == '0' && !flags->minus)
+			flags->zero = 1;
+		else
+			flags->zero = 0;
 		flags->index++;
 	}
 }
@@ -59,7 +63,8 @@ static void	store_precision(const char *format, va_list ap, t_flags *flags)
 	if (format[flags->index] == '*')
 	{
 		flags->precision = va_arg(ap, int);
-		flags->zero = flags->precision >= 0 ? 0 : flags->zero;
+		if (flags->precision >= 0)
+			flags->zero = 0;
 		flags->index++;
 	}
 	else
@@ -70,7 +75,7 @@ static void	store_precision(const char *format, va_list ap, t_flags *flags)
 	}
 }
 
-void		store_flags(const char *format, va_list ap, t_flags *flags)
+void	store_flags(const char *format, va_list ap, t_flags *flags)
 {
 	flags->index++;
 	if (format[flags->index] == '-' || format[flags->index] == '0')

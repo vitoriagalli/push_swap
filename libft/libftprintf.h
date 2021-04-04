@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 03:06:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/02/18 00:47:07 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:41:38 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # define HEX_LOWER "0123456789abcdef"
 # define HEX_UPPER "0123456789ABCDEF"
 
-typedef struct	s_flags
-{
+typedef struct s_flags {
 	int			index;
 	int			zero;
 	int			minus;

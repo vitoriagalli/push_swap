@@ -6,7 +6,7 @@
 #    By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 08:54:07 by vscabell          #+#    #+#              #
-#    Updated: 2021/04/03 23:12:08 by vscabell         ###   ########.fr        #
+#    Updated: 2021/04/04 01:31:09 by vscabell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ SRC = ft_itoa.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_isspace.c \
-	ft_strjoin_n_free.c \
+	ft_strjoin_and_free.c \
 	ft_calloc_char.c \
 	ft_itoa_base.c \
 	ft_putnbr_base_fd.c \

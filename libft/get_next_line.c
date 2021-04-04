@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 08:37:34 by vscabell          #+#    #+#             */
-/*   Updated: 2021/02/09 22:54:54 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:37:44 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_breakline(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -85,13 +85,14 @@ static int	ft_gnl(char **line, int fd, char *buffer)
 	return (ft_endoffile(&p_line[fd], line, buffer));
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char	*buffer;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
 		return (-1);
-	if (!(buffer = malloc((BUFFER_SIZE + 1) * sizeof(char *))))
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char *));
+	if (!buffer)
 		return (0);
 	return (ft_gnl(line, fd, buffer));
 }

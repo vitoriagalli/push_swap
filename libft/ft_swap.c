@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 03:36:34 by vscabell          #+#    #+#             */
-/*   Updated: 2020/06/10 03:37:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:35:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_swap(int *a, int *b)
 {
-	int aux;
+	int	aux;
 
 	aux = *a;
 	*a = *b;

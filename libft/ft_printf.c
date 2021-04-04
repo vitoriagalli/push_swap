@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:18:41 by vscabell          #+#    #+#             */
-/*   Updated: 2020/08/12 02:40:14 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:25:03 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	handle_conversions(const char *format, va_list ap, t_flags *flags)
 		print_string(ap, flags);
 	else if (format[flags->index] == 'p')
 		print_pointer(ap, flags);
-	else if (format[flags->index] == 'd' || format[flags->index] == 'i' ||
-	format[flags->index] == 'u' || format[flags->index] == 'x' ||
-	format[flags->index] == 'X')
+	else if (format[flags->index] == 'd' || format[flags->index] == 'i'
+		|| format[flags->index] == 'u' || format[flags->index] == 'x'
+		|| format[flags->index] == 'X')
 		print_diux(ap, format[flags->index], flags);
 	else if (format[flags->index] == '%')
 		print_percent(flags);
@@ -46,7 +46,7 @@ static void	handle_conversions(const char *format, va_list ap, t_flags *flags)
 	init_flags(flags);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_flags	flags;

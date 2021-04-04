@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:33:10 by vscabell          #+#    #+#             */
-/*   Updated: 2020/06/09 18:29:27 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:34:19 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_isset(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -23,7 +23,7 @@ static int	ft_isset(char c, char const *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	len;
 	char	*ptr;

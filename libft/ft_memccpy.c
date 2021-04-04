@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 18:30:21 by vscabell          #+#    #+#             */
-/*   Updated: 2020/06/09 22:20:31 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:22:55 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned const char	*src_c;
 
 	i = 0;
-	dst_c = (unsigned char*)dst;
-	src_c = (unsigned char*)src;
+	dst_c = (unsigned char *)dst;
+	src_c = (unsigned char *)src;
 	while (i < n)
 	{
 		dst_c[i] = src_c[i];

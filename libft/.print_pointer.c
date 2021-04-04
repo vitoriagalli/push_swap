@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   .print_pointer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:05:38 by vscabell          #+#    #+#             */
-/*   Updated: 2020/08/12 03:03:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 02:11:01 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,16 @@ static int	ft_number_len(unsigned long int number, int base_size)
 	return (len);
 }
 
-void		print_pointer(va_list ap, t_flags *flags)
+void	write_pointer(unsigned long int addr, int precision, int len)
+{
+	write(1, "0x", 2);
+	while (precision-- > 0)
+		ft_putchar_fd('0', 1);
+	if (len > 2)
+		ft_putnbr_base_long_fd(addr, HEX_LOWER, 1);
+}
+
+void	print_pointer(va_list ap, t_flags *flags)
 {
 	unsigned long int	addr;
 	int					len;
@@ -44,18 +53,21 @@ void		print_pointer(va_list ap, t_flags *flags)
 
 	addr = va_arg(ap, unsigned long int);
 	len = ft_number_len(addr, 16);
-	precision = flags->precision > len ? flags->precision - len : 0;
-	len = !addr && flags->dot && !flags->precision ? 2 : len + 2;
-	space = flags->width > len ? flags->width - len : 0;
+	precision = 0;
+	space = 0;
+	if (flags->precision > len)
+		precision = flags->precision - len;
+	if (!addr && flags->dot && !flags->precision)
+		len = 2;
+	else
+		len += 2;
+	if (flags->width > len)
+		space = flags->width - len;
 	flags->ret += len + space + precision;
 	if (!flags->minus)
 		while (space-- > 0)
 			ft_putchar_fd(' ', 1);
-	write(1, "0x", 2);
-	while (precision-- > 0)
-		ft_putchar_fd('0', 1);
-	if (len > 2)
-		ft_putnbr_base_long_fd(addr, HEX_LOWER, 1);
+	write_pointer(addr, precision, len);
 	if (flags->minus)
 		while (space-- > 0)
 			ft_putchar_fd(' ', 1);

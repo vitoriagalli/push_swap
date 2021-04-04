@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscabell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:34:18 by vscabell          #+#    #+#             */
-/*   Updated: 2020/01/29 09:01:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:19:23 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ static int	ft_nbrlen(int nbr)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	nbr;
 	char	*itoa;
-	int		i;
 	int		len;
+	int		i;
 
 	nbr = n;
 	len = ft_nbrlen(nbr);
-	if (!(itoa = malloc((len + 1) * sizeof(char))))
+	itoa = ft_calloc(len + 1, sizeof(char));
+	if (!itoa)
 		return (NULL);
-	itoa[len] = '\0';
 	i = 0;
 	if (nbr < 0)
 	{

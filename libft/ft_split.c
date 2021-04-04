@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 10:49:04 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/03 23:21:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:27:39 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ static int	*ft_position_elem(const char *s, char c, int elem)
 {
 	int	*p;
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
-	if (!(p = malloc((elem * 2) * sizeof(int))))
+	p = malloc((elem * 2) * sizeof(int));
+	if (!p)
 		return (NULL);
 	while (s[i])
 	{
@@ -61,7 +62,7 @@ static int	*ft_position_elem(const char *s, char c, int elem)
 	return (p);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -75,7 +76,8 @@ char		**ft_split(char const *s, char c)
 		return (NULL);
 	elem = ft_count_elem(s, c);
 	posit = ft_position_elem(s, c, elem);
-	if (!(arr = (char **)malloc((elem + 1) * sizeof(char *))))
+	arr = (char **)malloc((elem + 1) * sizeof(char *));
+	if (!arr)
 		return (NULL);
 	while (j < elem)
 	{

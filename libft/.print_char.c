@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   .print_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:07:31 by vscabell          #+#    #+#             */
-/*   Updated: 2020/08/18 01:56:00 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:45:42 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	print_char(va_list ap, t_flags *flags)
 	int		space;
 
 	c = va_arg(ap, int);
-	space = flags->width > 1 ? flags->width - 1 : 0;
+	if (flags->width > 1)
+		space = flags->width - 1;
+	else
+		space = 0;
 	flags->ret += 1 + space;
 	if (!flags->minus)
 		while (space-- > 0)

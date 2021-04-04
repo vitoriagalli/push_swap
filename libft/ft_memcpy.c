@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscabell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 16:15:49 by vscabell          #+#    #+#             */
-/*   Updated: 2020/02/07 10:54:35 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 01:23:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	if (!dst && !src)
 		return (dst);
 	i = 0;
-	dst_c = (unsigned char*)dst;
-	src_c = (unsigned char*)src;
+	dst_c = (unsigned char *)dst;
+	src_c = (unsigned char *)src;
 	while (i < n)
 	{
 		dst_c[i] = src_c[i];
