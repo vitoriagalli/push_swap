@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 20:03:08 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:19:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 19:34:45 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,13 @@ static int	ft_nbrlen_base(int nbr, int size_base)
 	return (len);
 }
 
-char	*ft_itoa_base(int n, char *base, int size_base)
+static char	*x(long nbr, char *base, int size_base)
 {
-	long	nbr;
 	char	*itoa;
 	int		len;
 	int		i;
 
-	nbr = n;
-	len = ft_nbrlen_base(n, size_base);
+	len = ft_nbrlen_base((int)nbr, size_base);
 	itoa = ft_calloc(len + 1, sizeof(char));
 	if (!itoa)
 		return (NULL);
@@ -59,4 +57,16 @@ char	*ft_itoa_base(int n, char *base, int size_base)
 	}
 	itoa[i] = base[nbr % size_base];
 	return (itoa);
+}
+
+char	*ft_itoa_base(int n, char *base)
+{
+	long	nbr;
+	int		size_base;
+
+	nbr = n;
+	if (!base)
+		return (NULL);
+	size_base = ft_strlen(base);
+	return (x(nbr, base, size_base));
 }
