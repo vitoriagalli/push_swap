@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:11:42 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 02:53:55 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:40 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 static void	handle_string(t_flags *flags, char *str, int len)
 {

@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:18:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:25:03 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:28:27 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 static void	init_flags(t_flags *flags)
 {

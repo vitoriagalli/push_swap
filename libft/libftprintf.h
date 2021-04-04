@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 03:06:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:41:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:51 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include "../libft/libft.h"
 
 # define DEC "0123456789"
 # define HEX_LOWER "0123456789abcdef"

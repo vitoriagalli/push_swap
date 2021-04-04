@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:07:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:45:42 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:19 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 void	print_char(va_list ap, t_flags *flags)
 {

@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:18:04 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 02:50:20 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:25 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 static int	ft_number_len(unsigned int number, int base_size)
 {

@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 02:39:03 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:50:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:45 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 static int	get_number(const char *format, int *index)
 {

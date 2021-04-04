@@ -6,11 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 04:06:43 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:52:52 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 03:25:30 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "libft.h"
 
 void	print_percent(t_flags *flags)
 {
