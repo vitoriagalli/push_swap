@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 08:37:34 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:37:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:45:47 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,40 +59,48 @@ static int	ft_endoffile(char **p_line, char **line, char *buffer)
 	return (0);
 }
 
-static int	ft_gnl(char **line, int fd, char *buffer)
+static int	ft_gnl(char **p_line, char **line, int fd, char *buffer)
 {
-	static char	*p_line[OPEN_MAX];
 	char		*tmp;
 	int			i;
 	int			r_byte;
 
-	if (p_line[fd] && (i = ft_breakline(p_line[fd], '\n')) >= 0)
-		return (ft_newline(&p_line[fd], line, i, buffer));
-	while ((r_byte = read(fd, buffer, BUFFER_SIZE)) > 0)
+	r_byte = read(fd, buffer, BUFFER_SIZE);
+	while (r_byte > 0)
 	{
 		buffer[r_byte] = '\0';
-		if (!p_line[fd])
-			p_line[fd] = ft_strdup(buffer);
+		if (!(*p_line))
+			*p_line = ft_strdup(buffer);
 		else
 		{
-			tmp = ft_strjoin(p_line[fd], buffer);
-			free(p_line[fd]);
-			p_line[fd] = tmp;
+			tmp = ft_strjoin(*p_line, buffer);
+			free(*p_line);
+			*p_line = tmp;
 		}
-		if ((i = ft_breakline(p_line[fd], '\n')) >= 0)
-			return (ft_newline(&p_line[fd], line, i, buffer));
+		i = ft_breakline(*p_line, '\n');
+		if (i >= 0)
+			return (ft_newline(p_line, line, i, buffer));
+		r_byte = read(fd, buffer, BUFFER_SIZE);
 	}
-	return (ft_endoffile(&p_line[fd], line, buffer));
+	return (ft_endoffile(p_line, line, buffer));
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char	*buffer;
+	static char	*p_line[OPEN_MAX];
+	char		*buffer;
+	int			i;
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, NULL, 0) < 0)
 		return (-1);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char *));
 	if (!buffer)
 		return (0);
-	return (ft_gnl(line, fd, buffer));
+	if (p_line[fd])
+	{
+		i = ft_breakline(p_line[fd], '\n');
+		if (i >= 0)
+			return (ft_newline(&p_line[fd], line, i, buffer));
+	}
+	return (ft_gnl(&p_line[fd], line, fd, buffer));
 }
