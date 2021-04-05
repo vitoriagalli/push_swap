@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 10:49:04 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:27:39 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/05 02:15:28 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ char	**ft_split(char const *s, char c)
 	{
 		arr[j] = ft_substr(s, ((unsigned int)posit[i]),
 				((size_t)(posit[i + 1] - posit[i])));
-		i = i + 2;
+		i += 2;
 		j++;
 	}
 	arr[j] = NULL;
+	free(posit);
 	return (arr);
 }
