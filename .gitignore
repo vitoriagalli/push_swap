@@ -6,3 +6,5 @@
 *.swo
 *.a
 .vscode
+checker
+push_swap

@@ -76,13 +76,12 @@ $(OBJS_CHECKER_DIR)/%.o: $(SRCS_CHECKER_DIR)/%.c
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-
-############ RULES ##########
+############ OTHER RULES ##########
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	$(RM) $(OBJS_CHECKER)
-	$(RM) $(OBJS_PUSH_SWAP)
+	$(RM) $(OBJS_CHECKER_DIR)
+	$(RM) $(OBJS_PUSH_SWAP_DIR)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/09 18:59:53 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/09 19:41:39 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,26 @@ bool	is_integer_param(int argc, char **argv)
 	return (true);
 }
 
+bool	is_dup_param(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			if (!ft_strcmp(argv[i], argv[j]))
+				return (true);
+			j++;
+		}
+		i++;
+	}
+	return (false);
+}
+
 bool	check_param(int argc, char **argv)
 {
 	if (argc == 1)	// not display anithing and give the prompt back
@@ -82,6 +102,8 @@ bool	check_param(int argc, char **argv)
 	if (!is_numerical_param(argc, argv))
 		return (false);
 	if (!is_integer_param(argc, argv))
+		return (false);
+	if (is_dup_param(argc, argv))
 		return (false);
 	return (true);
 }
