@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/09 03:53:56 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/09 18:59:53 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker.h"
+#include "checker.h"
 
 bool	is_numerical_param(int argc, char **argv)
 {
