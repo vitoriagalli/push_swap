@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 23:39:48 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/09 23:44:07 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:12:15 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ static bool	is_dup_param(int argc, char **argv)
 
 bool	validate_params(int argc, char **argv)
 {
-	if (argc == 1)	// not display anithing and give the prompt back
-		return (false);
 	if (!is_numerical_param(argc, argv))
 		return (false);
 	if (!is_integer_param(argc, argv))

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 16:53:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 17:12:31 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	exit_program(t_stacks *stacks)
 
 static void	validate_args(int argc, char **argv)
 {
+	if (argc == 1)	// not display anithing and give the prompt back
+		exit(EXIT_SUCCESS);
 	if (!validate_params(argc, argv))
 	{
 		ft_printf("Error\n");
@@ -49,12 +51,7 @@ int	main(int argc, char **argv)
 
 	validate_args(argc, argv);
 	build_stacks(argc, argv, &stacks);
-	print_stacks(stacks);
-	// operations("sa", &stacks);
-	// operations("pb", &stacks);
-	// operations("pb", &stacks);
-	// operations("pb", &stacks);
-	// print_stacks(stacks);
+	read_and_execute_commands(&stacks);
 	clear_stacks(stacks);
 	return (EXIT_SUCCESS);
 }
