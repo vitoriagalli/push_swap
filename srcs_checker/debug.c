@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 23:39:51 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 03:34:45 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 03:48:57 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,3 @@ void	print_both_stacks(t_stack a, t_stack b)
 	}
 	ft_printf("\n");
 }
-
-// void	print_both_stacks(t_stack a, t_stack b)
-// {
-// 	ft_printf("--- STACK A ---\n\n");
-// 	print_stack(a);
-// 	ft_printf("--- STACK B ---\n\n");
-// 	print_stack(b);
-
-// }

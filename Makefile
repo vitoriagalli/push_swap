@@ -59,23 +59,23 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJS_PUSH_SWAP) $(LIBFT) $(CHECKER)
-	$(CC) $(OBJS_PUSH_SWAP) $(HEAD) $(DFLAG) $(CFLAG) $(LFLAGS) -o $@
+	$(CC) $(OBJS_PUSH_SWAP) $(HEAD) $(DFLAGS) $(CFLAGS) $(LFLAGS) -o $@
 
 $(OBJS_PUSH_SWAP_DIR)/%.o: $(SRCS_PUSH_SWAP_DIR)/%.c
 	mkdir -p $(OBJS_PUSH_SWAP_DIR)
-	$(CC) $(DFLAG) $(CFLAGS) $(HEAD) -c $< -o $@
+	$(CC) $(DFLAGS) $(CFLAGS) $(HEAD) -c $< -o $@
 
 
 ############ CHECKER COMPLILE ##########
 
 
 $(CHECKER) : $(OBJS_CHECKER) $(LIBFT)
-	$(CC) $(OBJS_CHECKER) $(HEAD) $(DFLAG) $(CFLAG) $(LFLAGS) -o $@
+	$(CC) $(OBJS_CHECKER) $(HEAD) $(DFLAGS) $(CFLAGS) $(LFLAGS) -o $@
 
 $(OBJS_CHECKER_DIR)/%.o: $(SRCS_CHECKER_DIR)/%.c
 	mkdir -p $(OBJS_CHECKER_DIR)
 	mkdir -p $(OBJS_CHECKER_DIR)/stack
-	$(CC) $(DFLAG) $(CFLAGS) $(HEAD) -c $< -o $@
+	$(CC) $(DFLAGS) $(CFLAGS) $(HEAD) -c $< -o $@
 
 
 ############ LIBFT ##########

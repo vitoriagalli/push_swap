@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscabell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:57:59 by vscabell          #+#    #+#             */
-/*   Updated: 2020/01/31 14:46:42 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 03:56:53 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*to_free;
 
 	to_free = *lst;
-	if (!*lst || !lst || !del)
+	if (!lst || !*lst || !del)
 		return ;
 	while (to_free)
 	{

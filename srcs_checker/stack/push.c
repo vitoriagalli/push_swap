@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 03:13:04 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 03:47:27 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ void	push(t_stack *to, t_stack *from)
 	to_move = from->head;
 	from->head = from->head->next;
 	ft_lstadd_front(&to->head, to_move);
+	to->size++;
+	from->size--;
 }
