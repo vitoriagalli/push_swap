@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 04:02:52 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 15:35:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,7 @@ void	build_stack_b(t_stack *stack)
 	*stack = (t_stack){0};
 }
 
-void	ft_free(void *ptr)
-{
-	if (ptr)
-	{
-		free(ptr);
-		ptr = NULL;
-	}
-}
-
-void	ft_stack_clear(t_list **lst, size_t size, void (*del)(void*))
+void	ft_stack_clear(t_list **lst, size_t size)
 {
 	t_list	*to_free;
 	int		i;
@@ -68,7 +59,6 @@ void	ft_stack_clear(t_list **lst, size_t size, void (*del)(void*))
 	while (i < size)
 	{
 		*lst = to_free->next;
-		del(to_free->content);
 		free(to_free);
 		to_free = *lst;
 		i++;
@@ -78,8 +68,8 @@ void	ft_stack_clear(t_list **lst, size_t size, void (*del)(void*))
 
 void	free_stacks(t_stack a, t_stack b)
 {
-	ft_stack_clear(&a.head, a.size, ft_free);
-	ft_stack_clear(&a.head, b.size, ft_free);
+	ft_stack_clear(&a.head, a.size);
+	ft_stack_clear(&a.head, b.size);
 }
 
 int	main(int argc, char **argv)
@@ -88,15 +78,22 @@ int	main(int argc, char **argv)
 	t_stack	stack_b;
 
 	validate_args(argc, argv);
+
 	build_stack_a(argc, argv, &stack_a);
 	build_stack_b(&stack_b);
 	print_both_stacks(stack_a, stack_b);
 
-	// swap(&stack_a);
-	// print_both_stacks(stack_a, stack_b);
+	swap(&stack_a);
+	print_both_stacks(stack_a, stack_b);
 
-	// push(&stack_b, &stack_a);
-	// print_both_stacks(stack_a, stack_b);
+	push(&stack_b, &stack_a);
+	print_both_stacks(stack_a, stack_b);
+
+	rotate(&stack_a);
+	print_both_stacks(stack_a, stack_b);
+
+	reverse_rotate(&stack_a);
+	print_both_stacks(stack_a, stack_b);
 
 
 	free_stacks(stack_a, stack_b);
