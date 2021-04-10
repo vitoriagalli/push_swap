@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 16:19:55 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 16:50:59 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "checker.h"
+#include "checker.h"
 
-void	operations(char *op, t_stacks *stacks)
+static void	operate_swap(char *op, t_stacks *stacks)
 {
 	if (!ft_strcmp(op, "sa"))
 		swap(&stacks->a);
@@ -23,11 +23,19 @@ void	operations(char *op, t_stacks *stacks)
 		swap(&stacks->a);
 		swap(&stacks->b);
 	}
-	else if (!ft_strcmp(op, "pa"))
+}
+
+static void	operate_push(char *op, t_stacks *stacks)
+{
+	if (!ft_strcmp(op, "pa"))
 		push(&stacks->a, &stacks->b);
 	else if (!ft_strcmp(op, "pb"))
 		push(&stacks->b, &stacks->a);
-	else if (!ft_strcmp(op, "ra"))
+}
+
+static void	operate_rotate(char *op, t_stacks *stacks)
+{
+	if (!ft_strcmp(op, "ra"))
 		rotate(&stacks->a);
 	else if (!ft_strcmp(op, "rb"))
 		rotate(&stacks->b);
@@ -45,4 +53,16 @@ void	operations(char *op, t_stacks *stacks)
 		reverse_rotate(&stacks->a);
 		reverse_rotate(&stacks->b);
 	}
+}
+
+void	operations(char *op, t_stacks *stacks)
+{
+	if (!op || !*op)
+		return ;
+	if (op[0] == 's')
+		operate_swap(op, stacks);
+	else if (op[0] == 'p')
+		operate_push(op, stacks);
+	else if (op[0] == 'r')
+		operate_rotate(op, stacks);
 }
