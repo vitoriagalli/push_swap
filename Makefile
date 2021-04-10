@@ -27,6 +27,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS_CHECKER_FILES =	checker.c \
 						validate_params.c \
+						operations.c \
+						clear_stacks.c \
 						debug.c \
 						stack/swap.c \
 						stack/push.c \
