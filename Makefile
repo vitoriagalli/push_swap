@@ -12,7 +12,8 @@ HEAD = -I./$(LIBFT_DIR) -I./$(INCLUDES_DIR)
 ############ FLAGS #############
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -g -w
+CFLAGS = -Wall -Werror -Wextra -w
+DFLAGS = -g -fsanitize=address
 LFLAGS = -L ./$(LIBFT_DIR) -lft
 RM = /bin/rm -rf
 
@@ -24,7 +25,13 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 ############ CHECKER #############
 
-SRCS_CHECKER_FILES = checker.c
+SRCS_CHECKER_FILES =	checker.c \
+						validate_params.c \
+						debug.c \
+						stack/swap.c \
+						stack/push.c \
+						stack/rotate.c \
+						stack/reverse_rotate.c
 
 SRCS_CHECKER_DIR = srcs_checker
 SRCS_CHECKER = $(addprefix $(SRCS_CHECKER_DIR)/,$(SRCS_CHECKER_FILES))
@@ -52,23 +59,23 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJS_PUSH_SWAP) $(LIBFT) $(CHECKER)
-	$(CC) $(OBJS_PUSH_SWAP) $(HEAD) $(CFLAG) $(LFLAGS) -o $@
+	$(CC) $(OBJS_PUSH_SWAP) $(HEAD) $(DFLAG) $(CFLAG) $(LFLAGS) -o $@
 
 $(OBJS_PUSH_SWAP_DIR)/%.o: $(SRCS_PUSH_SWAP_DIR)/%.c
 	mkdir -p $(OBJS_PUSH_SWAP_DIR)
-	$(CC) $(CFLAGS) $(HEAD) -c $< -o $@
+	$(CC) $(DFLAG) $(CFLAGS) $(HEAD) -c $< -o $@
 
 
 ############ CHECKER COMPLILE ##########
 
 
 $(CHECKER) : $(OBJS_CHECKER) $(LIBFT)
-	$(CC) $(OBJS_CHECKER) $(HEAD) $(CFLAG) $(LFLAGS) -o $@
+	$(CC) $(OBJS_CHECKER) $(HEAD) $(DFLAG) $(CFLAG) $(LFLAGS) -o $@
 
 $(OBJS_CHECKER_DIR)/%.o: $(SRCS_CHECKER_DIR)/%.c
 	mkdir -p $(OBJS_CHECKER_DIR)
 	mkdir -p $(OBJS_CHECKER_DIR)/stack
-	$(CC) $(CFLAGS) $(HEAD) -c $< -o $@
+	$(CC) $(DFLAG) $(CFLAGS) $(HEAD) -c $< -o $@
 
 
 ############ LIBFT ##########
@@ -89,3 +96,10 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+
+########################################
+
+norm:
+	norminette $(SRCS_CHECKER_DIR)
+	norminette $(SRCS_PUSH_SWAP_DIR)

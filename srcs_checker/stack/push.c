@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 01:49:38 by vscabell         ###   ########.fr       */
+/*   Created: 2021/04/09 22:49:27 by vscabell          #+#    #+#             */
+/*   Updated: 2021/04/10 02:33:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "stack.h"
 
-# include <stdbool.h>
-# include "../libft/libft.h"
-# include <stack.h>
+// void	push(t_stack *to, t_stack *from)
+// {
+// 	if (stack.size < 2)
+// 		return ;
 
-bool	validate_params(int argc, char **argv);
-void	print_stack(t_stack stack);
-
-#endif
+// }

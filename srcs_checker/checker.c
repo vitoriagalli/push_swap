@@ -6,115 +6,49 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/09 19:41:39 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 02:37:51 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "stack.h"
 
-bool	is_numerical_param(int argc, char **argv)
+void	exit_program(void)
 {
-	int	param;
-	int	count_char;
-
-	param = 1;
-	while (param < argc)
-	{
-		count_char = 0;
-		if (argv[param][count_char] == '-')
-			count_char++;
-		if (!ft_isdigit(argv[param][count_char]))
-			return (false);
-		while (argv[param][count_char])
-		{
-			if (!ft_isdigit(argv[param][count_char]))
-				return (false);
-			count_char++;
-		}
-		param++;
-	}
-	return (true);
+	exit(0);
 }
 
-bool	check_range(char *str, char *limit)
+void	validate_args(int argc, char **argv)
+{
+	if (!validate_params(argc, argv))
+	{
+		ft_printf("Error\n");
+		exit_program();
+	}
+}
+
+void	build_stack(int argc, char **argv, t_stack *stack)
 {
 	int	i;
 
-	if (ft_strlen(str) > ft_strlen(limit))
-		return (false);
-	if (ft_strlen(str) < ft_strlen(limit))
-		return (true);
+	stack->size = argc - 1;
+	stack->arr = malloc(stack->size * sizeof(int));
+	if (!stack->arr)
+		exit_program();
 	i = 0;
-	while (str[i] == limit[i])
+	while (i < stack->size)
 	{
-		if (!str[i])
-			return (true);
+		stack->arr[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	if (str[i] > limit[i])
-		return (false);
-	return (true);
-}
-
-bool	is_integer_param(int argc, char **argv)
-{
-	int		param;
-	char	*limit;
-
-	param = 1;
-	while (param < argc)
-	{
-		if (argv[param][0] == '-')
-			limit = "-2147483648";
-		else
-			limit = "2147483647";
-		if (!check_range(argv[param], limit))
-			return (false);
-		param++;
-	}
-	return (true);
-}
-
-bool	is_dup_param(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (i < argc)
-	{
-		j = i + 1;
-		while (j < argc)
-		{
-			if (!ft_strcmp(argv[i], argv[j]))
-				return (true);
-			j++;
-		}
-		i++;
-	}
-	return (false);
-}
-
-bool	check_param(int argc, char **argv)
-{
-	if (argc == 1)	// not display anithing and give the prompt back
-		return (false);
-	if (!is_numerical_param(argc, argv))
-		return (false);
-	if (!is_integer_param(argc, argv))
-		return (false);
-	if (is_dup_param(argc, argv))
-		return (false);
-	return (true);
 }
 
 int	main(int argc, char **argv)
 {
-	if (!check_param(argc, argv))
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	ft_printf("param ok");
+	t_stack	stack;
+
+	validate_args(argc, argv);
+	build_stack(argc, argv, &stack);
+	print_stack(stack);
 	return (0);
 }

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 01:49:38 by vscabell         ###   ########.fr       */
+/*   Created: 2021/04/09 22:49:13 by vscabell          #+#    #+#             */
+/*   Updated: 2021/04/10 02:37:48 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "stack.h"
 
-# include <stdbool.h>
-# include "../libft/libft.h"
-# include <stack.h>
-
-bool	validate_params(int argc, char **argv);
-void	print_stack(t_stack stack);
-
-#endif
+void	swap(t_stack *stack)
+{
+	if (stack->size < 2 || !stack->arr)
+		return ;
+	stack->arr[0] = stack->arr[0] ^ stack->arr[1];
+	stack->arr[1] = stack->arr[0] ^ stack->arr[1];
+	stack->arr[0] = stack->arr[0] ^ stack->arr[1];
+}
