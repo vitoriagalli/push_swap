@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 20:56:51 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:08:43 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 	validate_args(argc, argv);
 	build_stacks(argc, argv, &stacks);
 	read_and_execute_commands(&stacks);
+	check_if_is_sort(&stacks);
 	clear_stacks(stacks);
 	return (EXIT_SUCCESS);
 }
