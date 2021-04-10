@@ -12,7 +12,7 @@ HEAD = -I./$(LIBFT_DIR) -I./$(INCLUDES_DIR)
 ############ FLAGS #############
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -w
+CFLAGS = -Wall -Werror -Wextra #-w
 DFLAGS = -g -fsanitize=address
 LFLAGS = -L ./$(LIBFT_DIR) -lft
 RM = /bin/rm -rf

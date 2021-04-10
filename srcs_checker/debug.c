@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 23:39:51 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 16:30:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:51:31 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stacks(t_stacks stacks)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	ft_printf("\tA\tB\n");
@@ -23,12 +23,12 @@ void	print_stacks(t_stacks stacks)
 	ft_printf("stack:");
 	while (i < stacks.a.size || i < stacks.b.size)
 	{
-		if (i < stacks.a.size)
+		if (i < stacks.a.size && stacks.a.head->next)
 		{
 			ft_printf("\t%i", stacks.a.head->content);
 			stacks.a.head = stacks.a.head->next;
 		}
-		if (i < stacks.b.size)
+		if (i < stacks.b.size && stacks.b.head->next)
 		{
 			ft_printf("\t%i", stacks.b.head->content);
 			stacks.b.head = stacks.b.head->next;

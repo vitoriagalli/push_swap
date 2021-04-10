@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:13 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 03:03:32 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/10 21:49:35 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	swap(t_stack *stack)
 {
-	t_list	*lst;
+	t_list	*pt;
 
-	lst = stack->head;
-	if (stack->size < 2 || !lst || !lst->next)
+	pt = stack->head;
+	if (stack->size < 2 || !pt || !pt->next)
 		return ;
-	lst->content = (int)lst->content ^ (int)lst->next->content;
-	lst->next->content = (int)lst->content ^ (int)lst->next->content;
-	lst->content = (int)lst->content ^ (int)lst->next->content;
+	pt->content = (void *)((long)pt->content ^ (long)pt->next->content);
+	pt->next->content = (void *)((long)pt->content ^ (long)pt->next->content);
+	pt->content = (void *)((long)pt->content ^ (long)pt->next->content);
 }
