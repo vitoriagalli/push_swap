@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:24:51 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 22:01:43 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:54:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_stack_clear(t_list **lst, size_t size)
 {
 	t_list	*to_free;
-	size_t		i;
+	size_t	i;
 
 	to_free = *lst;
 	if (!lst || !*lst)

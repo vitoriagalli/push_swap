@@ -30,9 +30,12 @@ function fail()
 	echo "  "
 }
 
-if [ "$1" == "  0" ]
+
+line=$(cat "$1")
+if [ x"$line" = x ]
 then
 	pass
 else
 	fail
 fi
+rm -f "$1"
