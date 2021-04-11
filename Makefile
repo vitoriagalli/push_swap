@@ -1,4 +1,6 @@
-######### PROGRAMS ##########
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                 PROGRAMS                                    #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 NAME	= push_swap
 CHECKER = checker
@@ -16,7 +18,6 @@ DFLAGS = -g -fsanitize=address
 LFLAGS = -L ./$(LIBFT_DIR) -lft
 RM = /bin/rm -rf
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                   LIBFT                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -25,9 +26,9 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
+	@tput sgr0; tput bold
 	@echo "Compiling libft ..."
 	@make --no-print-directory -C $(LIBFT_DIR)
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                CHECKER                                      #
@@ -99,19 +100,15 @@ fclean: clean
 
 re: fclean all
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                    NORM                                     #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 norm:
-	@norminette $(LIBFT_DIR)
-	@norminette $(SRCS_DIR)
-
-
-
-
-# @tput setab 57; tput setaf 39
-# @tput setaf 39; tput bold; tput smul; tput rev; tput blink
-
-# @tput setaf 39; tput bold; tput rev
+	@tput sgr0; tput bold; tput rev
+	@echo "\n*~*~*~*  NORMINETTE  *~*~*~*"
+	@echo ""
+	@tput sgr0
+	@norminette $(LIBFT_DIR) $(SRCS_DIR) 2>&1 | grep "Error" | tee .file.txt
+	@[ -s .file.txt ]
+	@bash .norm.sh "$?"
