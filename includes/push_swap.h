@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 19:20:52 by vscabell         ###   ########.fr       */
+/*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
+/*   Updated: 2021/04/11 18:56:25 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
-{
-	t_stacks	stacks;
+# include <stdbool.h>
+# include "../libft/libft.h"
+# include "stack.h"
+# include "checker.h"
 
-	validate_args(argc, argv);
-	build_stacks(argc, argv, &stacks);
-	check_if_is_sort(&stacks);
-	clear_stacks(&stacks);
-	return (EXIT_SUCCESS);
-}
+#endif

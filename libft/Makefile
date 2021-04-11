@@ -6,7 +6,7 @@
 #    By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 08:54:07 by vscabell          #+#    #+#              #
-#    Updated: 2021/04/11 04:44:24 by vscabell         ###   ########.fr        #
+#    Updated: 2021/04/11 19:11:50 by vscabell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,8 +91,9 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@tput sgr0; echo -n "$< "
+	@echo -n "$< "
 	@tput setaf 28; echo "✔"
+	@tput sgr0
 
 all: $(NAME)
 

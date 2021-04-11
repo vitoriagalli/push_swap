@@ -30,7 +30,6 @@ function fail()
 	echo "  "
 }
 
-
 line=$(cat "$1")
 if [ x"$line" = x ]
 then

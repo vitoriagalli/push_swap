@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 15:17:08 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:53:00 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_list		*head;
 	size_t		size;
