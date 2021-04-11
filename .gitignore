@@ -5,6 +5,7 @@
 *.swp
 *.swo
 *.a
+*.sh
 .vscode
 checker
 push_swap

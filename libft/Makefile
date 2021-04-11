@@ -6,7 +6,7 @@
 #    By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 08:54:07 by vscabell          #+#    #+#              #
-#    Updated: 2021/04/04 15:43:34 by vscabell         ###   ########.fr        #
+#    Updated: 2021/04/11 04:44:24 by vscabell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,20 +85,22 @@ CFLAGS = -Wall -Werror -Wextra -g
 RM = /bin/rm -rf
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $@
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $@
 
 $(OBJ_DIR)/%.o: %.c
-	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@tput sgr0; echo -n "$< "
+	@tput setaf 28; echo "✔"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
