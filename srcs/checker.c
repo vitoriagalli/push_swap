@@ -6,11 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 19:19:07 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/11 19:35:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+// pb is not working!
 
 int	main(int argc, char **argv)
 {
