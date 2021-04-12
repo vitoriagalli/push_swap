@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:59:46 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 21:12:32 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:48:46 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libstack.h"
 
 static bool	sorted_stack(t_stack *stack)
 {

@@ -15,7 +15,7 @@ OBJS_DIR = .objs
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -w
 DFLAGS = -g -fsanitize=address
-LFLAGS = -L ./$(LIBFT_DIR) -lft
+LFLAGS = -L . -lstack
 RM = /bin/rm -rf
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -26,31 +26,56 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 $(LIBFT):
-	@ tput bold
+	@tput bold
 	@echo "Compiling libft ..."
+	@tput sgr0
 	@make --no-print-directory -C $(LIBFT_DIR)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                               STACK LIB                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+STACK = libstack.a
+
+SRCS_STACK_FILES =		stack/validate_params.c \
+						stack/build_stacks.c \
+						stack/operations.c \
+						stack/commands.c \
+						stack/clear_stacks.c \
+						stack/debug.c \
+						stack/swap.c \
+						stack/push.c \
+						stack/rotate.c \
+						stack/reverse_rotate.c
+
+SRCS_STACK = $(addprefix $(SRCS_DIR)/,$(SRCS_STACK_FILES))
+OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
+
+$(STACK) : $(LIBFT) $(OBJS_STACK)
+	@mv $(LIBFT) $(STACK)
+	@ar rc $(STACK) $(OBJS_STACK)
+	@tput bold
+	@echo "Compiling $(STACK) ..."
+	@tput sgr0
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)/stack
+	@$(CC) $(DFLAGS) $(CFLAGS) $(HEAD) -c $< -o $@
+	@echo -n "$< "
+	@tput setaf 28; echo "✔"
 	@tput sgr0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                CHECKER                                      #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-SRCS_CHECKER_FILES =	checker.c \
-						validate_params.c \
-						build_stacks.c \
-						operations.c \
-						commands.c \
-						clear_stacks.c \
-						debug.c \
-						stack/swap.c \
-						stack/push.c \
-						stack/rotate.c \
-						stack/reverse_rotate.c
+SRCS_CHECKER_FILES =	checker.c
 
 SRCS_CHECKER = $(addprefix $(SRCS_DIR)/,$(SRCS_CHECKER_FILES))
 OBJS_CHECKER = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_CHECKER))
 
-$(CHECKER) : $(OBJS_CHECKER) $(LIBFT)
+$(CHECKER) : $(STACK) $(OBJS_CHECKER)
 	@$(CC) $(OBJS_CHECKER) $(HEAD) $(DFLAGS) $(CFLAGS) $(LFLAGS) -o $@
 	@tput bold
 	@echo "Compiling $(CHECKER) ..."
@@ -68,23 +93,12 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 #                                PUSH SWAP                                    #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-SRCS_PUSH_SWAP_FILES =	push_swap.c \
-						build_stacks.c \
-						validate_params.c \
-						operations.c \
-						commands.c \
-						clear_stacks.c \
-						debug.c \
-						stack/swap.c \
-						stack/push.c \
-						stack/rotate.c \
-						stack/reverse_rotate.c
-
+SRCS_PUSH_SWAP_FILES =	push_swap.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
 OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
 
-$(NAME) : $(OBJS_PUSH_SWAP) $(LIBFT) $(CHECKER)
+$(NAME) : $(CHECKER) $(OBJS_PUSH_SWAP)
 	@$(CC) $(OBJS_PUSH_SWAP) $(HEAD) $(DFLAGS) $(CFLAGS) $(LFLAGS) -o $@
 	@tput bold
 	@echo "Compiling $(NAME) ..."
@@ -111,6 +125,7 @@ clean:
 
 fclean: clean
 	@make --no-print-directory fclean -C $(LIBFT_DIR)
+	@$(RM) $(STACK)
 	@$(RM) $(CHECKER)
 	@$(RM) $(NAME)
 	@tput bold

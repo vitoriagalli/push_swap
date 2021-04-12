@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:13 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 21:49:35 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:49:08 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libstack.h"
 
 void	swap(t_stack *stack)
 {

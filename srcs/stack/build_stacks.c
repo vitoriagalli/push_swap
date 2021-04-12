@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:17:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 19:18:43 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:48:56 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libstack.h"
 
 void	exit_program(t_stacks *stacks)
 {

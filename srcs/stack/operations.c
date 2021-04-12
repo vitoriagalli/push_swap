@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 20:44:07 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:48:33 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libstack.h"
 
 static void	operate_swap(char *op, t_stacks *stacks)
 {

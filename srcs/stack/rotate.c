@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:17 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 15:34:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:49:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libstack.h"
 
 void	rotate(t_stack *stack)
 {

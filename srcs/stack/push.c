@@ -6,11 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 20:58:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 02:49:25 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libstack.h"
 
 void	push(t_stack *to, t_stack *from)
 {
