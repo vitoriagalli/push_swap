@@ -6,12 +6,12 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 03:41:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 03:46:47 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef LIBSTACK_H
+# define LIBSTACK_H
 
 # include <stdbool.h>
 # include "../libft/libft.h"
