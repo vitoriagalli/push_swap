@@ -40,7 +40,7 @@ STACK = libstack.a
 SRCS_STACK_FILES =		stack/validate_params.c \
 						stack/build_stacks.c \
 						stack/operations.c \
-						stack/check_if_is_sorted.c \
+						stack/is_sorted.c \
 						stack/clear_stacks.c \
 						stack/debug.c \
 						stack/op_swap.c \

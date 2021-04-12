@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commands.c                                         :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:59:46 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 03:39:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 01:33:54 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ static bool	empty_stack(t_stack *stack)
 	return (false);
 }
 
-void	check_if_is_sorted(t_stacks *stacks)
+bool	is_sorted(t_stacks *stacks)
 {
 	if (sorted_stack(&stacks->a) && empty_stack(&stacks->b))
-		ft_printf("OK\n");
-	else
-		ft_printf("K0\n");
+		return (true);
+	return (false);
 }
