@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   libstack.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 02:37:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 03:41:59 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ bool	validate_params(int argc, char **argv);
 void	validate_args(int argc, char **argv);
 void	build_stacks(int argc, char **argv, t_stacks *stacks);
 void	operations(char *op, t_stacks *stacks);
-void	check_if_is_sort(t_stacks *stacks);
+void	check_if_is_sorted(t_stacks *stacks);
 void	clear_stacks(t_stacks *stacks);
 void	exit_program(t_stacks *stacks);
 void	print_stacks(t_stacks stacks);

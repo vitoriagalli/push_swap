@@ -6,13 +6,29 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/11 19:35:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 03:41:15 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-// pb is not working!
+void	read_and_execute_commands(t_stacks *stacks)
+{
+	char	*cmd;
+	int		ret;
+
+	print_stacks(*stacks);
+	while (true)
+	{
+		ret = get_next_line(STDIN_FILENO, &cmd);
+		if (ret <= 0)
+			break ;
+		operations(cmd, stacks);
+		free(cmd);
+		print_stacks(*stacks);
+	}
+	free(cmd);
+}
 
 int	main(int argc, char **argv)
 {
@@ -21,7 +37,7 @@ int	main(int argc, char **argv)
 	validate_args(argc, argv);
 	build_stacks(argc, argv, &stacks);
 	read_and_execute_commands(&stacks);
-	check_if_is_sort(&stacks);
+	check_if_is_sorted(&stacks);
 	clear_stacks(&stacks);
 	return (EXIT_SUCCESS);
 }

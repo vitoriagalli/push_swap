@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:59:46 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 02:48:46 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/12 03:39:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,10 @@ static bool	empty_stack(t_stack *stack)
 	return (false);
 }
 
-void	check_if_is_sort(t_stacks *stacks)
+void	check_if_is_sorted(t_stacks *stacks)
 {
 	if (sorted_stack(&stacks->a) && empty_stack(&stacks->b))
 		ft_printf("OK\n");
 	else
 		ft_printf("K0\n");
-}
-
-void	read_and_execute_commands(t_stacks *stacks)
-{
-	char	*cmd;
-	int		ret;
-
-	print_stacks(*stacks);
-	while (true)
-	{
-		ret = get_next_line(STDIN_FILENO, &cmd);
-		if (ret <= 0)
-			break ;
-		operations(cmd, stacks);
-		free(cmd);
-		print_stacks(*stacks);
-	}
-	free(cmd);
 }

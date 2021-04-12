@@ -40,13 +40,13 @@ STACK = libstack.a
 SRCS_STACK_FILES =		stack/validate_params.c \
 						stack/build_stacks.c \
 						stack/operations.c \
-						stack/commands.c \
+						stack/check_if_is_sorted.c \
 						stack/clear_stacks.c \
 						stack/debug.c \
-						stack/swap.c \
-						stack/push.c \
-						stack/rotate.c \
-						stack/reverse_rotate.c
+						stack/op_swap.c \
+						stack/op_push.c \
+						stack/op_rotate.c \
+						stack/op_reverse_rotate.c
 
 SRCS_STACK = $(addprefix $(SRCS_DIR)/,$(SRCS_STACK_FILES))
 OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
@@ -117,8 +117,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	@make --no-print-directory clean -C $(LIBFT_DIR)
-	@$(RM) $(OBJS_CHECKER_DIR)
-	@$(RM) $(OBJS_PUSH_SWAP_DIR)
+	@$(RM) $(OBJS_DIR)
 	@tput bold
 	@echo "Deleting objects ..."
 	@tput sgr0
