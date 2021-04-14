@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:13 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 02:49:08 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 23:20:10 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_stack *stack)
 	pt = stack->head;
 	if (stack->size < 2 || !pt || !pt->next)
 		return ;
-	pt->content = (void *)((long)pt->content ^ (long)pt->next->content);
-	pt->next->content = (void *)((long)pt->content ^ (long)pt->next->content);
-	pt->content = (void *)((long)pt->content ^ (long)pt->next->content);
+	pt->numb = pt->numb ^ pt->next->numb;
+	pt->next->numb = pt->numb ^ pt->next->numb;
+	pt->numb = pt->numb ^ pt->next->numb;
 }

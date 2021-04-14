@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:59:46 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/13 01:33:54 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 23:14:37 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	sorted_stack(t_stack *stack)
 	tmp = stack->head;
 	while (tmp->next)
 	{
-		if (tmp->content > tmp->next->content)
+		if (tmp->numb > tmp->next->numb)
 			return (false);
 		tmp = tmp->next;
 	}
