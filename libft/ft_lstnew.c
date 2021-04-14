@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vscabell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 14:02:28 by vscabell          #+#    #+#             */
-/*   Updated: 2020/01/29 14:22:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 23:17:18 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int numb)
 {
 	t_list	*elem;
 
 	elem = malloc(sizeof(t_list));
 	if (!elem)
 		return (NULL);
-	elem->content = content;
+	elem->numb = numb;
 	elem->next = NULL;
+	elem->previous = NULL;
 	return (elem);
 }

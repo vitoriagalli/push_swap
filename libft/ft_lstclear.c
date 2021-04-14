@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:57:59 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/10 03:56:53 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 23:12:00 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	while (to_free)
 	{
 		*lst = to_free->next;
-		del(to_free->content);
 		free(to_free);
 		to_free = *lst;
 	}

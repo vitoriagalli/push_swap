@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:58:20 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 01:19:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/13 23:16:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
+		new->previous = tmp;
 	}
 }
