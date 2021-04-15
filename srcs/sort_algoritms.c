@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/15 22:36:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 01:37:43 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,47 +189,90 @@ int		get_min_value(t_stack *a)
 	return (min);
 }
 
+void	check_top_half(t_stacks *stacks, t_list *tmp)
+{
+	while (tmp)
+	{
+		if (tmp == stacks->a.head)
+		{
+			call_operation("pb", stacks);
+			return ;
+		}
+		call_operation("ra", stacks);
+	}
+}
+
+void	check_bottom_half(t_stacks *stacks, t_list *tmp)
+{
+	while (tmp)
+	{
+		if (tmp == stacks->a.head)
+		{
+			call_operation("pb", stacks);
+			return ;
+		}
+		call_operation("rra", stacks);
+	}
+}
+
 void	loop(t_stacks *stacks)
 {
-	t_list	*tmp;
+	t_list	*tmp_top;
+	t_list	*tmp_bottom;
 	int		min_value;
 	int		max_value;
 
 	min_value = get_min_value(&stacks->a);
 	max_value = get_max_value(&stacks->a);
 
-	while (true)
+
+	tmp_bottom = ft_lstlast(stacks->a.head);
+	tmp_top = stacks->a.head;
+	while (tmp_top && tmp_bottom)
 	{
-		tmp = stacks->a.head;
-		while (tmp)
+		if (tmp_top->numb == min_value)// || tmp_bottom->numb == max_value)
 		{
-			if (tmp->numb == min_value)
-			{
-				while (tmp)
-				{
-					if (tmp == stacks->a.head)
-					{
-						call_operation("pb", stacks);
-						return ;
-					}
-					call_operation("ra", stacks);
-				}
-			}
-			tmp = tmp->next;
+			check_top_half(stacks, tmp_top);
+			min_value = -2147483648;
 		}
+		else if (tmp_bottom->numb == min_value)// || tmp_bottom->numb == max_value)
+		{
+			check_bottom_half(stacks, tmp_bottom);
+			min_value = -2147483648;
+		}
+		if (tmp_top->numb == max_value)
+		{
+			check_top_half(stacks, tmp_top);
+			max_value = 2147483647;
+		}
+		else if (tmp_bottom->numb == max_value)
+		{
+			check_bottom_half(stacks, tmp_bottom);
+			max_value = 2147483647;
+		}
+		tmp_top = tmp_top->next;
+		tmp_bottom = tmp_bottom->previous;
 	}
 }
 
+void	bring_back_to_a(t_stacks *stacks)
+{
+	call_operation("pa", stacks);
+	if (stacks->a.head->numb > stacks->a.head->next->numb)
+		call_operation("ra", stacks);
+	call_operation("pa", stacks);
+	if (stacks->a.head->numb > stacks->a.head->next->numb)
+		call_operation("ra", stacks);
+}
+
+
 void	sort_list_of_five(t_stacks *stacks)
 {
-
-
-	bool	start_with_min;
-
 	// if (stacks->a.size < 5)
 	// 	return ;
 
 	loop(stacks);
 	sort_list_of_tree_a(stacks);
-	call_operation("pa", stacks);
+	bring_back_to_a(stacks);
+
 }
