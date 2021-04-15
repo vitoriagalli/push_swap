@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/15 03:40:34 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/15 22:36:26 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,85 @@ void	sort_list_of_tree_a(t_stacks *stacks)
 void	sort_list_of_tree(t_stacks *stacks)
 {
 	sort_list_of_tree_a(stacks);
+}
+
+//............................... //
+//       SORT LIST OF FIVE        //
+//.............................. .//
+
+int		get_max_value(t_stack *a)
+{
+	t_list		*tmp;
+	int			max;
+
+	max = -2147483648;
+	tmp = a->head;
+	while (tmp)
+	{
+		if (tmp->numb > max)
+			max = tmp->numb;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+int		get_min_value(t_stack *a)
+{
+	t_list		*tmp;
+	int			min;
+
+	min = 2147483647;
+	tmp = a->head;
+	while (tmp)
+	{
+		if (tmp->numb < min)
+			min = tmp->numb;
+		tmp = tmp->next;
+	}
+	return (min);
+}
+
+void	loop(t_stacks *stacks)
+{
+	t_list	*tmp;
+	int		min_value;
+	int		max_value;
+
+	min_value = get_min_value(&stacks->a);
+	max_value = get_max_value(&stacks->a);
+
+	while (true)
+	{
+		tmp = stacks->a.head;
+		while (tmp)
+		{
+			if (tmp->numb == min_value)
+			{
+				while (tmp)
+				{
+					if (tmp == stacks->a.head)
+					{
+						call_operation("pb", stacks);
+						return ;
+					}
+					call_operation("ra", stacks);
+				}
+			}
+			tmp = tmp->next;
+		}
+	}
+}
+
+void	sort_list_of_five(t_stacks *stacks)
+{
+
+
+	bool	start_with_min;
+
+	// if (stacks->a.size < 5)
+	// 	return ;
+
+	loop(stacks);
+	sort_list_of_tree_a(stacks);
+	call_operation("pa", stacks);
 }
