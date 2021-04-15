@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/15 02:39:04 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/15 03:40:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void call_operation(char *op, t_stacks *stacks)
+void	call_operation(char *op, t_stacks *stacks)
 {
 	operations(op, stacks);
 	ft_printf("%s\n", op);
@@ -83,61 +83,72 @@ void	insertion_sort(t_stacks *stacks)
 //       SORT LIST OF TREE        //
 //.............................. .//
 
-void	get_posit(int *args, int *posit)
+void	atribute_args(t_list *lst, int *args)
 {
-	int	i;
-	int	m[3];
+	args[POS_0] = lst->numb;
+	args[POS_1] = lst->next->numb;
+	args[POS_2] = lst->next->next->numb;
+}
 
+void	get_posit(t_list *lst, t_three *posit)
+{
+	int	args[3];
+	int	min;
+	int	max;
+	int	i;
+
+	atribute_args(lst, &args);
 	i = 0;
-	ft_memcpy(m, args, 3 * sizeof(int));
+	min = 2147483647;
+	max = -2147483648;
 	while (i < 3)
 	{
-		if (args[i] <= m[0])
+		if (args[i] <= min)
 		{
-			m[0] = args[i];
-			posit[0] = i;
+			min = args[i];
+			posit->min = i;
 		}
-		if (args[i] >= m[2])
+		if (args[i] >= max)
 		{
-			m[2] = args[i];
-			posit[2] = i;
+			max = args[i];
+			posit->max = i;
 		}
 		i++;
 	}
-	if (posit[0] != 1 && posit[2] != 1)
-		posit[1] = 1;
-	else if (posit[0] != 2 && posit[2] != 2)
-		posit[1] = 2;
+	if (posit->min != POS_1 && posit->max != POS_1)
+		posit->mid = POS_1;
+	else if (posit->min != POS_2 && posit->max != POS_2)
+		posit->mid = POS_2;
 	else
-		posit[1] = 0;
+		posit->mid = POS_0;
+}
+
+void	sort_list_of_tree_a(t_stacks *stacks)
+{
+	t_three	posit;
+
+	if (stacks->a.size < 3)
+		return ;
+	get_posit(stacks->a.head, &posit);
+	if (posit.min == POS_0 && posit.mid == POS_2 && posit.max == POS_1)
+	{
+		call_operation("sa", stacks);
+		call_operation("ra", stacks);
+	}
+	else if (posit.min == POS_1 && posit.mid == POS_0 && posit.max == POS_2)
+		call_operation("sa", stacks);
+	else if (posit.min == POS_1 && posit.mid == POS_2 && posit.max == POS_0)
+		call_operation("ra", stacks);
+	else if (posit.min == POS_2 && posit.mid == POS_1 && posit.max == POS_0)
+	{
+		call_operation("sa", stacks);
+		call_operation("rra", stacks);
+	}
+	else if (posit.min == POS_2 && posit.mid == POS_0 && posit.max == POS_1)
+		call_operation("rra", stacks);
 }
 
 void	sort_list_of_tree(t_stacks *stacks)
 {
-	int	posit[3];
-	int	args[3];
-
-	if (stacks->a.size < 3)
-		return ;
-	args[0] = stacks->a.head->numb;
-	args[1] = stacks->a.head->next->numb;
-	args[2] = stacks->a.head->next->next->numb;;
-
-	get_posit(args, posit);
-	if (posit[0] == 0 && posit[1] == 2 && posit[2] == 1)
-	{
-		call_operation("sa", stacks);
-		call_operation("ra", stacks);
-	}
-	else if (posit[0] == 1 && posit[1] == 0 && posit[2] == 2)
-		call_operation("sa", stacks);
-	else if (posit[0] == 1 && posit[1] == 2 && posit[2] == 0)
-		call_operation("ra", stacks);
-	else if (posit[0] == 2 && posit[1] == 1 && posit[2] == 0)
-	{
-		call_operation("sa", stacks);
-		call_operation("rra", stacks);
-	}
-	else if (posit[0] == 2 && posit[1] == 0 && posit[2] == 1)
-		call_operation("rra", stacks);
+	sort_list_of_tree_a(stacks);
 }

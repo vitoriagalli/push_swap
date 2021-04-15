@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/15 01:26:13 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/15 03:41:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	game_on(t_stacks *stacks)
 	while (sort == false)
 	{
 		// insertion_sort(stacks);
-		sort_list_of_tree(stacks);
+		// sort_list_of_tree(stacks);
+		// sort_list_of_five(stacks);
 		sort = is_sorted(stacks);
 	}
 }
