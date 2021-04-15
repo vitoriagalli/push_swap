@@ -93,7 +93,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 #                                PUSH SWAP                                    #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-SRCS_PUSH_SWAP_FILES =	push_swap.c
+SRCS_PUSH_SWAP_FILES =	push_swap.c \
+						sort_algoritms.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
 OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
