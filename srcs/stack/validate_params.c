@@ -6,19 +6,19 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 23:39:48 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 02:48:28 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 03:45:10 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-static bool	is_numerical_param(int argc, char **argv)
+static bool	is_numerical_param(char **argv)
 {
 	int	param;
 	int	count_char;
 
-	param = 1;
-	while (param < argc)
+	param = 0;
+	while (argv[param])
 	{
 		count_char = 0;
 		if (argv[param][count_char] == '-')
@@ -56,13 +56,13 @@ static bool	check_range(char *str, char *limit)
 	return (true);
 }
 
-static bool	is_integer_param(int argc, char **argv)
+static bool	is_integer_param(char **argv)
 {
 	int		param;
 	char	*limit;
 
-	param = 1;
-	while (param < argc)
+	param = 0;
+	while (argv[param])
 	{
 		if (argv[param][0] == '-')
 			limit = "-2147483648";
@@ -75,16 +75,16 @@ static bool	is_integer_param(int argc, char **argv)
 	return (true);
 }
 
-static bool	is_dup_param(int argc, char **argv)
+static bool	is_dup_param(char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (i < argc)
+	while (argv[i])
 	{
 		j = i + 1;
-		while (j < argc)
+		while (argv[j])
 		{
 			if (!ft_strcmp(argv[i], argv[j]))
 				return (true);
@@ -95,13 +95,13 @@ static bool	is_dup_param(int argc, char **argv)
 	return (false);
 }
 
-bool	validate_params(int argc, char **argv)
+bool	validate_params(char **argv)
 {
-	if (!is_numerical_param(argc, argv))
+	if (!is_numerical_param(argv))
 		return (false);
-	if (!is_integer_param(argc, argv))
+	if (!is_integer_param(argv))
 		return (false);
-	if (is_dup_param(argc, argv))
+	if (is_dup_param(argv))
 		return (false);
 	return (true);
 }

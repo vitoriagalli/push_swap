@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/13 01:33:28 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 03:43:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_stacks
 	t_stack		b;
 }				t_stacks;
 
-bool	validate_params(int argc, char **argv);
 void	validate_args(int argc, char **argv);
-void	build_stacks(int argc, char **argv, t_stacks *stacks);
+bool	validate_params(char **argv);
+void	build_stacks(char **argv, t_stacks *stacks);
 void	operations(char *op, t_stacks *stacks);
 bool	is_sorted(t_stacks *stacks);
 void	clear_stacks(t_stacks *stacks);
