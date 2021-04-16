@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 03:59:30 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:55:37 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	game_on(t_stacks *stacks)
 {
-	bool	sort;
+	// bool	sort;
 
-	sort = is_sorted(stacks);
-	while (sort == false)
-	{
+	// sort = is_sorted(stacks);
+	// while (sort == false)
+	// {
 		// insertion_sort(stacks);
-		sort_list_of_tree(stacks);
+		// sort_list_of_tree(stacks);
 		// sort_list_of_five(stacks);
-		sort = is_sorted(stacks);
-	}
+		sort_compare(stacks);
+	// 	sort = is_sorted(stacks);
+	// }
+
+	ft_printf("%i\n", stacks->n_op);
 }
 
 int	main(int argc, char **argv)

@@ -6,16 +6,17 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 01:37:43 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:55:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	call_operation(char *op, t_stacks *stacks)
+static void	call_operation(char *op, t_stacks *stacks)
 {
 	operations(op, stacks);
 	ft_printf("%s\n", op);
+	(stacks->n_op)++;
 }
 
 //............................... //
@@ -276,3 +277,4 @@ void	sort_list_of_five(t_stacks *stacks)
 	bring_back_to_a(stacks);
 
 }
+

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 03:58:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:53:02 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stacks
 {
 	t_stack		a;
 	t_stack		b;
+	int			n_op;
 }				t_stacks;
 
 char	**unify_args(int argc, char **argv);

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 02:48:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 22:40:46 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	operate_swap(char *op, t_stacks *stacks)
 		swap(&stacks->a);
 	else if (!ft_strcmp(op, "sb"))
 		swap(&stacks->b);
-	else if (!ft_strcmp(op, "sss"))
+	else if (!ft_strcmp(op, "ss"))
 	{
 		swap(&stacks->a);
 		swap(&stacks->b);
