@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 03:42:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 03:57:49 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,6 @@ void	check_if_is_sorted(t_stacks *stacks)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-}
-
-char	**unify_args(int argc, char **argv)
-{
-	char	**argv_split;
-	char	*string;
-	char	*tmp;
-	int		i;
-
-	i = 1;
-	string = ft_strdup("");
-	while (i < argc)
-	{
-		tmp = ft_strjoin(argv[i], " ");
-		string = ft_strjoin_and_free(string, tmp);
-		i++;
-	}
-	argv_split = ft_split(string, ' ');
-	free (string);
-	return (argv_split);
 }
 
 int	main(int argc, char **argv)

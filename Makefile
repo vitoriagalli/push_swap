@@ -37,7 +37,8 @@ $(LIBFT):
 
 STACK = libstack.a
 
-SRCS_STACK_FILES =		stack/validate_params.c \
+SRCS_STACK_FILES =		stack/unify_args.c \
+						stack/validate_params.c \
 						stack/build_stacks.c \
 						stack/operations.c \
 						stack/is_sorted.c \

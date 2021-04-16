@@ -6,32 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:17:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 03:42:29 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/16 03:58:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
-
-void	exit_program(t_stacks *stacks)
-{
-	clear_stacks(stacks);
-	exit(EXIT_FAILURE);
-}
-
-void	validate_args(int argc, char **argv)
-{
-	if (argc == 1)
-	{
-		ft_array_clear(argv);
-		exit(EXIT_SUCCESS);
-	}
-	if (!validate_params(argv))
-	{
-		ft_array_clear(argv);
-		ft_printf("Error\n");
-		exit(EXIT_FAILURE);
-	}
-}
 
 void	build_stacks(char **argv, t_stacks *stacks)
 {
