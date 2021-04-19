@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/18 16:40:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:31:13 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void	get_posit(t_list *lst, t_three *posit)
 
 	atribute_args(lst, &args);
 	i = 0;
-	min = 2147483647;
-	max = -2147483648;
+	min = MAX_INT;
+	max = MIN_INT;
 	while (i < 3)
 	{
 		if (args[i] <= min)
@@ -201,22 +201,22 @@ void	loop(t_stacks *stacks)
 		if (tmp_top->numb == min_value)// || tmp_bottom->numb == max_value)
 		{
 			check_top_half(stacks, tmp_top);
-			min_value = -2147483648;
+			min_value = MIN_INT;
 		}
 		else if (tmp_bottom->numb == min_value)// || tmp_bottom->numb == max_value)
 		{
 			check_bottom_half(stacks, tmp_bottom);
-			min_value = -2147483648;
+			min_value = MIN_INT;
 		}
 		if (tmp_top->numb == max_value)
 		{
 			check_top_half(stacks, tmp_top);
-			max_value = 2147483647;
+			max_value = MAX_INT;
 		}
 		else if (tmp_bottom->numb == max_value)
 		{
 			check_bottom_half(stacks, tmp_bottom);
-			max_value = 2147483647;
+			max_value = MAX_INT;
 		}
 		tmp_top = tmp_top->next;
 		tmp_bottom = tmp_bottom->previous;

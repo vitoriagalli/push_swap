@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/18 16:51:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:30:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define POS_0 0
 # define POS_1 1
 # define POS_2 2
+
+# define MIN_INT -2147483648
+# define MAX_INT 2147483647
 
 typedef struct s_three
 {

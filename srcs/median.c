@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 00:26:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:30:15 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	get_median(t_list *lst)
 	size_t	i;
 
 	if (!lst)
-		return (-2147483648);
+		return (MIN_INT);
 	size = ft_lstsize(lst);
 	tab = malloc(size * sizeof(int));
 	if (!tab)
