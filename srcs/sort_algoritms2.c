@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 23:13:10 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:09:26 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	call_operation(char *op, t_stacks *stacks)
 //.............................. .//
 
 
-double	median(t_list *list)
+double	mean(t_list *list)
 {
 	long long int	sum;
 	int				fact;
@@ -44,16 +44,18 @@ double	median(t_list *list)
 
 void	push_to_b_or_to_end_of_stack(t_stacks *stacks)
 {
-	t_list	*last;
-	double	med;
+	// t_list	*last;
+	int		med;
 
-	med = median(stacks->a.head);
-	if (ft_lstsize(stacks->a.head) < 3|| med == 0 || stacks->a.head->numb < (int)med)
+	med = get_median(stacks->a.head);
+	// med = mean(stacks->a.head);
+	if (ft_lstsize(stacks->a.head) < 3|| med == 0 || stacks->a.head->numb < med)
 		call_operation("pb", stacks);
 	else
 	{
-		last = ft_lstlast(stacks->b.head);
-		if (stacks->b.head && stacks->b.head->next && stacks->b.head < last->numb)
+		// last = ft_lstlast(stacks->b.head);
+		med = get_median(stacks->b.head);
+		if (stacks->b.head && stacks->b.head->next && stacks->b.head->numb < med)
 			call_operation("rr", stacks);
 		else
 			call_operation("ra", stacks);
@@ -87,17 +89,91 @@ void	ida(t_stacks *stacks)
 	while (tmp)
 	{
 		push_to_b_or_to_end_of_stack(stacks);
-		compare_top_of_both_stacks(stacks);
+		// compare_top_of_both_stacks(stacks);
 		tmp = stacks->a.head;
 
-		// if (stacks->n_op  > 30)
-		// 	break ;
+		if (stacks->n_op  > 100)
+			break ;
 	}
-
 
 }
 
 void	sort_compare(t_stacks *stacks)
 {
 	ida(stacks);
+}
+
+
+
+
+//#######################################################
+
+
+void	get_hold(t_chunck *chunck, t_stack *stack)
+{
+	chunck->min = get_min_value(stack);
+	chunck->max = get_max_value(stack);
+
+	if (chunck->count < (chunck->lst_init_size * 1 / 5))
+		chunck->hold = (chunck->min + chunck->max)/5;
+	else if (chunck->count < (chunck->lst_init_size * 2 / 5))
+		chunck->hold = (chunck->min + chunck->max)/4;
+	else if (chunck->count < (chunck->lst_init_size * 3 / 5))
+		chunck->hold = (chunck->min + chunck->max)/3;
+	else if (chunck->count < (chunck->lst_init_size * 4 / 5))
+		chunck->hold = (chunck->min + chunck->max)/2;
+	else
+		chunck->hold = (chunck->min + chunck->max)/1;
+}
+
+void	init_chunck(t_chunck *chunck)
+{
+	*chunck = (t_chunck){0};
+}
+
+void	ida2(t_stacks *stacks)
+{
+	t_chunck chunck;
+	t_list	*tmp;
+
+	init_chunck(&chunck);
+	chunck.lst_init_size = ft_lstsize(stacks->a.head);
+
+	tmp = stacks->a.head;
+	while (tmp)
+	{
+
+		get_hold(&chunck, stacks);
+		ft_printf("%i\n", chunck.hold);
+
+		if (tmp->numb < chunck.hold)
+		{
+			call_operation("pb", stacks);
+			chunck.count++;
+		}
+
+		// get_hold(&chunck, stacks);
+
+
+		tmp = stacks->a.head;
+
+		if (chunck.count > 100)
+			break ;
+
+		// if (stacks->n_op  > 100)
+		// 	break ;
+	}
+
+}
+
+
+
+
+
+
+void	sort_another_try(t_stacks *stacks)
+{
+	// ida2(stacks);
+
+	get_median(stacks->a.head);
 }

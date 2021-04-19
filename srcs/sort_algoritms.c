@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/16 21:55:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:40:21 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,38 +158,6 @@ void	sort_list_of_tree(t_stacks *stacks)
 //       SORT LIST OF FIVE        //
 //.............................. .//
 
-int		get_max_value(t_stack *a)
-{
-	t_list		*tmp;
-	int			max;
-
-	max = -2147483648;
-	tmp = a->head;
-	while (tmp)
-	{
-		if (tmp->numb > max)
-			max = tmp->numb;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-int		get_min_value(t_stack *a)
-{
-	t_list		*tmp;
-	int			min;
-
-	min = 2147483647;
-	tmp = a->head;
-	while (tmp)
-	{
-		if (tmp->numb < min)
-			min = tmp->numb;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
 void	check_top_half(t_stacks *stacks, t_list *tmp)
 {
 	while (tmp)
@@ -225,7 +193,6 @@ void	loop(t_stacks *stacks)
 
 	min_value = get_min_value(&stacks->a);
 	max_value = get_max_value(&stacks->a);
-
 
 	tmp_bottom = ft_lstlast(stacks->a.head);
 	tmp_top = stacks->a.head;
