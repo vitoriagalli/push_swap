@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 03:25:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 04:28:44 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	game_on(t_stacks *stacks)
 		sort_list_of_five(stacks);
 	else
 		sort_list_of_many(stacks);
+	ft_printf("%i\n", stacks->n_op);
 }
 
 int	main(int argc, char **argv)
