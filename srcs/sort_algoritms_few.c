@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 04:25:01 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:30:39 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	get_posit_min_value(t_stack *a)
 
 	i = 0;
 	posit = 0;
-	min = 2147483647;
+	min = MAX_INT;
 	tmp = a->head;
 	while (tmp)
 	{
@@ -71,6 +71,16 @@ void	insertion_sort(t_stacks *stacks)
 		call_operation("pa", stacks);
 		size--;
 	}
+}
+
+//............................... //
+//       SORT LIST OF TWO         //
+//.............................. .//
+
+void	sort_list_of_two(t_stacks *stacks)
+{
+	if (stacks-(stacks->a.head->numb > stacks->a.head->next->numb))
+		call_operation("sa", stacks);
 }
 
 //............................... //
@@ -216,6 +226,7 @@ void	bring_back_numb_to_stack_a(t_stacks *stacks)
 		call_operation("ra", stacks);
 }
 
+// nao funciona com listas com 4, por exemplo 20 1 5 3
 void	sort_list_of_five(t_stacks *stacks)
 {
 	push_min_and_max_value_to_stack_b(stacks);

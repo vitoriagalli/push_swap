@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 23:39:51 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/13 23:15:01 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 15:21:24 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	print_stacks(t_stacks stacks)
 		ft_printf("\n");
 		i++;
 	}
-	ft_printf("\t_\t_\n\ta\tb\ncmd: ");
+	ft_printf("\t_\t_\n\ta\tb\n> ");
 }
