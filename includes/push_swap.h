@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 00:30:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:39:18 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,8 @@ void	sort_list_of_tree(t_stacks *stacks);
 
 int		get_max_value(t_stack *stack);
 int		get_min_value(t_stack *stack);
+int		get_median(t_list *lst);
 
-
-typedef struct s_chunck
-{
-	int			min;
-	int			max;
-	int			hold;
-	int			lst_init_size;
-	int			count;
-}				t_chunck;
 
 
 

@@ -6,46 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 00:30:15 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 00:33:33 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	quicksort(int number[25],int first,int last)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	pivot;
-// 	int	temp;
-
-// 	if(first < last)
-// 	{
-// 		pivot = first;
-// 		i = first;
-// 		j = last;
-
-// 		while(i<j)
-// 		{
-// 			while(number[i] <= number[pivot] && i < last)
-// 				i++;
-// 			while(number[j] > number[pivot])
-// 				j--;
-// 			if(i < j)
-// 			{
-// 				temp = number[i];
-// 				number[i] = number[j];
-// 				number[j] = temp;
-// 			}
-// 		}
-
-// 		temp = number[pivot];
-// 		number[pivot] = number[j];
-// 		number[j] = temp;
-// 		quicksort(number, first, j-1);
-// 		quicksort(number, j+1, last);
-// 	}
-// }
 
 void	ft_sort_int_tab(int *tab, int size)
 {
@@ -65,7 +30,6 @@ void	ft_sort_int_tab(int *tab, int size)
 		i++;
 	}
 }
-
 
 int	get_median(t_list *lst)
 {
