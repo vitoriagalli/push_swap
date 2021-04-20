@@ -12,9 +12,13 @@ call_header()
 prepare_input_size_3()
 {
 	max_instr=2
-	echo '2 1 0' > file
-	echo '1 4 3' >> file
-	echo '-50 28785 3' >> file
+	echo '1 2 3' > file
+	echo '1 3 2' > file
+	echo '2 1 3' >> file
+	echo '2 3 1' >> file
+	echo '3 1 2' >> file
+	echo '3 2 1' >> file
+	echo '-2147483648 2147483647 0' >> file
 }
 
 prepare_input_size_5()
@@ -53,6 +57,17 @@ prepare_input_size_500()
 
 }
 
+prepare_input_size_rand()
+{
+	 max_instr=11500
+	echo '' > file
+	# echo '1 3 2 4' > file
+	# echo '2 1 4 3' >> file
+	# echo '4 2 3 1' >> file
+	echo '47 20 95 28 64 69 18 33 10 35 14 77 9 2 27 55 57 62 99 81 8 91 51 4 17 87 44 80 100 46 78 79 49 86 39 38 22 16 34 53 48 89 90 59 56 43 11 32 7 83 94 15 6 92 24 76 12 23 74 84 61 29 41 66 60 36 25 88 37 72 98 19 26 3 97 58 50 1 45 82 73 21 96 85 54' >> file
+
+}
+
 run_tester()
 {
 	./push_swap "$2" > ps
@@ -85,20 +100,58 @@ run_input()
 	done <<< $(cat file)
 }
 
-##########    TESTER    #######
+run_3()
+{
+	prepare_input_size_3
+	call_header "3"
+	run_input $max_instr file
+}
 
-prepare_input_size_3
-call_header "3"
-run_input $max_instr file
+run_5()
+{
+	prepare_input_size_5
+	call_header "5"
+	run_input $max_instr file
+}
 
-prepare_input_size_5
-call_header "5"
-run_input $max_instr file
+run_100()
+{
+	prepare_input_size_100
+	call_header "100"
+	run_input $max_instr file
+}
 
-prepare_input_size_100
-call_header "100"
-run_input $max_instr file
+run_rand()
+{
+	prepare_input_size_rand
+	call_header "ALL"
+	run_input $max_instr file
+}
+
+#############   TESTER   ############
+
+if [ "$1" == "3" ]
+then
+	run_3
+elif [ "$1" == "5" ]
+then
+	run_5
+elif [ "$1" == "100" ]
+then
+	run_100
+elif [ "$1" == "rand" ]
+then
+	run_rand
+else
+	run_3
+	run_5
+	run_100
+fi
 
 rm -rf ps chk file
 
-###############################
+
+
+
+# ARG=""
+# ./push_swap $ARG > ps ; ./checker $ARG < ps > res ; cat res

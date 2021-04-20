@@ -6,44 +6,38 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 14:30:13 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 22:57:57 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-// void	game_on(t_stacks *stacks)
-// {
-	// bool	sort;
-
-	// sort = is_sorted(stacks);
-	// while (sort == false)
-	// {
-		// insertion_sort(stacks);
-		// sort_list_of_tree(stacks);
-		// sort_list_of_five(stacks);
-
-
-		// sort_list_of_many(stacks);
-
-	// 	sort = is_sorted(stacks);
-	// }
-
-// 	ft_printf("%i\n", stacks->n_op);
-// }
-
-void	game_on(t_stacks *stacks)
+// mudar para valor 4
+void	sort_stack(t_stacks *stacks)
 {
-	if (stacks->a.size < 3)
+	if (stacks->a.size == 2)
 		sort_list_of_two(stacks);
-	if (stacks->a.size < 4)
+	if (stacks->a.size == 3)
 		sort_list_of_tree(stacks);
-	else if (stacks->a.size < 6)
+	else if (stacks->a.size == 5)
 		sort_list_of_five(stacks);
 	else
 		sort_list_of_many(stacks);
 	// ft_printf("%i\n", stacks->n_op);
+}
+
+void	game_on(t_stacks *stacks)
+{
+	bool	sorted;
+
+	while (true)
+	{
+		sort_stack(stacks);
+		sorted = is_sorted(stacks);
+		// if (sorted == true)
+		if (sorted = true)
+			return ;
+	}
 }
 
 int	main(int argc, char **argv)

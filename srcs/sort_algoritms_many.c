@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 03:59:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 23:55:45 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,71 @@ void	empty_stack_a(t_stacks *stacks)
 {
 	int	median_a;
 
-	while (stacks->a.head)
+	while (stacks->a.size > 2)
 	{
 		median_a = get_median(stacks->a.head);
 		loop_stack_a(stacks, median_a);
 	}
+	if ( stacks->a.head &&  stacks->a.head->next &&
+		stacks->a.head->numb > stacks->a.head->next->numb)
+		call_operation("sa", stacks);
 }
 
+
+
+
+
+size_t	get_posit_max_value(t_stack *b, int bigger)
+{
+	t_list		*tmp;
+	int			max;
+	size_t		posit;
+	size_t		i;
+
+	i = 0;
+	posit = 0;
+	max = MIN_INT;
+	tmp = b->head;
+	while (tmp)
+	{
+		if (tmp->numb > max && tmp->numb != bigger)
+		{
+			max = tmp->numb;
+			posit = i;
+		}
+		i++;
+		tmp = tmp->next;
+	}
+	return (posit);
+}
+
+
+
+
+void		empty_stack_b(t_stacks *stacks)
+{
+	int	max_value;
+	int	posit_max_value;
+
+	while (stacks->b.head)
+	{
+		max_value = get_max_value(&stacks->b);
+		posit_max_value = get_posit_max_value(&stacks->b, MAX_INT);
+
+		if (posit_max_value < (int)stacks->b.size / 2)
+		{
+			while (stacks->b.head->numb != max_value)
+				call_operation("rb", stacks);
+		}
+		else
+		{
+			while (stacks->b.head->numb != max_value)
+				call_operation("rrb", stacks);
+		}
+		call_operation("pa", stacks);
+
+	}
+}
 
 
 

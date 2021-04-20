@@ -149,3 +149,10 @@ norm:
 	@tput sgr0
 	@norminette $(LIBFT_DIR) $(SRCS_DIR) $(INCLUDES_DIR) 2>&1 | grep "Error" | tee norm.txt
 	@bash .norm.sh norm.txt
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                   TEST                                      #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+test:
+	@ ./test.sh
