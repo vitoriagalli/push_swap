@@ -6,11 +6,18 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:39:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/18 16:40:51 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 02:25:48 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	call_operation(char *op, t_stacks *stacks)
+{
+	operations(op, stacks);
+	ft_printf("%s\n", op);
+	(stacks->n_op)++;
+}
 
 int		get_max_value(t_stack *stack)
 {

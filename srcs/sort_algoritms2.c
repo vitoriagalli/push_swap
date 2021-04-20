@@ -6,43 +6,17 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:05:28 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 02:26:07 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	call_operation(char *op, t_stacks *stacks)
-{
-	operations(op, stacks);
-	ft_printf("%s\n", op);
-	(stacks->n_op)++;
-}
-
-
 //............................... //
 //         SORT COMPARE           //
 //.............................. .//
 
-
-double	mean(t_list *list)
-{
-	long long int	sum;
-	int				fact;
-
-	sum = 0;
-	fact = ft_lstsize(list);
-	if (fact == 0)
-		return (0);
-	while (list)
-	{
-		sum += list->numb;
-		list = list->next;
-	}
-	return (sum / fact);
-}
-
-void	push_to_b_or_to_end_of_stack(t_stacks *stacks, int median_a)
+void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 {
 	int	median_b;
 
@@ -60,7 +34,6 @@ void	push_to_b_or_to_end_of_stack(t_stacks *stacks, int median_a)
 	}
 	else
 	{
-		// median_b = get_median(stacks->b.head);
 		if (stacks->b.head && stacks->b.head->numb < median_b)
 			call_operation("rr", stacks);
 		else
@@ -87,11 +60,10 @@ void	compare_top_of_both_stacks(t_stacks *stacks)
 		call_operation("sb", stacks);
 }
 
-
-void	loop2(t_stacks *stacks, int median_a)
+void	loop_stack_a(t_stacks *stacks, int median_a)
 {
-	size_t	init_size;
 	t_list	*tmp;
+	size_t	init_size;
 	size_t	i;
 
 	tmp = stacks->a.head;
@@ -99,33 +71,25 @@ void	loop2(t_stacks *stacks, int median_a)
 	i = 0;
 	while (tmp && i < init_size)
 	{
-		push_to_b_or_to_end_of_stack(stacks, median_a);
-
+		push_elements_lesser_than_median(stacks, median_a);
 		// compare_top_of_both_stacks(stacks);
 		tmp = stacks->a.head;
 		i++;
-
-		if (stacks->n_op > 100)
-			break ;
 	}
 }
 
-
-
-void	ida(t_stacks *stacks)
+void	empty_stack_a(t_stacks *stacks)
 {
-	int		median_a;
+	int	median_a;
 
 	while (stacks->a.head)
 	{
 		median_a = get_median(stacks->a.head);
-		loop2(stacks, median_a);
+		loop_stack_a(stacks, median_a);
 	}
-
-
 }
 
-void	sort_compare(t_stacks *stacks)
+void	sort_list_of_many(t_stacks *stacks)
 {
-	ida(stacks);
+	empty_stack_a(stacks);
 }
