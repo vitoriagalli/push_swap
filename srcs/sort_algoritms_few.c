@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algoritms.c                                   :+:      :+:    :+:   */
+/*   sort_algoritms_few.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:26:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 03:58:02 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,12 @@ void	atribute_args(t_list *lst, int *args)
 	args[POS_2] = lst->next->next->numb;
 }
 
-void	get_posit(t_list *lst, t_three *posit)
+void	store_posit(t_three *posit, int *args)
 {
-	int	args[3];
 	int	min;
 	int	max;
 	int	i;
 
-	atribute_args(lst, &args);
 	i = 0;
 	min = MAX_INT;
 	max = MIN_INT;
@@ -109,6 +107,14 @@ void	get_posit(t_list *lst, t_three *posit)
 		}
 		i++;
 	}
+}
+
+void	get_posit(t_list *lst, t_three *posit)
+{
+	int	args[3];
+
+	atribute_args(lst, &args);
+	store_posit(posit, &args);
 	if (posit->min != POS_1 && posit->max != POS_1)
 		posit->mid = POS_1;
 	else if (posit->min != POS_2 && posit->max != POS_2)
@@ -117,7 +123,7 @@ void	get_posit(t_list *lst, t_three *posit)
 		posit->mid = POS_0;
 }
 
-void	sort_list_of_tree_a(t_stacks *stacks)
+void	sort_list_of_tree(t_stacks *stacks)
 {
 	t_three	posit;
 
@@ -140,11 +146,6 @@ void	sort_list_of_tree_a(t_stacks *stacks)
 	}
 	else if (posit.min == POS_2 && posit.mid == POS_0 && posit.max == POS_1)
 		call_operation("rra", stacks);
-}
-
-void	sort_list_of_tree(t_stacks *stacks)
-{
-	sort_list_of_tree_a(stacks);
 }
 
 //............................... //
@@ -177,7 +178,7 @@ void	check_bottom_half(t_stacks *stacks, t_list *tmp)
 	}
 }
 
-void	loop(t_stacks *stacks)
+void	loop_a(t_stacks *stacks)
 {
 	t_list	*tmp_top;
 	t_list	*tmp_bottom;
@@ -186,30 +187,33 @@ void	loop(t_stacks *stacks)
 
 	min_value = get_min_value(&stacks->a);
 	max_value = get_max_value(&stacks->a);
-
 	tmp_bottom = ft_lstlast(stacks->a.head);
 	tmp_top = stacks->a.head;
 	while (tmp_top && tmp_bottom)
 	{
-		if (tmp_top->numb == min_value)// || tmp_bottom->numb == max_value)
+		if (tmp_top->numb == min_value)
 		{
 			check_top_half(stacks, tmp_top);
 			min_value = MIN_INT;
+			tmp_top = stacks->a.head;
 		}
-		else if (tmp_bottom->numb == min_value)// || tmp_bottom->numb == max_value)
+		else if (tmp_bottom->numb == min_value)
 		{
 			check_bottom_half(stacks, tmp_bottom);
 			min_value = MIN_INT;
+			tmp_bottom = ft_lstlast(stacks->a.head);
 		}
 		if (tmp_top->numb == max_value)
 		{
 			check_top_half(stacks, tmp_top);
 			max_value = MAX_INT;
+			tmp_top = stacks->a.head;
 		}
 		else if (tmp_bottom->numb == max_value)
 		{
 			check_bottom_half(stacks, tmp_bottom);
 			max_value = MAX_INT;
+			tmp_bottom = ft_lstlast(stacks->a.head);
 		}
 		tmp_top = tmp_top->next;
 		tmp_bottom = tmp_bottom->previous;
@@ -226,15 +230,9 @@ void	bring_back_to_a(t_stacks *stacks)
 		call_operation("ra", stacks);
 }
 
-
 void	sort_list_of_five(t_stacks *stacks)
 {
-	// if (stacks->a.size < 5)
-	// 	return ;
-
-	loop(stacks);
-	sort_list_of_tree_a(stacks);
+	loop_a(stacks);
+	sort_list_of_tree(stacks);
 	bring_back_to_a(stacks);
-
 }
-

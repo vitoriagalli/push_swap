@@ -95,8 +95,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
-						sort_algoritms.c \
-						sort_algoritms2.c \
+						sort_algoritms_few.c \
+						sort_algoritms_many.c \
 						median.c \
 						utils.c
 

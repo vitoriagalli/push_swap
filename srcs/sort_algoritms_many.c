@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algoritms2.c                                  :+:      :+:    :+:   */
+/*   sort_algoritms_many.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:26:07 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 03:59:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 	int	median_b;
 
 	median_b = get_median(stacks->b.head);
-	if (ft_lstsize(stacks->a.head) < 3 || stacks->a.head->numb < median_a)
+	if (ft_lstsize(stacks->a.head) < 2 || stacks->a.head->numb <= median_a)
 	{
 		call_operation("pb", stacks);
 		if (stacks->b.head && stacks->b.head->numb < median_b)
@@ -89,7 +89,14 @@ void	empty_stack_a(t_stacks *stacks)
 	}
 }
 
+
+
+
+
+
+
 void	sort_list_of_many(t_stacks *stacks)
 {
 	empty_stack_a(stacks);
+	empty_stack_b(stacks);
 }

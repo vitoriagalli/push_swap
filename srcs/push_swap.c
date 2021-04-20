@@ -6,14 +6,15 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:18:51 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/20 03:25:02 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	game_on(t_stacks *stacks)
-{
+
+// void	game_on(t_stacks *stacks)
+// {
 	// bool	sort;
 
 	// sort = is_sorted(stacks);
@@ -24,12 +25,22 @@ void	game_on(t_stacks *stacks)
 		// sort_list_of_five(stacks);
 
 
-		sort_list_of_many(stacks);
+		// sort_list_of_many(stacks);
 
 	// 	sort = is_sorted(stacks);
 	// }
 
-	ft_printf("%i\n", stacks->n_op);
+// 	ft_printf("%i\n", stacks->n_op);
+// }
+
+void	game_on(t_stacks *stacks)
+{
+	if (stacks->a.size < 4)
+		sort_list_of_tree(stacks);
+	else if (stacks->a.size < 6)
+		sort_list_of_five(stacks);
+	else
+		sort_list_of_many(stacks);
 }
 
 int	main(int argc, char **argv)
