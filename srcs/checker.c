@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 15:59:29 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 22:01:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	read_and_execute_commands(t_stacks *stacks)
 	char	*cmd;
 	int		ret;
 
+	ft_printf("size %i\n", stacks->a.size);
 	print_stacks(*stacks);
 	while (true)
 	{

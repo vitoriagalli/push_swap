@@ -19,7 +19,8 @@ run_tester()
 		echo -e "NOT SORTED   \033[0;31m✘\033[0m"
 	else
 	{
-		echo -n "SORTED"
+		echo -n -e "SORTED\t"
+		head -n 1 chk | tr -d '\n'
 		SOLUTION=$(cat ps | wc -l | tr -d "\n")
 		echo -n -e "\tsolution: " $SOLUTION
 		echo -n -e "\tmax: " "$1"
