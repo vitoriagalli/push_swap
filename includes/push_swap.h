@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 15:12:48 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 16:13:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	sort_list_of_tree(t_stacks *stacks);
 
 int		get_max_value(t_stack *stack);
 int		get_min_value(t_stack *stack);
-int		get_median(t_list *lst);
+
+int		get_median(t_list *lst, size_t init_size);
+int		get_dynamic_median(t_list *lst, size_t init_size);
 
 void	call_operation(char *op, t_stacks *stacks);
 
