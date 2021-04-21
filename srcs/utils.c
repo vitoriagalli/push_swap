@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:39:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:25:48 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 02:12:46 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		get_max_value(t_stack *stack)
 	t_list		*tmp;
 	int			max;
 
-	max = -2147483648;
+	max = MIN_INT;
 	tmp = stack->head;
 	while (tmp)
 	{
@@ -40,7 +40,7 @@ int		get_min_value(t_stack *stack)
 	t_list		*tmp;
 	int			min;
 
-	min = 2147483647;
+	min = MAX_INT;
 	tmp = stack->head;
 	while (tmp)
 	{
@@ -49,4 +49,20 @@ int		get_min_value(t_stack *stack)
 		tmp = tmp->next;
 	}
 	return (min);
+}
+
+int		get_max_value_but_n(t_stack *stack, int n)
+{
+	t_list		*tmp;
+	int			max;
+
+	max = MIN_INT;
+	tmp = stack->head;
+	while (tmp)
+	{
+		if (tmp->numb > max && tmp->numb != n)
+			max = tmp->numb;
+		tmp = tmp->next;
+	}
+	return (max);
 }

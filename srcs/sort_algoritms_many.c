@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 23:55:45 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 03:09:41 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,69 +92,106 @@ void	empty_stack_a(t_stacks *stacks)
 		call_operation("sa", stacks);
 }
 
-
-
-
-
-size_t	get_posit_max_value(t_stack *b, int bigger)
+size_t	get_posit_value(t_stack *b, int numb)
 {
-	t_list		*tmp;
-	int			max;
-	size_t		posit;
+	t_list		*tmp;;
 	size_t		i;
 
 	i = 0;
-	posit = 0;
-	max = MIN_INT;
 	tmp = b->head;
 	while (tmp)
 	{
-		if (tmp->numb > max && tmp->numb != bigger)
-		{
-			max = tmp->numb;
-			posit = i;
-		}
+		if (tmp->numb == numb)
+			return (i);
 		i++;
 		tmp = tmp->next;
 	}
-	return (posit);
+	return (b->size + 1);
 }
-
-
-
 
 void		empty_stack_b(t_stacks *stacks)
 {
-	int	max_value;
-	int	posit_max_value;
+	int		max_value;
+	int		second_max_value;
+	int		posit_max_value;
+	int		posit_second_max_value;
+	bool	max_top_half;
+	bool	sec_max_top_half;
+	bool	closer_max;
+	bool	second;
 
 	while (stacks->b.head)
 	{
-		max_value = get_max_value(&stacks->b);
-		posit_max_value = get_posit_max_value(&stacks->b, MAX_INT);
+		max_top_half = false;
+		sec_max_top_half = false;
+		closer_max = false;
+		second = false;
+
+		max_value = get_max_value_but_n(&stacks->b, MAX_INT); // verificar caso haja max int
+		posit_max_value = get_posit_value(&stacks->b, max_value);
+
+		second_max_value = get_max_value_but_n(&stacks->b, max_value);
+		posit_second_max_value = get_posit_value(&stacks->b, second_max_value);
+		if (posit_second_max_value < stacks->b.size)
+			second = true;
 
 		if (posit_max_value < (int)stacks->b.size / 2)
+			max_top_half = true;
+		if (posit_second_max_value < (int)stacks->b.size / 2)
+			sec_max_top_half = true;
+
+		if (second && !(max_top_half ^ sec_max_top_half))
 		{
-			while (stacks->b.head->numb != max_value)
-				call_operation("rb", stacks);
+			if (max_top_half)
+				if (posit_max_value < posit_second_max_value)
+					closer_max = true;
+			else
+				if (posit_max_value > posit_second_max_value)
+					closer_max = true;
+			if (closer_max)
+			{
+				while (stacks->b.head->numb != max_value)
+					call_operation("rb", stacks);
+				call_operation("pa", stacks);
+				if (second)
+				{
+					while (stacks->b.head->numb != second_max_value)
+						call_operation("rb", stacks);
+					call_operation("pa", stacks);
+					if (stacks->a.head && stacks->a.head->next
+						&& stacks->a.head->numb > stacks->a.head->next->numb)
+						call_operation("sa", stacks);
+				}
+			}
+			else
+			{
+				while (stacks->b.head->numb != second_max_value)
+					call_operation("rrb", stacks);
+				call_operation("pa", stacks);
+				while (stacks->b.head->numb != max_value)
+					call_operation("rrb", stacks);
+				call_operation("pa", stacks);
+			}
 		}
 		else
 		{
-			while (stacks->b.head->numb != max_value)
-				call_operation("rrb", stacks);
+			if (max_top_half)
+				while (stacks->b.head->numb != max_value)
+					call_operation("rb", stacks);
+			else
+				while (stacks->b.head->numb != max_value)
+					call_operation("rrb", stacks);
+			call_operation("pa", stacks);
 		}
-		call_operation("pa", stacks);
-
 	}
 }
-
-
-
-
-
 
 void	sort_list_of_many(t_stacks *stacks)
 {
 	empty_stack_a(stacks);
 	empty_stack_b(stacks);
+
+
+	// if (!(false ^ false))
+	// 	ft_printf("teste\n");
 }
