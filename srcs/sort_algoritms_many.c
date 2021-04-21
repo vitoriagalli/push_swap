@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 03:51:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 03:57:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,9 @@ void		empty_stack_b(t_stacks *stacks)
 	bool	second;
 	char	*cmd;
 
+	int		first_n;
+	int		second_n;
+
 	while (stacks->b.head)
 	{
 		max_top_half = false;
@@ -137,9 +140,6 @@ void		empty_stack_b(t_stacks *stacks)
 		if (posit_second_max_value < stacks->b.size)
 			second = true;
 
-
-		// ft_printf("%i %i\n", max_value, posit_max_value);
-		// ft_printf("%i %i\n", second_max_value, posit_second_max_value);
 
 
 		if (posit_max_value < (int)(stacks->b.size / 2))
@@ -174,37 +174,31 @@ void		empty_stack_b(t_stacks *stacks)
 
 			if (closer_max)
 			{
-
-				while (stacks->b.head->numb != max_value)
-					call_operation(cmd, stacks);
-				call_operation("pa", stacks);
-
-
-				while (stacks->b.head->numb != second_max_value)
-					call_operation(cmd, stacks);
-				call_operation("pa", stacks);
-
-
-				// if (stacks->a.head && stacks->a.head->next
-				// 	&& stacks->a.head->numb > stacks->a.head->next->numb)
-				// 	call_operation("sa", stacks);
+				first_n = max_value;
+				second_n = second_max_value;
 			}
 			else
 			{
-				while (stacks->b.head->numb != second_max_value)
-					call_operation(cmd, stacks);
-				call_operation("pa", stacks);
-
-
-				while (stacks->b.head->numb != max_value)
-					call_operation(cmd, stacks);
-				call_operation("pa", stacks);
-
-
-				if (stacks->a.head && stacks->a.head->next
-					&& stacks->a.head->numb > stacks->a.head->next->numb)
-					call_operation("sa", stacks);
+				first_n = second_max_value;
+				second_n = max_value;
 			}
+
+
+
+			while (stacks->b.head->numb != first_n)
+				call_operation(cmd, stacks);
+			call_operation("pa", stacks);
+
+
+			while (stacks->b.head->numb != second_n)
+				call_operation(cmd, stacks);
+			call_operation("pa", stacks);
+
+
+			if (stacks->a.head && stacks->a.head->next
+				&& stacks->a.head->numb > stacks->a.head->next->numb)
+				call_operation("sa", stacks);
+
 		}
 		else
 		{
