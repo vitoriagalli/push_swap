@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algoritms_push_a.c                            :+:      :+:    :+:   */
+/*   sort_algoritm_push_to_a.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:10:51 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:42:02 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	get_posit_value(t_stack *b, int numb)
+static size_t	get_posit_value(t_stack *b, int numb)
 {
 	t_list	*tmp;
 	size_t	i;
@@ -29,7 +29,7 @@ size_t	get_posit_value(t_stack *b, int numb)
 	return (b->size + 1);
 }
 
-void	atribute_max_values(t_nodes *n, t_stack *stack)
+static void	atribute_max_values(t_nodes *n, t_stack *stack)
 {
 	n->max.value = get_max_value_but_n(stack, MAX_INT);
 	n->max.posit = get_posit_value(stack, n->max.value);
@@ -39,14 +39,8 @@ void	atribute_max_values(t_nodes *n, t_stack *stack)
 	n->third_max.posit = get_posit_value(stack, n->third_max.value);
 }
 
-void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value)
-{
-	while (stacks->b.head->numb != value)
-		call_operation(cmd, stacks);
-	call_operation("pa", stacks);
-}
 
-void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
+static void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
 	int	first_to_push;
 	int	second_to_push;
@@ -96,8 +90,4 @@ void	push_to_a(t_stacks *stacks)
 	}
 }
 
-void	sort_list_of_many(t_stacks *stacks)
-{
-	push_to_b(stacks);
-	push_to_a(stacks);
-}
+

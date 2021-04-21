@@ -95,10 +95,11 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
-						sort_algoritms_few.c \
-						sort_algoritms_push_b.c \
-						sort_algoritms_push_a.c \
-						sort_algoritms_push_a_2.c \
+						sort_list_of_three.c \
+						sort_list_of_five.c \
+						sort_algoritm_push_to_b.c \
+						sort_algoritm_push_to_a.c \
+						sort_algoritm_push_to_a_utils.c \
 						median.c \
 						utils.c
 

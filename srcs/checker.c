@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 22:01:09 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:18:03 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libstack.h"
 
-void	read_and_execute_commands(t_stacks *stacks)
+static void	read_and_execute_commands(t_stacks *stacks)
 {
 	char	*cmd;
 	int		ret;
@@ -31,7 +31,7 @@ void	read_and_execute_commands(t_stacks *stacks)
 	free(cmd);
 }
 
-void	check_if_is_sorted(t_stacks *stacks)
+static void	check_if_is_sorted(t_stacks *stacks)
 {
 	bool	sorted;
 

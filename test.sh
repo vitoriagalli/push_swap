@@ -107,12 +107,10 @@ else
 	run_3
 	run_5
 	run_100
-	# run_500
+	run_500
 fi
 
 rm -rf ps chk file
-
-
 
 
 # ARG=""

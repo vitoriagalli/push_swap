@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 20:55:28 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:20:28 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_order_of_push(t_nodes *n, t_three *value_of_posit)
+void	get_order_of_push(t_nodes *n, t_range *value_of_posit)
 {
 	if (n->max.posit < n->second_max.posit && n->max.posit < n->third_max.posit)
 		value_of_posit->min = n->max.value;
@@ -36,7 +36,7 @@ void	get_order_of_push(t_nodes *n, t_three *value_of_posit)
 
 void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
-	t_three	value_of_posit;
+	t_range	value_of_posit;
 
 	get_order_of_push(n, &value_of_posit);
 	if (!(n->max.top_half))

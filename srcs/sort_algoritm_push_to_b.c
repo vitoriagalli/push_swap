@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algoritms_push_b.c                            :+:      :+:    :+:   */
+/*   sort_algoritm_push_to_b.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:09:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:41:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
+static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 {
 	int	median_b;
 
@@ -37,7 +37,7 @@ void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 	}
 }
 
-void	loop_stack_a(t_stacks *stacks, int median_a)
+static void	loop_stack_a(t_stacks *stacks, int median_a)
 {
 	t_list	*tmp;
 	size_t	init_size;
@@ -54,7 +54,7 @@ void	loop_stack_a(t_stacks *stacks, int median_a)
 	}
 }
 
-void	push_to_b(t_stacks *stacks)
+static void	push_to_b(t_stacks *stacks)
 {
 	int		median_a;
 	size_t	size;
@@ -71,4 +71,10 @@ void	push_to_b(t_stacks *stacks)
 	if (stacks->a.head &&  stacks->a.head->next &&
 		stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
+}
+
+void	sort_list_of_many(t_stacks *stacks)
+{
+	push_to_b(stacks);
+	push_to_a(stacks);
 }

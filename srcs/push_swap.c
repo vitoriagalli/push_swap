@@ -6,19 +6,18 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 22:09:09 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:23:35 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// mudar para valor 4
-void	sort_stack(t_stacks *stacks)
+static void	sort_stack(t_stacks *stacks)
 {
 	if (stacks->a.size == 2)
 		sort_list_of_two(stacks);
 	if (stacks->a.size == 3)
-		sort_list_of_tree(stacks);
+		sort_list_of_three(stacks);
 	else if (stacks->a.size == 5)
 		sort_list_of_five(stacks);
 	else
@@ -26,7 +25,7 @@ void	sort_stack(t_stacks *stacks)
 	// ft_printf("%i\n", stacks->n_op);
 }
 
-void	game_on(t_stacks *stacks)
+static void	game_on(t_stacks *stacks)
 {
 	bool	sorted;
 
@@ -34,8 +33,8 @@ void	game_on(t_stacks *stacks)
 	{
 		sort_stack(stacks);
 		sorted = is_sorted(stacks);
-		// if (sorted == true)
-		if (sorted = true)
+		if (sorted == true)
+		// if (sorted = true)
 			return ;
 	}
 }
