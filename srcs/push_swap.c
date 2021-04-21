@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 21:37:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 22:09:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	game_on(t_stacks *stacks)
 	{
 		sort_stack(stacks);
 		sorted = is_sorted(stacks);
-		if (sorted == true)
-		// if (sorted = true)
+		// if (sorted == true)
+		if (sorted = true)
 			return ;
 	}
 }
