@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 03:09:41 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 03:51:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void		empty_stack_b(t_stacks *stacks)
 	bool	sec_max_top_half;
 	bool	closer_max;
 	bool	second;
+	char	*cmd;
 
 	while (stacks->b.head)
 	{
@@ -126,6 +127,7 @@ void		empty_stack_b(t_stacks *stacks)
 		sec_max_top_half = false;
 		closer_max = false;
 		second = false;
+
 
 		max_value = get_max_value_but_n(&stacks->b, MAX_INT); // verificar caso haja max int
 		posit_max_value = get_posit_value(&stacks->b, max_value);
@@ -135,52 +137,79 @@ void		empty_stack_b(t_stacks *stacks)
 		if (posit_second_max_value < stacks->b.size)
 			second = true;
 
-		if (posit_max_value < (int)stacks->b.size / 2)
+
+		// ft_printf("%i %i\n", max_value, posit_max_value);
+		// ft_printf("%i %i\n", second_max_value, posit_second_max_value);
+
+
+		if (posit_max_value < (int)(stacks->b.size / 2))
+		{
 			max_top_half = true;
-		if (posit_second_max_value < (int)stacks->b.size / 2)
+			cmd = "rb";
+		}
+		else
+			cmd = "rrb";
+
+
+		if (posit_second_max_value < (int)(stacks->b.size / 2))
 			sec_max_top_half = true;
+
+
 
 		if (second && !(max_top_half ^ sec_max_top_half))
 		{
 			if (max_top_half)
+			{
 				if (posit_max_value < posit_second_max_value)
 					closer_max = true;
+			}
 			else
+			{
 				if (posit_max_value > posit_second_max_value)
 					closer_max = true;
+			}
+
+
+
+
 			if (closer_max)
 			{
+
 				while (stacks->b.head->numb != max_value)
-					call_operation("rb", stacks);
+					call_operation(cmd, stacks);
 				call_operation("pa", stacks);
-				if (second)
-				{
-					while (stacks->b.head->numb != second_max_value)
-						call_operation("rb", stacks);
-					call_operation("pa", stacks);
-					if (stacks->a.head && stacks->a.head->next
-						&& stacks->a.head->numb > stacks->a.head->next->numb)
-						call_operation("sa", stacks);
-				}
+
+
+				while (stacks->b.head->numb != second_max_value)
+					call_operation(cmd, stacks);
+				call_operation("pa", stacks);
+
+
+				// if (stacks->a.head && stacks->a.head->next
+				// 	&& stacks->a.head->numb > stacks->a.head->next->numb)
+				// 	call_operation("sa", stacks);
 			}
 			else
 			{
 				while (stacks->b.head->numb != second_max_value)
-					call_operation("rrb", stacks);
+					call_operation(cmd, stacks);
 				call_operation("pa", stacks);
+
+
 				while (stacks->b.head->numb != max_value)
-					call_operation("rrb", stacks);
+					call_operation(cmd, stacks);
 				call_operation("pa", stacks);
+
+
+				if (stacks->a.head && stacks->a.head->next
+					&& stacks->a.head->numb > stacks->a.head->next->numb)
+					call_operation("sa", stacks);
 			}
 		}
 		else
 		{
-			if (max_top_half)
-				while (stacks->b.head->numb != max_value)
-					call_operation("rb", stacks);
-			else
-				while (stacks->b.head->numb != max_value)
-					call_operation("rrb", stacks);
+			while (stacks->b.head->numb != max_value)
+				call_operation(cmd, stacks);
 			call_operation("pa", stacks);
 		}
 	}
