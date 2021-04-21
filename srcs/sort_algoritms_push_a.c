@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 18:29:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 20:43:01 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,49 +69,48 @@ void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 		call_operation("sa", stacks);
 }
 
+void	get_order_of_push(t_nodes *n, t_three *value_of_posit)
+{
+	if (n->max.posit < n->second_max.posit && n->max.posit < n->third_max.posit)
+		value_of_posit->min = n->max.value;
+	else if (n->second_max.posit < n->max.posit && n->second_max.posit < n->third_max.posit)
+		value_of_posit->min = n->second_max.value;
+	else
+		value_of_posit->min = n->third_max.value;
+	if (n->max.posit > n->second_max.posit && n->max.posit > n->third_max.posit)
+		value_of_posit->max = n->max.value;
+	else if (n->second_max.posit > n->max.posit && n->second_max.posit > n->third_max.posit)
+		value_of_posit->max = n->second_max.value;
+	else
+		value_of_posit->max = n->third_max.value;
+	if (!(value_of_posit->min == n->max.value || value_of_posit->max == n->max.value))
+		value_of_posit->mid = n->max.value;
+	else if (!(value_of_posit->min == n->second_max.value || value_of_posit->max == n->second_max.value))
+		value_of_posit->mid = n->second_max.value;
+	else
+		value_of_posit->mid = n->third_max.value;
+
+}
+
 void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
+	t_three	value_of_posit;
 	int		first_to_push;
 	int		second_to_push;
 	int		third_to_push;
 
-	t_node	*pmin, *pmed, *pmax;
-
-	if (n->max.posit < n->second_max.posit && n->max.posit < n->third_max.posit)
-		pmin = &n->max;
-	else if (n->second_max.posit < n->max.posit && n->second_max.posit < n->third_max.posit)
-		pmin = &n->second_max;
-	else
-		pmin = &n->third_max;
-
-
-	if (n->max.posit > n->second_max.posit && n->max.posit > n->third_max.posit)
-		pmax = &n->max;
-	else if (n->second_max.posit > n->max.posit && n->second_max.posit > n->third_max.posit)
-		pmax = &n->second_max;
-	else
-		pmax = &n->third_max;
-
-
-	if (!(pmin == &n->max || pmax == &n->max))
-		pmed = &n->max;
-	else if (!(pmin == &n->second_max || pmax == &n->second_max))
-		pmed = &n->second_max;
-	else
-		pmed = &n->third_max;
-
-
+	get_order_of_push(n, &value_of_posit);
 	if (n->max.top_half)
 	{
-		first_to_push = pmin->value;
-		second_to_push = pmed->value;
-		third_to_push = pmax->value;
+		first_to_push = value_of_posit.min;
+		second_to_push = value_of_posit.mid;
+		third_to_push = value_of_posit.max;
 	}
 	else
 	{
-		first_to_push = pmax->value;
-		second_to_push = pmed->value;
-		third_to_push = pmin->value;
+		first_to_push = value_of_posit.max;
+		second_to_push = value_of_posit.mid;
+		third_to_push = value_of_posit.min;
 	}
 
 	rotate_and_push_value(stacks, cmd, first_to_push);
