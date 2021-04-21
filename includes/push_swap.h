@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 15:00:48 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 15:12:48 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int		get_median(t_list *lst);
 
 void	call_operation(char *op, t_stacks *stacks);
 
-
+int		get_max_value_but_n(t_stack *stack, int n);
 
 #endif
