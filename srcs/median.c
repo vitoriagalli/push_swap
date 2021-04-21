@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 16:47:31 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 16:51:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	get_dynamic_median(t_list *lst, size_t init_size)
 
 	// review this conditionals
 
-	if (current_size < init_size / 8)
+	if (current_size < init_size / 10)
 		posit = current_size / 2;
 	else if (current_size < init_size / 6)
 		posit = current_size / 3;
