@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 03:57:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 04:47:53 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	loop_stack_a(t_stacks *stacks, int median_a)
 	}
 }
 
-void	empty_stack_a(t_stacks *stacks)
+void	push_to_b(t_stacks *stacks)
 {
 	int	median_a;
 
@@ -109,81 +109,168 @@ size_t	get_posit_value(t_stack *b, int numb)
 	return (b->size + 1);
 }
 
-void		empty_stack_b(t_stacks *stacks)
+
+
+// void		push_to_a_2(t_stacks *stacks)
+// {
+// 	int		max_value;
+// 	int		second_max_value;
+// 	int		posit_max_value;
+// 	int		posit_second_max_value;
+// 	bool	max_top_half;
+// 	bool	sec_max_top_half;
+// 	bool	closer_max;
+// 	bool	second;
+// 	char	*cmd;
+
+// 	int		first_n;
+// 	int		second_n;
+
+// 	while (stacks->b.head)
+// 	{
+// 		max_top_half = false;
+// 		sec_max_top_half = false;
+// 		closer_max = false;
+// 		second = false;
+
+
+// 		max_value = get_max_value_but_n(&stacks->b, MAX_INT); // verificar caso haja max int
+// 		posit_max_value = get_posit_value(&stacks->b, max_value);
+
+// 		second_max_value = get_max_value_but_n(&stacks->b, max_value);
+// 		posit_second_max_value = get_posit_value(&stacks->b, second_max_value);
+// 		if (posit_second_max_value < stacks->b.size)
+// 			second = true;
+
+
+
+// 		if (posit_max_value < (int)(stacks->b.size / 2))
+// 		{
+// 			max_top_half = true;
+// 			cmd = "rb";
+// 		}
+// 		else
+// 			cmd = "rrb";
+
+
+// 		if (posit_second_max_value < (int)(stacks->b.size / 2))
+// 			sec_max_top_half = true;
+
+
+
+// 		if (second && !(max_top_half ^ sec_max_top_half))
+// 		{
+// 			if (max_top_half)
+// 			{
+// 				if (posit_max_value < posit_second_max_value)
+// 					closer_max = true;
+// 			}
+// 			else
+// 			{
+// 				if (posit_max_value > posit_second_max_value)
+// 					closer_max = true;
+// 			}
+
+
+
+
+// 			if (closer_max)
+// 			{
+// 				first_n = max_value;
+// 				second_n = second_max_value;
+// 			}
+// 			else
+// 			{
+// 				first_n = second_max_value;
+// 				second_n = max_value;
+// 			}
+
+
+
+// 			while (stacks->b.head->numb != first_n)
+// 				call_operation(cmd, stacks);
+// 			call_operation("pa", stacks);
+
+
+// 			while (stacks->b.head->numb != second_n)
+// 				call_operation(cmd, stacks);
+// 			call_operation("pa", stacks);
+
+
+// 			if (stacks->a.head && stacks->a.head->next
+// 				&& stacks->a.head->numb > stacks->a.head->next->numb)
+// 				call_operation("sa", stacks);
+
+// 		}
+// 		else
+// 		{
+// 			while (stacks->b.head->numb != max_value)
+// 				call_operation(cmd, stacks);
+// 			call_operation("pa", stacks);
+// 		}
+// 	}
+// }
+
+
+
+
+
+
+
+void	atribute_max_values(t_node *max, t_node *second_max, t_stack *stack)
 {
-	int		max_value;
-	int		second_max_value;
-	int		posit_max_value;
-	int		posit_second_max_value;
-	bool	max_top_half;
-	bool	sec_max_top_half;
-	bool	closer_max;
-	bool	second;
+	max->value = get_max_value_but_n(stack, MAX_INT); // verificar caso haja max int
+	max->posit = get_posit_value(stack, max->value);
+	second_max->value = get_max_value_but_n(stack, max->value);
+	second_max->posit = get_posit_value(stack, second_max->value);
+}
+
+void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value)
+{
+	while (stacks->b.head->numb != value)
+		call_operation(cmd, stacks);
+	call_operation("pa", stacks);
+}
+
+void	push_to_a(t_stacks *stacks)
+{
+	t_node	max;
+	t_node	second_max;
 	char	*cmd;
+	bool	max_top_half;
+	bool	second_max_top_half;
 
 	int		first_n;
 	int		second_n;
 
 	while (stacks->b.head)
 	{
-		max_top_half = false;
-		sec_max_top_half = false;
-		closer_max = false;
-		second = false;
+		atribute_max_values(&max, &second_max, &stacks->b);
 
+		max_top_half = max.posit < (int)(stacks->b.size / 2);
+		second_max_top_half = second_max.posit < (int)(stacks->b.size / 2);
 
-		max_value = get_max_value_but_n(&stacks->b, MAX_INT); // verificar caso haja max int
-		posit_max_value = get_posit_value(&stacks->b, max_value);
-
-		second_max_value = get_max_value_but_n(&stacks->b, max_value);
-		posit_second_max_value = get_posit_value(&stacks->b, second_max_value);
-		if (posit_second_max_value < stacks->b.size)
-			second = true;
-
-
-
-		if (posit_max_value < (int)(stacks->b.size / 2))
-		{
-			max_top_half = true;
+		if (max_top_half)
 			cmd = "rb";
-		}
 		else
 			cmd = "rrb";
 
-
-		if (posit_second_max_value < (int)(stacks->b.size / 2))
-			sec_max_top_half = true;
-
-
-
-		if (second && !(max_top_half ^ sec_max_top_half))
+		if (!(second_max.posit < stacks->b.size
+			&& !( max_top_half ^ second_max_top_half)))
+			rotate_and_push_value(stacks, cmd, max.value);
+		else
 		{
-			if (max_top_half)
+			if ((max_top_half && max.posit < second_max.posit)
+				|| (!max_top_half && max.posit > second_max.posit))
 			{
-				if (posit_max_value < posit_second_max_value)
-					closer_max = true;
+				first_n = max.value;
+				second_n = second_max.value;
 			}
 			else
 			{
-				if (posit_max_value > posit_second_max_value)
-					closer_max = true;
+				first_n = second_max.value;
+				second_n = max.value;
 			}
-
-
-
-
-			if (closer_max)
-			{
-				first_n = max_value;
-				second_n = second_max_value;
-			}
-			else
-			{
-				first_n = second_max_value;
-				second_n = max_value;
-			}
-
-
 
 			while (stacks->b.head->numb != first_n)
 				call_operation(cmd, stacks);
@@ -198,23 +285,16 @@ void		empty_stack_b(t_stacks *stacks)
 			if (stacks->a.head && stacks->a.head->next
 				&& stacks->a.head->numb > stacks->a.head->next->numb)
 				call_operation("sa", stacks);
+		}
 
-		}
-		else
-		{
-			while (stacks->b.head->numb != max_value)
-				call_operation(cmd, stacks);
-			call_operation("pa", stacks);
-		}
+
+
 	}
 }
 
+
 void	sort_list_of_many(t_stacks *stacks)
 {
-	empty_stack_a(stacks);
-	empty_stack_b(stacks);
-
-
-	// if (!(false ^ false))
-	// 	ft_printf("teste\n");
+	push_to_b(stacks);
+	push_to_a(stacks);
 }

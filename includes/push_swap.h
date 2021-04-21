@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 02:25:32 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 04:12:26 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_three
 	int			mid;
 	int			max;
 }				t_three;
+
+typedef struct s_node
+{
+	int			value;
+	int			posit;
+}				t_node;
 
 void	insertion_sort(t_stacks *stacks);
 void	sort_list_of_tree(t_stacks *stacks);
