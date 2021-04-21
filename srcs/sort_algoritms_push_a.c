@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 20:47:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:10:51 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ size_t	get_posit_value(t_stack *b, int numb)
 
 void	atribute_max_values(t_nodes *n, t_stack *stack)
 {
-	// verificar caso haja max int
 	n->max.value = get_max_value_but_n(stack, MAX_INT);
 	n->max.posit = get_posit_value(stack, n->max.value);
 	n->second_max.value = get_max_value_but_n(stack, n->max.value);
@@ -86,7 +85,8 @@ void	push_to_a(t_stacks *stacks)
 		else
 			cmd = "rrb";
 		if (!(n.second_max.posit < stacks->b.size)
-			|| (n.max.top_half ^ n.second_max.top_half))
+			|| (n.max.top_half ^ n.second_max.top_half)
+			|| n.max.value == n.second_max.value)
 			rotate_and_push_value(stacks, cmd, n.max.value);
 		else if (!(n.third_max.posit < stacks->b.size)
 			|| (n.max.top_half ^ n.third_max.top_half))
@@ -101,7 +101,3 @@ void	sort_list_of_many(t_stacks *stacks)
 	push_to_b(stacks);
 	push_to_a(stacks);
 }
-
-// algo is not working:
-// 100 num - min int
-// 500 num - min and max int

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 20:43:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:09:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 # include <stdbool.h>
 # include "libstack.h"
-
-// typedef struct s_push_swap
-// {
-// 	t_stacks	stacks;
-// 	t_list		*operations;
-// }				t_push_swap;
 
 # define POS_0 0
 # define POS_1 1

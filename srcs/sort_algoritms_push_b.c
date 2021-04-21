@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 16:42:31 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:09:59 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 {
 	int	median_b;
 
-	median_b = get_median(stacks->b.head, stacks->b.size); // coloca o tamanho atual de b
+	median_b = get_median(stacks->b.head, stacks->b.size);
 	if (ft_lstsize(stacks->a.head) < 2 || stacks->a.head->numb <= median_a)
 	{
 		call_operation("pb", stacks);
