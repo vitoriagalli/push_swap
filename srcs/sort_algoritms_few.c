@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 01:12:45 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/20 17:30:39 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 21:29:33 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,25 +194,32 @@ void	push_min_and_max_value_to_stack_b(t_stacks *stacks)
 	t_list	*tmp_bottom;
 	int		min_value;
 	int		max_value;
+	int		chk;
 
 	min_value = get_min_value(&stacks->a);
 	max_value = get_max_value(&stacks->a);
 	tmp_bottom = ft_lstlast(stacks->a.head);
 	tmp_top = stacks->a.head;
-	while (tmp_top && tmp_bottom)
+
+	chk = 0;
+	while (chk < 2 && tmp_top && tmp_bottom)
 	{
 		if (tmp_top->numb == min_value || tmp_top->numb == max_value)
 		{
+			chk++;
 			check_top_half(stacks, tmp_top);
 			tmp_top = stacks->a.head;
 		}
-		else if (tmp_bottom->numb == min_value || tmp_bottom->numb == max_value)
+		else
+			tmp_top = tmp_top->next;
+		if (chk < 2 && tmp_bottom->numb == min_value || tmp_bottom->numb == max_value)
 		{
+			chk++;
 			check_bottom_half(stacks, tmp_bottom);
 			tmp_bottom = ft_lstlast(stacks->a.head);
 		}
-		tmp_top = tmp_top->next;
-		tmp_bottom = tmp_bottom->previous;
+		else
+			tmp_bottom = tmp_bottom->previous;
 	}
 }
 
@@ -226,7 +233,6 @@ void	bring_back_numb_to_stack_a(t_stacks *stacks)
 		call_operation("ra", stacks);
 }
 
-// nao funciona com listas com 4, por exemplo 20 1 5 3
 void	sort_list_of_five(t_stacks *stacks)
 {
 	push_min_and_max_value_to_stack_b(stacks);
