@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 16:13:05 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 18:19:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ typedef struct s_node
 	int			posit;
 	bool		top_half;
 }				t_node;
+
+typedef struct s_nodes
+{
+	t_node		max;
+	t_node		second_max;
+	t_node		third_max
+}				t_nodes;
 
 
 void	insertion_sort(t_stacks *stacks);

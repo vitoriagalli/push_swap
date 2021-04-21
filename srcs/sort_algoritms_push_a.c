@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 18:09:20 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 18:29:59 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ size_t	get_posit_value(t_stack *b, int numb)
 	return (b->size + 1);
 }
 
-void	atribute_max_values(t_node *max, t_node *second_max, t_node *third_max,
-	t_stack *stack)
+void	atribute_max_values(t_nodes *n, t_stack *stack)
 {
-	max->value = get_max_value_but_n(stack, MAX_INT); // verificar caso haja max int
-	max->posit = get_posit_value(stack, max->value);
-	second_max->value = get_max_value_but_n(stack, max->value);
-	second_max->posit = get_posit_value(stack, second_max->value);
-	third_max->value = get_max_value_but_n(stack, second_max->value);
-	third_max->posit = get_posit_value(stack, third_max->value);
+	n->max.value = get_max_value_but_n(stack, MAX_INT); // verificar caso haja max int
+	n->max.posit = get_posit_value(stack, n->max.value);
+	n->second_max.value = get_max_value_but_n(stack, n->max.value);
+	n->second_max.posit = get_posit_value(stack, n->second_max.value);
+	n->third_max.value = get_max_value_but_n(stack, n->second_max.value);
+	n->third_max.posit = get_posit_value(stack, n->third_max.value);
 }
 
 void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value)
@@ -47,36 +46,30 @@ void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value)
 	call_operation("pa", stacks);
 }
 
-void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_node *max,
-	t_node *second_max)
+void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
 	int		first_to_push;
 	int		second_to_push;
 
-	if ((max->top_half && max->posit < second_max->posit)
-		|| (!max->top_half && max->posit > second_max->posit))
+	if ((n->max.top_half && n->max.posit < n->second_max.posit)
+		|| (!n->max.top_half && n->max.posit > n->second_max.posit))
 	{
-		first_to_push = max->value;
-		second_to_push = second_max->value;
+		first_to_push = n->max.value;
+		second_to_push = n->second_max.value;
 	}
 	else
 	{
-		first_to_push = second_max->value;
-		second_to_push = max->value;
+		first_to_push = n->second_max.value;
+		second_to_push = n->max.value;
 	}
-
 	rotate_and_push_value(stacks, cmd, first_to_push);
 	rotate_and_push_value(stacks, cmd, second_to_push);
-
 	if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
 }
 
-
-
-void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_node *max,
-	t_node *second_max, t_node *third_max)
+void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
 	int		first_to_push;
 	int		second_to_push;
@@ -84,31 +77,31 @@ void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_node *max,
 
 	t_node	*pmin, *pmed, *pmax;
 
-	if (max->posit < second_max->posit && max->posit < third_max->posit)
-		pmin = max;
-	else if (second_max->posit < max->posit && second_max->posit < third_max->posit)
-		pmin = second_max;
+	if (n->max.posit < n->second_max.posit && n->max.posit < n->third_max.posit)
+		pmin = &n->max;
+	else if (n->second_max.posit < n->max.posit && n->second_max.posit < n->third_max.posit)
+		pmin = &n->second_max;
 	else
-		pmin = third_max;
+		pmin = &n->third_max;
 
 
-	if (max->posit > second_max->posit && max->posit > third_max->posit)
-		pmax = max;
-	else if (second_max->posit > max->posit && second_max->posit > third_max->posit)
-		pmax = second_max;
+	if (n->max.posit > n->second_max.posit && n->max.posit > n->third_max.posit)
+		pmax = &n->max;
+	else if (n->second_max.posit > n->max.posit && n->second_max.posit > n->third_max.posit)
+		pmax = &n->second_max;
 	else
-		pmax = third_max;
+		pmax = &n->third_max;
 
 
-	if (!(pmin == max || pmax == max))
-		pmed = max;
-	else if (!(pmin == second_max || pmax == second_max))
-		pmed = second_max;
+	if (!(pmin == &n->max || pmax == &n->max))
+		pmed = &n->max;
+	else if (!(pmin == &n->second_max || pmax == &n->second_max))
+		pmed = &n->second_max;
 	else
-		pmed = third_max;
+		pmed = &n->third_max;
 
 
-	if (max->top_half)
+	if (n->max.top_half)
 	{
 		first_to_push = pmin->value;
 		second_to_push = pmed->value;
@@ -146,39 +139,29 @@ void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_node *max,
 
 void	push_to_a(t_stacks *stacks)
 {
-	t_node	max;
-	t_node	second_max;
-	t_node	third_max;
+	t_nodes	n;
 	char	*cmd;
 
 	while (stacks->b.head)
 	{
-		atribute_max_values(&max, &second_max, &third_max, &stacks->b);
-		max.top_half = max.posit < (int)(stacks->b.size / 2);
-		second_max.top_half = second_max.posit < (int)(stacks->b.size / 2);
-		third_max.top_half = third_max.posit < (int)(stacks->b.size / 2);
-
-		if (max.top_half)
+		atribute_max_values(&n, &stacks->b);
+		n.max.top_half = n.max.posit < (int)(stacks->b.size / 2);
+		n.second_max.top_half = n.second_max.posit < (int)(stacks->b.size / 2);
+		n.third_max.top_half = n.third_max.posit < (int)(stacks->b.size / 2);
+		if (n.max.top_half)
 			cmd = "rb";
 		else
 			cmd = "rrb";
-
-		if (!(second_max.posit < stacks->b.size)
-			|| (max.top_half ^ second_max.top_half))
-			rotate_and_push_value(stacks, cmd, max.value);
-		// else
-		// 	rotate_and_push_two_values(stacks, cmd, &max, &second_max);
-
-
-		else if (!(third_max.posit < stacks->b.size)
-			|| (max.top_half ^ third_max.top_half))
-			rotate_and_push_two_values(stacks, cmd, &max, &second_max);
+		if (!(n.second_max.posit < stacks->b.size)
+			|| (n.max.top_half ^ n.second_max.top_half))
+			rotate_and_push_value(stacks, cmd, n.max.value);
+		else if (!(n.third_max.posit < stacks->b.size)
+			|| (n.max.top_half ^ n.third_max.top_half))
+			rotate_and_push_two_values(stacks, cmd, &n);
 		else
-			rotate_and_push_three_values(stacks, cmd, &max, &second_max,
-			&third_max);
+			rotate_and_push_three_values(stacks, cmd, &n);
 	}
 }
-
 
 void	sort_list_of_many(t_stacks *stacks)
 {
