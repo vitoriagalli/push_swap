@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/21 20:50:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/21 20:55:28 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,21 @@ void	get_order_of_push(t_nodes *n, t_three *value_of_posit)
 		value_of_posit->mid = n->second_max.value;
 	else
 		value_of_posit->mid = n->third_max.value;
-
 }
 
 void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
 	t_three	value_of_posit;
-	int		first_to_push;
-	int		second_to_push;
-	int		third_to_push;
 
 	get_order_of_push(n, &value_of_posit);
-	if (n->max.top_half)
-	{
-		first_to_push = value_of_posit.min;
-		second_to_push = value_of_posit.mid;
-		third_to_push = value_of_posit.max;
-	}
-	else
-	{
-		first_to_push = value_of_posit.max;
-		second_to_push = value_of_posit.mid;
-		third_to_push = value_of_posit.min;
-	}
-
-	rotate_and_push_value(stacks, cmd, first_to_push);
-	rotate_and_push_value(stacks, cmd, second_to_push);
+	if (!(n->max.top_half))
+		ft_swap(&value_of_posit.min, &value_of_posit.max);
+	rotate_and_push_value(stacks, cmd, value_of_posit.min);
+	rotate_and_push_value(stacks, cmd, value_of_posit.mid);
 	if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
-
-	rotate_and_push_value(stacks, cmd, third_to_push);
-
+	rotate_and_push_value(stacks, cmd, value_of_posit.max);
 	if (stacks->a.head && stacks->a.head->next && stacks->a.head->next->next
 		&& stacks->a.head->numb > stacks->a.head->next->next->numb)
 	{
