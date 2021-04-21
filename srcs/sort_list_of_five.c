@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:27:05 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:29:54 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:01:21 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	push_min_and_max_value_to_stack_b(t_stacks *stacks)
 		}
 		else
 			tmp_top = tmp_top->next;
-		if (chk < 2 && tmp_bottom->numb == min_value || tmp_bottom->numb == max_value)
+		if (chk < 2 && (tmp_bottom->numb == min_value || tmp_bottom->numb == max_value))
 		{
 			chk++;
 			check_bottom_half(stacks, tmp_bottom);

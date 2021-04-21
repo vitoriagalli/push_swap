@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:41:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:04:46 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 {
 	int	median_b;
 
-	median_b = get_median(stacks->b.head, stacks->b.size);
+	median_b = get_median(stacks->b.head);
 	if (ft_lstsize(stacks->a.head) < 2 || stacks->a.head->numb <= median_a)
 	{
 		call_operation("pb", stacks);
@@ -65,7 +65,7 @@ static void	push_to_b(t_stacks *stacks)
 		if (stacks->a.size > 200)
 			median_a = get_dynamic_median(stacks->a.head, size);
 		else
-			median_a = get_median(stacks->a.head, size);
+			median_a = get_median(stacks->a.head);
 		loop_stack_a(stacks, median_a);
 	}
 	if (stacks->a.head &&  stacks->a.head->next &&

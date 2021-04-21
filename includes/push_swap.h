@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:49:00 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:04:17 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_range
 typedef struct s_node
 {
 	int			value;
-	int			posit;
+	size_t		posit;
 	bool		top_half;
 }				t_node;
 
@@ -48,8 +48,9 @@ typedef struct s_nodes
 */
 
 void	sort_list_of_two(t_stacks *stacks);
-void	sort_list_of_tree(t_stacks *stacks);
+void	sort_list_of_three(t_stacks *stacks);
 void	sort_list_of_five(t_stacks *stacks);
+void	sort_list_of_many(t_stacks *stacks);
 void	push_to_a(t_stacks *stacks);
 
 /*
@@ -57,7 +58,7 @@ void	push_to_a(t_stacks *stacks);
 */
 
 void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n);
-int		get_median(t_list *lst, size_t init_size);
+int		get_median(t_list *lst);
 int		get_dynamic_median(t_list *lst, size_t init_size);
 
 /*

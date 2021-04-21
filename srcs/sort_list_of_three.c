@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:25:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:26:57 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:59:19 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static void	get_posit(t_list *lst, t_range *posit)
 {
 	int	args[3];
 
-	atribute_args(lst, &args);
-	store_posit(posit, &args);
+	atribute_args(lst, args);
+	store_posit(posit, args);
 	if (posit->min != POS_1 && posit->max != POS_1)
 		posit->mid = POS_1;
 	else if (posit->min != POS_2 && posit->max != POS_2)

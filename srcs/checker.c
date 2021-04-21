@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:18:03 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:54:24 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	argv_split = unify_args(argc, argv);
 	validate_args(argc, argv_split);
 	build_stacks(argv_split, &stacks);
-	ft_array_clear(argv_split);
+	ft_array_clear((void **)argv_split);
 	read_and_execute_commands(&stacks);
 	check_if_is_sorted(&stacks);
 	clear_stacks(&stacks);

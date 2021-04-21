@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:42:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:03:04 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	push_to_a(t_stacks *stacks)
 	while (stacks->b.head)
 	{
 		atribute_max_values(&n, &stacks->b);
-		n.max.top_half = n.max.posit < (int)(stacks->b.size / 2);
-		n.second_max.top_half = n.second_max.posit < (int)(stacks->b.size / 2);
-		n.third_max.top_half = n.third_max.posit < (int)(stacks->b.size / 2);
+		n.max.top_half = n.max.posit < (size_t)(stacks->b.size / 2);
+		n.second_max.top_half = n.second_max.posit < (size_t)(stacks->b.size / 2);
+		n.third_max.top_half = n.third_max.posit < (size_t)(stacks->b.size / 2);
 		if (n.max.top_half)
 			cmd = "rb";
 		else

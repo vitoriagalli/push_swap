@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:23:35 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 00:55:38 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	argv_split = unify_args(argc, argv);
 	validate_args(argc, argv_split);
 	build_stacks(argv_split, &stacks);
-	ft_array_clear(argv_split);
+	ft_array_clear((void **)argv_split);
 	game_on(&stacks);
 	clear_stacks(&stacks);
 	return (EXIT_SUCCESS);
