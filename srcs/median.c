@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 03:23:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 18:34:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,12 @@ int	get_dynamic_median(t_list *lst, size_t init_size)
 	if (!lst)
 		return (MIN_INT);
 	current_size = ft_lstsize(lst);
-	if (current_size < init_size / 6)
-		posit = current_size / 2;
-	else if (current_size < init_size / 5)
-		posit = current_size / 3;
-	else if (current_size < init_size / 4)
-		posit = current_size / 4;
+	if (current_size < 0.30 * init_size)
+		posit = 0.50 * current_size;
+	else if (current_size < 0.50 * init_size)
+		posit = 0.30 * current_size;
 	else
-		posit = current_size / 5;
+		posit = 0.15 * current_size;
 	return (calculate(lst, posit, current_size));
 }
 

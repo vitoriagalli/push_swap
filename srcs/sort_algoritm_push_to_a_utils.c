@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 04:19:22 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:10:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,13 @@ void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 	rotate_and_push_value(stacks, cmd, value_of_posit.mid);
 	if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
-		call_operation("sa", stacks);
+	{
+		// if (stacks->b.head && stacks->b.head->next && stacks->b.head->numb != value_of_posit.max
+		// 	&& stacks->b.head->numb > stacks->b.head->next->numb)
+		// 	call_operation("ss", stacks);
+		// else
+			call_operation("sa", stacks);
+	}
 	rotate_and_push_value(stacks, cmd, value_of_posit.max);
 	if (stacks->a.head && stacks->a.head->next && stacks->a.head->next->next
 		&& stacks->a.head->numb > stacks->a.head->next->next->numb)
