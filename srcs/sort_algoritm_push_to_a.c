@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 03:28:12 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:28:53 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	atribute_max_values(t_nodes *n, t_stack *stack)
 	n->third_max.posit = get_posit_value(stack, n->third_max.value);
 }
 
-static void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
+static void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_nodes *n)
 {
 	int	first_to_push;
 	int	second_to_push;
@@ -55,8 +55,8 @@ static void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 		first_to_push = n->second_max.value;
 		second_to_push = n->max.value;
 	}
-	rotate_and_push_value(stacks, cmd, first_to_push);
-	rotate_and_push_value(stacks, cmd, second_to_push);
+	rotate_and_push_value(stacks, op, first_to_push);
+	rotate_and_push_value(stacks, op, second_to_push);
 	if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
@@ -65,7 +65,7 @@ static void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 void	push_to_a(t_stacks *stacks)
 {
 	t_nodes	n;
-	char	*cmd;
+	char	*op;
 
 	while (stacks->b.head)
 	{
@@ -75,17 +75,17 @@ void	push_to_a(t_stacks *stacks)
 			(stacks->b.size / 2);
 		n.third_max.top_half = n.third_max.posit < (size_t)(stacks->b.size / 2);
 		if (n.max.top_half)
-			cmd = "rb";
+			op = "rb";
 		else
-			cmd = "rrb";
+			op = "rrb";
 		if (!(n.second_max.posit < stacks->b.size)
 			|| (n.max.top_half ^ n.second_max.top_half)
 			|| n.max.value == n.second_max.value)
-			rotate_and_push_value(stacks, cmd, n.max.value);
+			rotate_and_push_value(stacks, op, n.max.value);
 		else if (!(n.third_max.posit < stacks->b.size)
 			|| (n.max.top_half ^ n.third_max.top_half))
-			rotate_and_push_two_values(stacks, cmd, &n);
+			rotate_and_push_two_values(stacks, op, &n);
 		else
-			rotate_and_push_three_values(stacks, cmd, &n);
+			rotate_and_push_three_values(stacks, op, &n);
 	}
 }

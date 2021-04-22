@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 16:10:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 00:18:10 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,36 @@ void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 		// else
 			call_operation("sa", stacks);
 	}
-	rotate_and_push_value(stacks, cmd, value_of_posit.max);
-	if (stacks->a.head && stacks->a.head->next && stacks->a.head->next->next
-		&& stacks->a.head->numb > stacks->a.head->next->next->numb)
+	if (value_of_posit.max > value_of_posit.min && value_of_posit.max > value_of_posit.mid)
 	{
-		call_operation("pb", stacks);
+		while (stacks->b.head->numb != value_of_posit.max )
+			call_operation(cmd, stacks);
 		call_operation("ra", stacks);
 		call_operation("pa", stacks);
 		call_operation("sa", stacks);
 		call_operation("rra", stacks);
 	}
-	else if (stacks->a.head && stacks->a.head->next
+	else
+	{
+		rotate_and_push_value(stacks, cmd, value_of_posit.max);
+		if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
-		call_operation("sa", stacks);
+			call_operation("sa", stacks);
+	}
+
+
+	// rotate_and_push_value(stacks, cmd, value_of_posit.max);
+	// if (stacks->a.head && stacks->a.head->next && stacks->a.head->next->next
+	// 	&& stacks->a.head->numb > stacks->a.head->next->next->numb)
+	// {
+	// 	call_operation("pb", stacks);
+	// 	call_operation("ra", stacks);
+	// 	call_operation("pa", stacks);
+	// 	call_operation("sa", stacks);
+	// 	call_operation("rra", stacks);
+	// }
+	// else if (stacks->a.head && stacks->a.head->next
+	// 	&& stacks->a.head->numb > stacks->a.head->next->numb)
+	// 	call_operation("sa", stacks);
+
 }
