@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 01:03:04 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:48:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	atribute_max_values(t_nodes *n, t_stack *stack)
 	n->third_max.value = get_max_value_but_n(stack, n->second_max.value);
 	n->third_max.posit = get_posit_value(stack, n->third_max.value);
 }
-
 
 static void	rotate_and_push_two_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
@@ -72,7 +71,8 @@ void	push_to_a(t_stacks *stacks)
 	{
 		atribute_max_values(&n, &stacks->b);
 		n.max.top_half = n.max.posit < (size_t)(stacks->b.size / 2);
-		n.second_max.top_half = n.second_max.posit < (size_t)(stacks->b.size / 2);
+		n.second_max.top_half = n.second_max.posit < (size_t)
+			(stacks->b.size / 2);
 		n.third_max.top_half = n.third_max.posit < (size_t)(stacks->b.size / 2);
 		if (n.max.top_half)
 			cmd = "rb";
@@ -89,5 +89,3 @@ void	push_to_a(t_stacks *stacks)
 			rotate_and_push_three_values(stacks, cmd, &n);
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 01:04:46 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:53:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static void	push_to_b(t_stacks *stacks)
 			median_a = get_median(stacks->a.head);
 		loop_stack_a(stacks, median_a);
 	}
-	if (stacks->a.head &&  stacks->a.head->next &&
-		stacks->a.head->numb > stacks->a.head->next->numb)
+	if (stacks->a.head && stacks->a.head->next
+		&& stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
 }
 

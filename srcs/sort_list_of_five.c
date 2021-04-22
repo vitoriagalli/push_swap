@@ -6,15 +6,15 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:27:05 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 01:01:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:55:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//............................... //
-//       SORT LIST OF FIVE        //
-//.............................. .//
+/*................................*/
+/*       SORT LIST OF FIVE        */
+/*................................*/
 
 static void	check_top_half(t_stacks *stacks, t_list *tmp)
 {
@@ -54,7 +54,6 @@ static void	push_min_and_max_value_to_stack_b(t_stacks *stacks)
 	max_value = get_max_value(&stacks->a);
 	tmp_bottom = ft_lstlast(stacks->a.head);
 	tmp_top = stacks->a.head;
-
 	chk = 0;
 	while (chk < 2 && tmp_top && tmp_bottom)
 	{

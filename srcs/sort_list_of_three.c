@@ -6,25 +6,25 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:25:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 00:59:19 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:51:01 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//............................... //
-//       SORT LIST OF TWO         //
-//.............................. .//
+/*................................*/
+/*       SORT LIST OF TWO         */
+/*................................*/
 
 void	sort_list_of_two(t_stacks *stacks)
 {
-	if (stacks-(stacks->a.head->numb > stacks->a.head->next->numb))
+	if (stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
 }
 
-//............................... //
-//       SORT LIST OF TREE        //
-//.............................. .//
+/*................................*/
+/*       SORT LIST OF THREE       */
+/*................................*/
 
 static void	atribute_args(t_list *lst, int *args)
 {

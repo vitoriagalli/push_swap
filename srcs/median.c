@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 01:04:10 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:52:17 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ static void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
+/*
+** check exit funct when malloc fail
+*/
+
 static int	calculate(t_list *lst, size_t posit, size_t size)
 {
 	int		*tab;
@@ -39,7 +43,7 @@ static int	calculate(t_list *lst, size_t posit, size_t size)
 
 	tab = malloc(size * sizeof(int));
 	if (!tab)
-		exit(-1);		//check exit funct
+		exit(-1);
 	i = 0;
 	while (lst && i < size)
 	{
@@ -56,6 +60,10 @@ static int	calculate(t_list *lst, size_t posit, size_t size)
 	return (median);
 }
 
+/*
+** review this conditionals
+*/
+
 int	get_dynamic_median(t_list *lst, size_t init_size)
 {
 	size_t	current_size;
@@ -64,9 +72,6 @@ int	get_dynamic_median(t_list *lst, size_t init_size)
 	if (!lst)
 		return (MIN_INT);
 	current_size = ft_lstsize(lst);
-
-	// review this conditionals
-
 	if (current_size < init_size / 10)
 		posit = current_size / 2;
 	else if (current_size < init_size / 6)
