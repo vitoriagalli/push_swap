@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 02:43:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/22 04:19:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	get_order_of_push(t_nodes *n, t_range *val_posit)
 	else
 		val_posit->mid = n->third_max.value;
 }
+
+/*
+** otimize this operations, 500 size, 50 times
+*/
 
 void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n)
 {
