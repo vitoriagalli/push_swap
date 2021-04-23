@@ -102,6 +102,7 @@ SRCS_PUSH_SWAP_FILES =	push_swap.c \
 						rotate_and_push_values_to_a.c \
 						median.c \
 						utils_nodes.c \
+						utils_sort_nodes.c \
 						utils.c \
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 21:36:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 22:43:30 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,18 @@ typedef struct s_node
 void	sort_list_of_two(t_stacks *stacks);
 void	sort_list_of_three(t_stacks *stacks);
 void	sort_list_of_five(t_stacks *stacks);
-void	sort_list_of_many(t_stacks *stacks);
 void	push_to_a(t_stacks *stacks);
+void	push_to_b(t_stacks *stacks);
 
 /*
 ** sorting algoritms utils
 */
 
+void	rotate_and_push_value(t_stacks *stacks, char *op, int value);
 void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_node *max);
 void	rotate_and_push_three_values(t_stacks *stacks, char *op, t_node *max);
-// void	rotate_and_push_four_values(t_stacks *stacks, char *op, t_node *max);
 int		get_median(t_list *lst);
 int		get_dynamic_median(t_list *lst, size_t init_size);
-void	rotate_and_push_value(t_stacks *stacks, char *op, int value);
-
 
 /*
 ** utils nodes

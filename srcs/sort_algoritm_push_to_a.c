@@ -6,12 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 21:29:57 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 22:16:49 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static bool	ascending(int a, int b)
 {
@@ -75,7 +74,6 @@ void	push_to_a(t_stacks *stacks)
 	while (stacks->b.head)
 	{
 		max = NULL;
-
 		values_to_push_size = atribute_max_values(&max, &stacks->b, 3);
 		if (values_to_push_size == -1)
 			exit_push_swap(stacks, &max);
@@ -86,9 +84,6 @@ void	push_to_a(t_stacks *stacks)
 			rotate_and_push_two_values(stacks, op, max);
 		else
 			rotate_and_push_three_values(stacks, op, max);
-		// else if (lst_size == 4)
-		// 	rotate_and_push_four_values(stacks, op, max);
-
 		ft_nodeclear(&max);
 	}
 }

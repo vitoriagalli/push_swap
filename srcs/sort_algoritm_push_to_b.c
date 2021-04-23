@@ -6,22 +6,15 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 21:55:29 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 22:46:24 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
+static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a,
+	int median_b)
 {
-	int	median_b;
-
-	if (stacks->b.head)
-	{
-		median_b = get_median(stacks->b.head);
-		if (median_a == MIN_INT)
-			exit_push_swap(stacks, NULL);
-	}
 	if (ft_lstsize(stacks->a.head) < 2 || stacks->a.head->numb <= median_a)
 	{
 		call_operation("pb", stacks);
@@ -42,6 +35,20 @@ static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a)
 	}
 }
 
+static void	get_median_and_push_elements(t_stacks *stacks, int median_a)
+{
+	int	median_b;
+
+	median_b = MIN_INT;
+	if (stacks->b.head)
+	{
+		median_b = get_median(stacks->b.head);
+		if (median_b == MIN_INT)
+			exit_push_swap(stacks, NULL);
+	}
+	push_elements_lesser_than_median(stacks, median_a, median_b);
+}
+
 static void	loop_stack_a(t_stacks *stacks, int median_a)
 {
 	t_list	*tmp;
@@ -53,13 +60,13 @@ static void	loop_stack_a(t_stacks *stacks, int median_a)
 	i = 0;
 	while (tmp && i < init_size)
 	{
-		push_elements_lesser_than_median(stacks, median_a);
+		get_median_and_push_elements(stacks, median_a);
 		tmp = stacks->a.head;
 		i++;
 	}
 }
 
-static void	push_to_b(t_stacks *stacks)
+void	push_to_b(t_stacks *stacks)
 {
 	int		median_a;
 	size_t	size;
@@ -78,10 +85,4 @@ static void	push_to_b(t_stacks *stacks)
 	if (stacks->a.head && stacks->a.head->next
 		&& stacks->a.head->numb > stacks->a.head->next->numb)
 		call_operation("sa", stacks);
-}
-
-void	sort_list_of_many(t_stacks *stacks)
-{
-	push_to_b(stacks);
-	push_to_a(stacks);
 }
