@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 15:38:20 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:43:38 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,10 @@ int		get_max_value_but_n(t_stack *stack, int n);
 
 
 t_node	*ft_nodenew(t_stack *stack, int val_max);
+// void	sort_nodes_by_posit(t_node **begin_list);
+void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t));
+bool	ascending(int a, int b);
+bool	descending(int a, int b);
+
 
 #endif

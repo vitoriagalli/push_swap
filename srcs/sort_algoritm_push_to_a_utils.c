@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:12:12 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:47:01 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_node *max)
 {
+	// ft_printf("%i\n%i\n%i\n", max->value, max->posit, max->top_half);
+	// ft_printf("%i\n%i\n%i\n", max->next->value, max->next->posit, max->next->top_half);
+
+
+
 	rotate_and_push_value(stacks, op, max->value);
 	rotate_and_push_value(stacks, op, max->next->value);
 	if (stacks->a.head && stacks->a.head->next

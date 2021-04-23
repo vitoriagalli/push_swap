@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:11:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:03:33 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static size_t	atribute_max_values(t_node **max, t_stack *stack)
 	return (i);
 }
 
+
 void	push_to_a(t_stacks *stacks)
 {
 	t_node	*max;
@@ -54,16 +55,31 @@ void	push_to_a(t_stacks *stacks)
 	{
 		max = NULL;
 		lst_size = atribute_max_values(&max, &stacks->b);
+
+		if (max && max->next && max->next->value == MIN_INT)
+		{
+			// liberar a cadeira de nodes
+			lst_size--;
+			max->next = NULL;
+		}
+
+
 		if (max->top_half)
+		{
 			op = "rb";
+			sort_nodes_by_posit(&max, ascending);
+		}
 		else
+		{
 			op = "rrb";
-		sort_nodes_by_posit(&max);
+			sort_nodes_by_posit(&max, descending);
+		}
+
 
 		// ft_printf("%i\n", lst_size);
 		if (lst_size == 1)
 			rotate_and_push_value(stacks, op, max->value);
-		if (lst_size == 2)
+		else if (lst_size == 2)
 			rotate_and_push_two_values(stacks, op, max);
 
 
