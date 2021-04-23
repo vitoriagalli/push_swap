@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/22 01:04:17 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 03:20:18 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,21 @@ typedef struct s_range
 
 typedef struct s_node
 {
-	int			value;
-	size_t		posit;
-	bool		top_half;
-}				t_node;
+	int				value;
+	size_t			posit;
+	bool			top_half;
+	struct s_node	*next;
+}					t_node;
 
+
+// nao usado
 typedef struct s_nodes
 {
-	t_node		max;
-	t_node		second_max;
-	t_node		third_max;
+	t_node		*max;
+	int			posit[5];
 }				t_nodes;
+
+
 
 /*
 ** sorting algoritms
