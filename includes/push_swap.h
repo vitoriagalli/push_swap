@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 03:20:18 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:38:20 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value);
 int		get_max_value(t_stack *stack);
 int		get_min_value(t_stack *stack);
 int		get_max_value_but_n(t_stack *stack, int n);
+
+
+t_node	*ft_nodenew(t_stack *stack, int val_max);
 
 #endif

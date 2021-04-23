@@ -116,7 +116,7 @@ $(NAME) : $(CHECKER) $(OBJS_PUSH_SWAP)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(DFLAGS) $(CFLAGS) $(HEAD) -c $< -o $@
-	@ echo -n "$< "
+	@echo -n "$< "
 	@tput setaf 28; echo "✔"
 	@tput sgr0
 

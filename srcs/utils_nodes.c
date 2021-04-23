@@ -6,11 +6,28 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 14:20:20 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:29:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static size_t	get_posit_value(t_stack *b, int numb)
+{
+	t_list	*tmp;
+	size_t	i;
+
+	i = 0;
+	tmp = b->head;
+	while (tmp)
+	{
+		if (tmp->numb == numb)
+			return (i);
+		i++;
+		tmp = tmp->next;
+	}
+	return (b->size + 1);
+}
 
 t_node	*ft_nodenew(t_stack *stack, int val_max)
 {

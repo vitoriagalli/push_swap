@@ -6,11 +6,25 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 02:47:22 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:12:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_node *max)
+{
+	rotate_and_push_value(stacks, op, max->value);
+	rotate_and_push_value(stacks, op, max->next->value);
+	if (stacks->a.head && stacks->a.head->next
+		&& stacks->a.head->numb > stacks->a.head->next->numb)
+		call_operation("sa", stacks);
+}
+
+
+
+
+
 
 // void	get_order_of_push(t_nodes *n, t_range *val_posit)
 // {
