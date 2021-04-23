@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 17:03:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:12:02 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	push_to_a(t_stacks *stacks)
 
 		if (max && max->next && max->next->value == MIN_INT)
 		{
-			// liberar a cadeira de nodes
+			ft_nodeclear(&max->next);
 			lst_size--;
 			max->next = NULL;
 		}
@@ -83,6 +83,7 @@ void	push_to_a(t_stacks *stacks)
 			rotate_and_push_two_values(stacks, op, max);
 
 
+		ft_nodeclear(&max);
 		// return ;
 
 	}

@@ -6,11 +6,27 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:43:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:10:35 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_nodeclear(t_node **lst)
+{
+	t_node	*to_free;
+
+	to_free = *lst;
+	if (!lst || !*lst)
+		return ;
+	while (to_free)
+	{
+		*lst = to_free->next;
+		free(to_free);
+		to_free = *lst;
+	}
+	*lst = NULL;
+}
 
 static size_t	get_posit_value(t_stack *b, int numb)
 {

@@ -14,7 +14,7 @@ SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -w
-DFLAGS = -g #-fsanitize=address
+DFLAGS = -g -fsanitize=address
 LFLAGS = -L . -lstack
 RM = /bin/rm -rf
 
