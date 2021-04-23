@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 20:45:36 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 20:21:17 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:25:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	rotate_and_push_value(t_stacks *stacks, char *op, int value)
 {
-	if (stacks->b.head)
-	{
-		while (stacks->b.head->numb != value)
-			call_operation(op, stacks);
-		call_operation("pa", stacks);
-	}
+	while (stacks->b.head && stacks->b.head->numb != value)
+		call_operation(op, stacks);
+	call_operation("pa", stacks);
 }
 
 void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_node *max)
