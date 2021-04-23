@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:39:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 16:03:13 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:21:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@ void	call_operation(char *op, t_stacks *stacks)
 	operations(op, stacks);
 	ft_printf("%s\n", op);
 	(stacks->n_op)++;
-}
-
-void	rotate_and_push_value(t_stacks *stacks, char *cmd, int value)
-{
-	if (stacks->b.head)
-	{
-		while (stacks->b.head->numb != value)
-			call_operation(cmd, stacks);
-		call_operation("pa", stacks);
-	}
 }
 
 int	get_max_value(t_stack *stack)

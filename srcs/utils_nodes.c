@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 17:15:12 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 20:20:20 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,6 @@ static void	ft_swap_node(t_node *n1, t_node *n2)
 	bool_aux = n1->top_half;
 	n1->top_half = n2->top_half;
 	n2->top_half = bool_aux;
-
-}
-
-bool	ascending(int a, int b)
-{
-	return (a > b);
-}
-
-bool	descending(int a, int b)
-{
-	return (a < b);
 }
 
 void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t))

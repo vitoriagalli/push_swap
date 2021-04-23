@@ -99,7 +99,7 @@ SRCS_PUSH_SWAP_FILES =	push_swap.c \
 						sort_list_of_five.c \
 						sort_algoritm_push_to_b.c \
 						sort_algoritm_push_to_a.c \
-						sort_algoritm_push_to_a_utils.c \
+						rotate_and_push_values_to_a.c \
 						median.c \
 						utils_nodes.c \
 						utils.c \
