@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 22:41:18 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 21:55:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 23:31:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	calculate(t_list *lst, size_t posit, size_t size)
 
 	tab = malloc(size * sizeof(int));
 	if (!tab)
-		return (MIN_INT);
+		return (MAX_INT);
 	i = 0;
 	while (lst && i < size)
 	{
@@ -36,10 +36,6 @@ static int	calculate(t_list *lst, size_t posit, size_t size)
 	free(tab);
 	return (median);
 }
-
-/*
-** review this conditionals
-*/
 
 int	get_dynamic_median(t_list *lst, size_t init_size)
 {

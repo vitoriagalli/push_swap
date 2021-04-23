@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:17:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 22:46:24 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 23:35:39 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	push_elements_lesser_than_median(t_stacks *stacks, int median_a,
 	if (ft_lstsize(stacks->a.head) < 2 || stacks->a.head->numb <= median_a)
 	{
 		call_operation("pb", stacks);
-		if (stacks->b.head && stacks->b.head->numb < median_b)
+		if (stacks->b.head && stacks->b.head->numb < median_b
+			&& stacks->a.size < 100)
 		{
 			if (stacks->a.head && stacks->a.head->numb > median_a)
 				call_operation("rr", stacks);
@@ -43,7 +44,7 @@ static void	get_median_and_push_elements(t_stacks *stacks, int median_a)
 	if (stacks->b.head)
 	{
 		median_b = get_median(stacks->b.head);
-		if (median_b == MIN_INT)
+		if (median_b == MAX_INT)
 			exit_push_swap(stacks, NULL);
 	}
 	push_elements_lesser_than_median(stacks, median_a, median_b);
@@ -78,7 +79,7 @@ void	push_to_b(t_stacks *stacks)
 			median_a = get_dynamic_median(stacks->a.head, size);
 		else
 			median_a = get_median(stacks->a.head);
-		if (median_a == MIN_INT)
+		if (median_a == MAX_INT)
 			exit_push_swap(stacks, NULL);
 		loop_stack_a(stacks, median_a);
 	}
