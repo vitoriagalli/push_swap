@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 17:12:02 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:45:29 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	atribute_max_values(t_node **max, t_stack *stack)
 
 	i = 0;
 	val_max = MAX_INT;
-	while (i < 2)
+	while (i < 3)
 	// while (i < 5)
 	{
 		new = ft_nodenew(stack, val_max);
@@ -31,7 +31,7 @@ static size_t	atribute_max_values(t_node **max, t_stack *stack)
 			return (0); // exit
 		if (i == 0)
 			max_top_half = new->top_half;
-		else if (new->top_half != max_top_half)
+		else if (new->top_half != max_top_half || new->value == MIN_INT)
 		{
 			free(new);
 			return (i);
@@ -56,14 +56,6 @@ void	push_to_a(t_stacks *stacks)
 		max = NULL;
 		lst_size = atribute_max_values(&max, &stacks->b);
 
-		if (max && max->next && max->next->value == MIN_INT)
-		{
-			ft_nodeclear(&max->next);
-			lst_size--;
-			max->next = NULL;
-		}
-
-
 		if (max->top_half)
 		{
 			op = "rb";
@@ -81,6 +73,9 @@ void	push_to_a(t_stacks *stacks)
 			rotate_and_push_value(stacks, op, max->value);
 		else if (lst_size == 2)
 			rotate_and_push_two_values(stacks, op, max);
+		else if (lst_size == 3)
+			rotate_and_push_three_values(stacks, op, max);
+
 
 
 		ft_nodeclear(&max);

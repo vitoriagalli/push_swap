@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 17:10:42 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:36:57 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	push_to_a(t_stacks *stacks);
 ** sorting algoritms utils
 */
 
-void	rotate_and_push_three_values(t_stacks *stacks, char *cmd, t_nodes *n);
+void	rotate_and_push_two_values(t_stacks *stacks, char *op, t_node *max);
+void	rotate_and_push_three_values(t_stacks *stacks, char *op, t_node *max);
 int		get_median(t_list *lst);
 int		get_dynamic_median(t_list *lst, size_t init_size);
 
@@ -76,8 +77,8 @@ int		get_min_value(t_stack *stack);
 int		get_max_value_but_n(t_stack *stack, int n);
 
 
-t_node	*ft_nodenew(t_stack *stack, int val_max);
 void	ft_nodeclear(t_node **lst);
+t_node	*ft_nodenew(t_stack *stack, int val_max);
 void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t));
 bool	ascending(int a, int b);
 bool	descending(int a, int b);

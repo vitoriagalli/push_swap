@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 17:10:35 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 17:15:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_nodeadd_back(t_node **lst, t_node *new)
 	}
 }
 
-void	ft_swap_node(t_node *n1, t_node *n2)
+static void	ft_swap_node(t_node *n1, t_node *n2)
 {
 	int		int_aux;
 	bool	bool_aux;
@@ -116,7 +116,6 @@ void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t))
 		ptr2 = ptr1->next;
 		while (ptr2)
 		{
-			// if (ptr1->posit > ptr2->posit)
 			if (cmp(ptr1->posit, ptr2->posit))
 				ft_swap_node(ptr1, ptr2);
 			ptr2 = ptr2->next;
