@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:39:02 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 20:21:22 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 21:17:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	call_operation(char *op, t_stacks *stacks)
 {
 	operations(op, stacks);
 	ft_printf("%s\n", op);
-	(stacks->n_op)++;
+	(stacks->n_op)++;		// remove this
 }
 
 int	get_max_value(t_stack *stack)
 {
-	t_list		*tmp;
-	int			max;
+	t_list	*tmp;
+	int		max;
 
 	max = MIN_INT;
 	tmp = stack->head;
@@ -37,8 +37,8 @@ int	get_max_value(t_stack *stack)
 
 int	get_min_value(t_stack *stack)
 {
-	t_list		*tmp;
-	int			min;
+	t_list	*tmp;
+	int		min;
 
 	min = MAX_INT;
 	tmp = stack->head;
@@ -51,18 +51,21 @@ int	get_min_value(t_stack *stack)
 	return (min);
 }
 
-int	get_max_value_but_n(t_stack *stack, int n)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	t_list		*tmp;
-	int			max;
+	int	i;
+	int	j;
 
-	max = MIN_INT;
-	tmp = stack->head;
-	while (tmp)
+	i = 0;
+	while (i < (size - 1))
 	{
-		if (tmp->numb > max && tmp->numb < n)
-			max = tmp->numb;
-		tmp = tmp->next;
+		j = i + 1;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+				ft_swap(&tab[i], &tab[j]);
+			j++;
+		}
+		i++;
 	}
-	return (max);
 }

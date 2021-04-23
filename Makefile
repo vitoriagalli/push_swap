@@ -13,7 +13,7 @@ HEAD = -I./$(LIBFT_DIR) -I./$(INCLUDES_DIR)
 SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -w
+CFLAGS = -Wall -Werror -Wextra #-w
 DFLAGS = -g -fsanitize=address
 LFLAGS = -L . -lstack
 RM = /bin/rm -rf

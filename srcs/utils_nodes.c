@@ -6,26 +6,26 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 20:20:20 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 21:50:57 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_nodeclear(t_node **lst)
+static int	get_max_value_but_n(t_stack *stack, int n)
 {
-	t_node	*to_free;
+	t_list	*tmp;
+	int		max;
 
-	to_free = *lst;
-	if (!lst || !*lst)
-		return ;
-	while (to_free)
+	max = MIN_INT;
+	tmp = stack->head;
+	while (tmp)
 	{
-		*lst = to_free->next;
-		free(to_free);
-		to_free = *lst;
+		if (tmp->numb > max && tmp->numb < n)
+			max = tmp->numb;
+		tmp = tmp->next;
 	}
-	*lst = NULL;
+	return (max);
 }
 
 static size_t	get_posit_value(t_stack *b, int numb)
@@ -92,7 +92,7 @@ static void	ft_swap_node(t_node *n1, t_node *n2)
 	n2->top_half = bool_aux;
 }
 
-void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t))
+void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(int, int))
 {
 	t_node	*ptr1;
 	t_node	*ptr2;
@@ -111,4 +111,20 @@ void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t))
 		}
 		ptr1 = ptr1->next;
 	}
+}
+
+void	ft_nodeclear(t_node **lst)
+{
+	t_node	*to_free;
+
+	if (!lst || !*lst)
+		return ;
+	to_free = *lst;
+	while (to_free)
+	{
+		*lst = to_free->next;
+		free(to_free);
+		to_free = *lst;
+	}
+	*lst = NULL;
 }

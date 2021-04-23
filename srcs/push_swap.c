@@ -6,11 +6,18 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 20:36:54 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 21:29:23 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	exit_push_swap(t_stacks *stacks, t_node **max)
+{
+	clear_stacks(stacks);
+	ft_nodeclear(max);
+	exit(EXIT_FAILURE);
+}
 
 static void	sort_stack(t_stacks *stacks)
 {

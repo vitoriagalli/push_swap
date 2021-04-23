@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 20:18:15 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/23 21:36:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-
-// nao usado
-typedef struct s_nodes
-{
-	t_node		*max;
-	int			posit[5];
-}				t_nodes;
-
-
-
 /*
 ** sorting algoritms
 */
@@ -66,23 +56,26 @@ void	rotate_and_push_three_values(t_stacks *stacks, char *op, t_node *max);
 // void	rotate_and_push_four_values(t_stacks *stacks, char *op, t_node *max);
 int		get_median(t_list *lst);
 int		get_dynamic_median(t_list *lst, size_t init_size);
+void	rotate_and_push_value(t_stacks *stacks, char *op, int value);
+
+
+/*
+** utils nodes
+*/
+
+t_node	*ft_nodenew(t_stack *stack, int val_max);
+void	ft_nodeadd_back(t_node **lst, t_node *new);
+void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(int, int));
+void	ft_nodeclear(t_node **lst);
 
 /*
 ** utils functions
 */
 
 void	call_operation(char *op, t_stacks *stacks);
-void	rotate_and_push_value(t_stacks *stacks, char *op, int value);
 int		get_max_value(t_stack *stack);
 int		get_min_value(t_stack *stack);
-int		get_max_value_but_n(t_stack *stack, int n);
-
 void	ft_sort_int_tab(int *tab, int size);
-
-
-void	ft_nodeclear(t_node **lst);
-t_node	*ft_nodenew(t_stack *stack, int val_max);
-void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(size_t, size_t));
-
+void	exit_push_swap(t_stacks *stacks, t_node **max);
 
 #endif
