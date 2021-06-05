@@ -9,22 +9,25 @@ call_header()
 	echo ""
 }
 
-run_tester()
+check()
 {
-	./push_swap "$2" > ps
-	./checker "$2" < ps > chk
-	line=$(cat chk | grep "OK")
-	if [ x"$line" = x ]
+	SIZE="$1"
+	MAX_OP="$2"
+
+	LIST=$(ruby -e "puts (1..$SIZE).to_a.shuffle.join(' ')")
+	OP_SOLUTION=$(./push_swap $LIST)
+	NUM_OP=$(./push_swap $LIST | wc -l)
+	IS_SORTED=$(echo "$OP_SOLUTION" | ./checker $LIST | grep "OK")
+
+	if [ "$?" -ne "0" ]
 	then
 		echo -e "NOT SORTED   \033[0;31m✘\033[0m"
 	else
 	{
-		echo -n -e "SORTED\t"
-		head -n 1 chk | tr -d '\n'
-		SOLUTION=$(cat ps | wc -l | tr -d "\n")
-		echo -n -e "\tsolution: " $SOLUTION
-		echo -n -e "\tmax: " "$1"
-		if [ "$SOLUTION" -le "$1" ]
+		echo -n -e "SORTED"
+		echo -n -e "\tsolution: " $NUM_OP
+		echo -n -e "\tmax: " "$MAX_OP"
+		if [ "$NUM_OP" -le "$MAX_OP" ]
 		then
 			echo -e "   \033[0;32m✔\033[0m"
 		else
@@ -34,84 +37,19 @@ run_tester()
 	fi
 }
 
-run_input()
+run()
 {
-	while read -r arg
-	do
-		run_tester $1 "$arg"
-	done <<< $(cat $2)
+	SIZE="$1"
+	MAX_OP="$2"
+
+	call_header "$SIZE"
+
+	for i in 1 2 3 4 5 6 7 8 9; do
+		check "$SIZE" "$MAX_OP"
+	done
 }
 
-run_3()
-{
-	call_header "3"
-	max_instr=2
-	run_input $max_instr "./tests/size_3.txt"
-}
-
-run_5()
-{
-	call_header "5"
-	max_instr=12
-	run_input $max_instr "./tests/size_5.txt"
-}
-
-run_100()
-{
-	call_header "100"
-	max_instr=700
-	# max_instr=900
-	# max_instr=1100
-	# max_instr=1300
-	# max_instr=1500
-	run_input $max_instr "./tests/size_100.txt"
-}
-
-run_500()
-{
-	call_header "500"
-	max_instr=5500
-	# max_instr=7000
-	# max_instr=8500
-	# max_instr=10000
-	# max_instr=11500
-	run_input $max_instr "./tests/size_500.txt"
-}
-
-
-run_rand()
-{
-	call_header "ALL"
-	max_instr=11500
-	run_input $max_instr "./tests/rand.txt"
-}
-
-#############   TESTER   ############
-
-if [ "$1" == "3" ]
-then
-	run_3
-elif [ "$1" == "5" ]
-then
-	run_5
-elif [ "$1" == "100" ]
-then
-	run_100
-elif [ "$1" == "500" ]
-then
-	run_500
-elif [ "$1" == "rand" ]
-then
-	run_rand
-else
-	run_3
-	run_5
-	run_100
-	run_500
-fi
-
-rm -rf ps chk file
-
-
-# ARG=""
-# ./push_swap $ARG > ps ; ./checker $ARG < ps > res ; cat res
+run "3" "3"
+run "5" "12"
+run "100" "700"
+run "500" "5500"
