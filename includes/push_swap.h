@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 22:43:30 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/06 23:30:52 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,8 @@
 # include <stdbool.h>
 # include "libstack.h"
 
-# define POS_0 0
-# define POS_1 1
-# define POS_2 2
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
-
-typedef struct s_range
-{
-	int			min;
-	int			mid;
-	int			max;
-}				t_range;
 
 typedef struct s_node
 {
@@ -41,9 +31,6 @@ typedef struct s_node
 ** sorting algoritms
 */
 
-void	sort_list_of_two(t_stacks *stacks);
-void	sort_list_of_three(t_stacks *stacks);
-void	sort_list_of_five(t_stacks *stacks);
 void	push_to_a(t_stacks *stacks);
 void	push_to_b(t_stacks *stacks);
 

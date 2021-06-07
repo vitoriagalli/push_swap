@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/06 22:56:41 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/06 23:13:07 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,10 @@ void	exit_push_swap(t_stacks *stacks, t_node **max)
 	exit(EXIT_FAILURE);
 }
 
-static void	sort_list_of_many(t_stacks *stacks)
+static void	sort_stack(t_stacks *stacks)
 {
 	push_to_b(stacks);
 	push_to_a(stacks);
-}
-
-static void	sort_stack(t_stacks *stacks)
-{
-	if (stacks->a.size == 2)
-		sort_list_of_two(stacks);
-	if (stacks->a.size == 3)
-		sort_list_of_three(stacks);
-	else if (stacks->a.size == 5)
-		sort_list_of_five(stacks);
-	else
-		sort_list_of_many(stacks);
 }
 
 static void	game_on(t_stacks *stacks)
