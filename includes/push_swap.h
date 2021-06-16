@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/06 23:30:52 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/08 03:47:52 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int		get_dynamic_median(t_list *lst, size_t init_size);
 ** utils nodes
 */
 
-t_node	*ft_nodenew(t_stack *stack, int val_max);
+t_node	*ft_nodenew(t_stack *stack, int value);
 void	ft_nodeadd_back(t_node **lst, t_node *new);
-void	sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(int, int));
+int		sort_nodes_by_posit(t_node **begin_list, bool(*cmp)(int, int));
 void	ft_nodeclear(t_node **lst);
 
 /*
@@ -62,5 +62,11 @@ int		get_max_value(t_stack *stack);
 int		get_min_value(t_stack *stack);
 void	ft_sort_int_tab(int *tab, int size);
 void	exit_push_swap(t_stacks *stacks, t_node **max);
+
+
+int	get_max_value_but_n(t_stack *stack, int n);
+int	get_min_value_but_n(t_stack *stack, int n);
+
+
 
 #endif

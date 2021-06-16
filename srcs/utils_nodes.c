@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 14:19:39 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 22:23:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/08 01:47:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_value_but_n(t_stack *stack, int n)
+int	get_max_value_but_n(t_stack *stack, int n)
 {
 	t_list	*tmp;
 	int		max;
@@ -26,6 +26,22 @@ static int	get_max_value_but_n(t_stack *stack, int n)
 		tmp = tmp->next;
 	}
 	return (max);
+}
+
+int	get_min_value_but_n(t_stack *stack, int n)
+{
+	t_list	*tmp;
+	int		min;
+
+	min = MAX_INT;
+	tmp = stack->head;
+	while (tmp)
+	{
+		if (tmp->numb < min && tmp->numb > n)
+			min = tmp->numb;
+		tmp = tmp->next;
+	}
+	return (min);
 }
 
 static size_t	get_posit_value(t_stack *b, int numb)
@@ -45,14 +61,14 @@ static size_t	get_posit_value(t_stack *b, int numb)
 	return (b->size + 1);
 }
 
-t_node	*ft_nodenew(t_stack *stack, int val_max)
+t_node	*ft_nodenew(t_stack *stack, int value)
 {
 	t_node	*max;
 
 	max = malloc(sizeof(t_node));
 	if (!max)
 		return (NULL);
-	max->value = get_max_value_but_n(stack, val_max);
+	max->value = value;
 	max->posit = get_posit_value(stack, max->value);
 	max->top_half = max->posit < (size_t)(stack->size / 2);
 	max->next = NULL;

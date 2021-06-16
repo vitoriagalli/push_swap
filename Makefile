@@ -13,7 +13,7 @@ HEAD = -I./$(LIBFT_DIR) -I./$(INCLUDES_DIR)
 SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
-CFLAGS = -Wall -Werror -Wextra #-w
+CFLAGS = #-Wall -Werror -Wextra -w
 DFLAGS = -g -fsanitize=address
 LFLAGS = -L . -lstack
 RM = /bin/rm -rf
@@ -95,15 +95,13 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
-						sort_list_of_three.c \
-						sort_list_of_five.c \
 						sort_algoritm_push_to_b.c \
 						sort_algoritm_push_to_a.c \
 						rotate_and_push_values_to_a.c \
 						median.c \
 						utils_nodes.c \
 						utils_sort_nodes.c \
-						utils.c \
+						utils.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
 OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
