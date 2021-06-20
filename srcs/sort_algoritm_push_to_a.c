@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 20:50:22 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/08 04:25:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/16 03:53:29 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	push_to_a(t_stacks *stacks)
 			push_value(stacks, &min_list, min_values_to_push_size, op_min);
 			while(min_values_to_push_size)
 			{
-				ft_printf("A\n");
+				// ft_printf("A\n");
 				call_operation("ra", stacks);	// é chamado em media de 60 a 300 vezes
 				min_values_to_push_size--;
 			}
@@ -160,6 +160,7 @@ void	push_to_a(t_stacks *stacks)
 	while (ft_lstlast(stacks->a.head)->numb < stacks->a.head->numb)
 	{
 		call_operation("rra", stacks);
+		// call_operation("ra", stacks);
 	}
 
 
