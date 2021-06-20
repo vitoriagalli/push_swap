@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:49:13 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 01:05:25 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 01:23:05 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	swap(t_stack *stack)
 	t_node	*node;
 	t_node	*node_next;
 
+	if (stack->size < 2 || !(stack->head) || !((t_node *)(stack->head)->next))
+		return ;
 	node = stack->head;
 	node_next = stack->head->next;
-	if (stack->size < 2 || !(node) || !(node->next))
-		return ;
 	tmp.numb = node->numb;
 	tmp.index = node->index;
 	tmp.keep_a = node->keep_a;

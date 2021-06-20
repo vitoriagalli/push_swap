@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:17:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/20 23:33:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 01:25:10 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_nodeadd_front(t_node **lst, t_node *new)
 	}
 	*lst = new;
 }
-
 
 void	build_stacks(char **argv, t_stacks *stacks)
 {
