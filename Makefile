@@ -10,7 +10,7 @@ SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
 CFLAGS = #-Wall -Werror -Wextra #-w
-DFLAGS = -g -fsanitize=address
+DFLAGS = -g #-fsanitize=address
 LFLAGS = -L./libft -lft
 RM = /bin/rm -rf
 
@@ -64,7 +64,7 @@ OBJS_CHECKER = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_CHECKER))
 
 bonus: $(CHECKER)
 
-$(CHECKER) : $(NAME) $(OBJS_CHECKER)
+$(CHECKER) : $(LIBFT) $(OBJS_STACK) $(OBJS_CHECKER)
 	@$(CC) $(OBJS_CHECKER) $(OBJS_STACK) $(HEAD) $(DFLAGS) $(CFLAGS) $(LFLAGS) -o $@
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

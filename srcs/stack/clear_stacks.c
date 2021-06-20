@@ -6,15 +6,15 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 16:24:51 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/12 03:35:53 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 01:13:13 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-static void	ft_stack_clear(t_list **lst, size_t size)
+static void	ft_stack_clear(t_node **lst, size_t size)
 {
-	t_list	*to_free;
+	t_node	*to_free;
 	size_t	i;
 
 	to_free = *lst;
