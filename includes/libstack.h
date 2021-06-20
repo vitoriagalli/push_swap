@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/23 22:05:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/20 23:01:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 
+typedef struct s_elements
+{
+	int			numb;
+	int			index;
+	bool		keep_a;
+}				t_elements;
+
 typedef struct s_stack
 {
-	t_list		*head;
+	t_elements	*head;
 	size_t		size;
 }				t_stack;
 
