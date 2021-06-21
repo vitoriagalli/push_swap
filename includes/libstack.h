@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 03:05:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 04:00:37 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 {
 	t_node		*head;
 	size_t		size;
-	int			markup_head_value;
+	int			markup_head;
 }				t_stack;
 
 typedef struct s_stacks

@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 03:06:28 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 04:15:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_nodes_to_keep_a(t_stack *a, int markup_head)
+int		nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 {
 	t_node	*tmp;
 	int		index;
@@ -25,13 +25,18 @@ int		check_nodes_to_keep_a(t_stack *a, int markup_head)
 	index = tmp->index;
 	while (tmp)
 	{
-		if (tmp->index == (index + 1))
+		// if (tmp->index == (index))
+		if (tmp->index > index)
 		{
+			if (def == true)
+				tmp->keep_a = true;
 			num_keep_a++;
-			index++;
+			// index++;
+			index = tmp->index;
 		}
 		tmp = tmp->next;
 	}
+	// ft_printf("aqui %i\n", num_keep_a);
 	return (num_keep_a);
 }
 
@@ -46,37 +51,18 @@ void	find_markup_head(t_stack *a)
 	tmp = a ->head;
 	while (tmp)
 	{
-		tmp_keep_a = check_nodes_to_keep_a(a, tmp->numb);
+		tmp_keep_a = nodes_to_keep_a(a, tmp->numb, false);
 		if (tmp_keep_a > num_keep_a)
-			a->markup_head_value = tmp->numb;
+			a->markup_head = tmp->numb;
 		tmp = tmp->next;
 	}
 }
 
-void	prepare_stack_to_push(t_stack *a)
-{
-	t_node	*tmp;
-	int		index;
-
-	tmp = a->head;
-	while (tmp->numb != a->markup_head_value)
-		tmp = tmp->next;
-	index = tmp->index;
-	while (tmp)
-	{
-		if (tmp->index == index)
-		{
-			tmp->keep_a = true;
-			index++;
-		}
-		tmp = tmp->next;
-	}
-}
 
 void	markup_head(t_stack *a)
 {
 	find_markup_head(a);
-	prepare_stack_to_push(a);
+	nodes_to_keep_a(a, a->markup_head, true);
 }
 
 

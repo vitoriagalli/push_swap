@@ -78,3 +78,18 @@ calcular quantos comandos são necessários para mover o elemento da pilha B par
 deve-se calcular esse valor para cada elemento da pilha B e em seguida escolher o elemento com o menor valor calculado
 
 ALINHE A
+
+
+
+"5",	7		v
+"1",	5			v
+"3",	6			v
+"-99",	0
+"-3",	3
+"57",	9
+"9",	8		v
+"0",	4
+"-33",	1
+"-11",	2
+"777",	11
+"99"	10

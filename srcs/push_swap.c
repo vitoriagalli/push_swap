@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 03:00:18 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 03:19:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@ void	exit_push_swap(t_stacks *stacks)
 
 void	push_to_stack_b(t_stacks *stacks)
 {
-	t_node	*tmp;
+	int	init_size;
 
-	tmp = stacks->a.head;
-	while (tmp)
+	init_size = stacks->a.size;
+	while (init_size)
 	{
-		if (tmp->keep_a)
+		if ((t_stacks *)(stacks->a.head)->keep_a)
+			call_operation("ra", stacks);
+		else
 			call_operation("pb", stacks);
-		tmp = tmp->next;
+		init_size--;
 	}
-
 }
 
 static void	algorithm(t_stacks *stacks)
