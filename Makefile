@@ -10,7 +10,7 @@ SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
 CFLAGS = #-Wall -Werror -Wextra #-w
-DFLAGS = -g #-fsanitize=address
+DFLAGS = -g -fsanitize=address
 LFLAGS = -L./libft -lft
 RM = /bin/rm -rf
 
@@ -39,6 +39,7 @@ OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
 						index_elements.c \
 						markup_head.c \
+						smallest_action.c \
 						utils.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 04:15:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 01:39:47 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 		}
 		tmp = tmp->next;
 	}
-	// ft_printf("aqui %i\n", num_keep_a);
 	return (num_keep_a);
 }
 
@@ -53,7 +52,10 @@ void	find_markup_head(t_stack *a)
 	{
 		tmp_keep_a = nodes_to_keep_a(a, tmp->numb, false);
 		if (tmp_keep_a > num_keep_a)
+		{
 			a->markup_head = tmp->numb;
+			num_keep_a = tmp_keep_a;
+		}
 		tmp = tmp->next;
 	}
 }
@@ -61,8 +63,10 @@ void	find_markup_head(t_stack *a)
 
 void	markup_head(t_stack *a)
 {
+	int	num_keep_a;
+
 	find_markup_head(a);
-	nodes_to_keep_a(a, a->markup_head, true);
+	num_keep_a = nodes_to_keep_a(a, a->markup_head, true);
 }
 
 

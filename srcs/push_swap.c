@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 03:19:14 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 01:34:54 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	algorithm(t_stacks *stacks)
 	index_elements_in_stack_a(&stacks->a);
 	markup_head(&stacks->a);
 	push_to_stack_b(stacks);
+	// push_to_stack_a(stacks);
 
 }
 
