@@ -32,14 +32,17 @@ SRCS_STACK_FILES =		stack/unify_args.c \
 SRCS_STACK = $(addprefix $(SRCS_DIR)/,$(SRCS_STACK_FILES))
 OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
 
-SRCS_PUSH_SWAP_FILES =	push_swap.c
-
-SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
-OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                PUSH SWAP                                    #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+SRCS_PUSH_SWAP_FILES =	push_swap.c \
+						index_elements.c \
+						markup_head.c \
+						utils.c
+
+SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
+OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
 
 all: $(NAME)
 

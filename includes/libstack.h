@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 01:25:33 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/21 03:05:58 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 {
 	t_node		*head;
 	size_t		size;
+	int			markup_head_value;
 }				t_stack;
 
 typedef struct s_stacks
@@ -51,5 +52,8 @@ bool	is_sorted(t_stacks *stacks);
 void	clear_stacks(t_stacks *stacks);
 void	exit_program(t_stacks *stacks);
 void	print_stacks(t_stacks stacks);
+t_node	*ft_nodenew(int numb);
+void	ft_nodeadd_back(t_node **lst, t_node *new);
+void	ft_nodeadd_front(t_node **lst, t_node *new);
 
 #endif
