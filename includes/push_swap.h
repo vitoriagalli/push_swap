@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 15:15:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 16:29:55 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_actions
 	t_info		a;
 	t_info		b;
 	int			total;
+	char		op_same[4];
+	int			n_op_same;
 }				t_actions;
 
 
