@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 01:31:26 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:15:26 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void		push_to_stack_a(t_stacks *stacks);
 */
 
 void	call_operation(char *op, t_stacks *stacks);
-
+int		max_value(t_node *tmp);
+int		min_value(t_node *tmp);
 void	exit_push_swap(t_stacks *stacks);
 
 

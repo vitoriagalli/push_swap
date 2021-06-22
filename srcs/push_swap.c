@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 01:42:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:19:54 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,37 @@ void	push_to_stack_b(t_stacks *stacks)
 	}
 }
 
+void	align_stack_a(t_stacks *stacks)
+{
+	int		min;
+	int		i;
+	t_node	*tmp;
+	char	*op;
+
+	i = 1;
+	tmp = stacks->a.head;
+	min = min_value(tmp);
+	while (tmp->numb != min)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	if (i < (stacks->a.size/2))
+		op = "ra";
+	else
+		op = "rra";
+
+	while (stacks->a.head->numb != min)
+		call_operation(op, stacks);
+}
+
 static void	algorithm(t_stacks *stacks)
 {
 	index_elements_in_stack_a(&stacks->a);
 	markup_head(&stacks->a);
 	push_to_stack_b(stacks);
 	push_to_stack_a(stacks);
-
+	align_stack_a(stacks);
 }
 
 int	main(int argc, char **argv)
