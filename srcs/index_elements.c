@@ -6,32 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 15:19:07 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 19:01:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:57:48 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_int_tab(int *tab, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < (size - 1))
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-				ft_swap(&tab[i], &tab[j]);
-			j++;
-		}
-		i++;
-	}
-}
-
-int	*create_table_with_sorting_values(t_stack *a)
+static int	*create_table_with_sorting_values(t_stack *a)
 {
 	t_node	*tmp;
 	int		*tab;
@@ -48,11 +29,11 @@ int	*create_table_with_sorting_values(t_stack *a)
 		tmp = tmp->next;
 		i++;
 	}
-	ft_sort_int_tab(tab, a->size);
+	sort_int_tab(tab, a->size);
 	return (tab);
 }
 
-void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
+static void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
 {
 	t_node	*tmp;
 	int		i;

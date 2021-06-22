@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:36:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:57:18 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_actions
 	int			n_op_same;
 }				t_actions;
 
+/*
+** sorting algorithms
+*/
+
 void	sort_list_two(t_stacks *stacks);
 void	sort_list_three(t_stacks *stacks);
 void	sort_list_five(t_stacks *stacks);
@@ -46,7 +50,6 @@ void	sort_list_five(t_stacks *stacks);
 */
 
 void	index_elements_in_stack_a(t_stacks *stacks);
-void	find_markup_head(t_stack *a);
 void	markup_head(t_stack *a);
 void	find_smallest_action_to_push_to_a(t_stacks *stacks, t_actions *def);
 void	attribute_operations(t_actions *def);
@@ -62,5 +65,6 @@ void	call_operation(char *op, t_stacks *stacks);
 int		get_max_value(t_node *tmp);
 int		get_min_value(t_node *tmp);
 int		min_value(int n1, int n2);
+void	sort_int_tab(int *tab, int size);
 
 #endif

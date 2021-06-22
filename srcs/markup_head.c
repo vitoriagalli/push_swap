@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 19:08:19 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:53:59 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
+static int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 {
 	t_node	*tmp;
 	int		index;
@@ -37,7 +37,7 @@ int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 	return (num_keep_a);
 }
 
-void	find_markup_head(t_stack *a)
+static void	find_markup_head(t_stack *a)
 {
 	t_node	*tmp;
 	int		num_keep_a;
