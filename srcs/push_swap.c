@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 15:19:54 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:03:42 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,21 @@ void	push_to_stack_b(t_stacks *stacks)
 	}
 }
 
-void	align_stack_a(t_stacks *stacks)
+void	push_to_stack_a(t_stacks *stacks)
 {
-	int		min;
-	int		i;
-	t_node	*tmp;
-	char	*op;
+	t_actions	*def;
+	int i = 0;
 
-	i = 1;
-	tmp = stacks->a.head;
-	min = min_value(tmp);
-	while (tmp->numb != min)
+	def = NULL;
+	def = ft_calloc(1, sizeof(t_actions));
+	while (stacks->b.head != NULL)
 	{
-		tmp = tmp->next;
-		i++;
+		find_smallest_action_to_push_to_a(stacks, def);
+		attribute_operations(def);
+		operate_actions(stacks, def);
+		ft_bzero(def, sizeof(t_actions));
 	}
-	if (i < (stacks->a.size/2))
-		op = "ra";
-	else
-		op = "rra";
-
-	while (stacks->a.head->numb != min)
-		call_operation(op, stacks);
+	free(def);
 }
 
 static void	algorithm(t_stacks *stacks)

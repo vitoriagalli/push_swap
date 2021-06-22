@@ -40,6 +40,8 @@ SRCS_PUSH_SWAP_FILES =	push_swap.c \
 						index_elements.c \
 						markup_head.c \
 						smallest_action.c \
+						align_stack_a.c \
+						atribute_and_operate.c \
 						utils.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))

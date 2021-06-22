@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:28:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 16:32:52 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:17:03 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_node	*ft_nodelast(t_node *lst)
 	return (last);
 }
 
-void	calculate_n_op(t_info *info)
+void	calculate_n_op_stack(t_info *info)
 {
 	if (info->ind < (info->size / 2))
 	{
@@ -36,10 +36,18 @@ void	calculate_n_op(t_info *info)
 		info->top = false;
 		info->n_op = info->size - info->ind;
 	}
-
 }
 
-void	calculate_actions_in_stack_a(t_actions *tmp, t_actions *def,
+void	get_total_op(t_actions *tmp, t_actions *def)
+{
+	tmp->total = tmp->a.n_op + tmp->b.n_op;
+	if (!(tmp->a.top ^ tmp->b.top))
+		tmp->total -= min_value(tmp->a.n_op, tmp->b.n_op);
+	if (tmp->total < def->total)
+		ft_memmove(def, tmp, sizeof(t_actions));
+}
+
+void	get_actions_in_stack_a(t_actions *tmp, t_actions *def,
 	t_stacks *stacks, int value)
 {
 	t_node		*head;
@@ -48,7 +56,7 @@ void	calculate_actions_in_stack_a(t_actions *tmp, t_actions *def,
 	tmp->a.ind = 0;
 	head = stacks->a.head;
 	head->previous = ft_nodelast(head);
-	max = max_value(head);
+	max = get_max_value(head);
 	while (head)
 	{
 		if ((head->numb > value && ((t_node *)(head->previous))->numb < value)
@@ -58,10 +66,8 @@ void	calculate_actions_in_stack_a(t_actions *tmp, t_actions *def,
 		head = head->next;
 		(tmp->a.ind)++;
 	}
-	calculate_n_op(&tmp->a);
-	tmp->total = tmp->a.n_op + tmp->b.n_op;
-	if (tmp->total < def->total)
-		ft_memmove(def, tmp, sizeof(t_actions));
+	calculate_n_op_stack(&tmp->a);
+	get_total_op(tmp, def);
 }
 
 void	find_smallest_action_to_push_to_a(t_stacks *stacks, t_actions *def)
@@ -76,82 +82,9 @@ void	find_smallest_action_to_push_to_a(t_stacks *stacks, t_actions *def)
 	tmp_b = stacks->b.head;
 	while (tmp_b)
 	{
-		calculate_n_op(&tmp.b);
-		calculate_actions_in_stack_a(&tmp, def, stacks, tmp_b->numb);
+		calculate_n_op_stack(&tmp.b);
+		get_actions_in_stack_a(&tmp, def, stacks, tmp_b->numb);
 		tmp_b = tmp_b->next;
 		tmp.b.ind++;
 	}
 }
-
-void	attribute_operations(t_actions *def)
-{
-	if (def->a.top == true)
-		ft_memmove((char *)&def->a.op, "ra", 4);
-	else
-		ft_memmove((char *)&def->a.op, "rra", 4);
-	if (def->b.top == true)
-		ft_memmove((char *)&def->b.op, "rb", 4);
-	else
-		ft_memmove((char *)&def->b.op, "rrb", 4);
-
-
-	if (def->a.top == true && def->b.top == true)
-	{
-		def->n_op_same = def->a.n_op > def->b.n_op? def->b.n_op: def->a.n_op;
-		def->b.n_op -= def->n_op_same;
-		def->a.n_op -= def->n_op_same;
-
-		ft_memmove((char *)&def->op_same, "rr", 4);
-
-
-	}
-	else if (def->a.top == false && def->b.top == false)
-	{
-		def->n_op_same = def->a.n_op > def->b.n_op? def->b.n_op: def->a.n_op;
-		def->b.n_op -= def->n_op_same;
-		def->a.n_op -= def->n_op_same;
-
-		ft_memmove((char *)&def->op_same, "rrr", 4);
-	}
-}
-
-void	operate_actions(t_stacks *stacks, t_actions *def)
-{
-	while (def->n_op_same > 0)
-	{
-		call_operation(def->op_same, stacks);
-		def->n_op_same--;
-	}
-
-	while (def->a.n_op > 0)
-	{
-		call_operation(def->a.op, stacks);
-		def->a.n_op--;
-	}
-	while (def->b.n_op > 0)
-	{
-		call_operation(def->b.op, stacks);
-		def->b.n_op--;
-	}
-	call_operation("pa", stacks);
-}
-
-void	push_to_stack_a(t_stacks *stacks)
-{
-	t_actions	*def;
-	int i = 0;
-
-	def = NULL;
-	def = ft_calloc(1, sizeof(t_actions));
-	while (stacks->b.head != NULL)
-	{
-		// ft_printf("-- %i --\n", i); i++;
-		find_smallest_action_to_push_to_a(stacks, def);
-		attribute_operations(def);
-		operate_actions(stacks, def);
-		ft_bzero(def, sizeof(t_actions));
-	}
-	free(def);
-}
-
-
