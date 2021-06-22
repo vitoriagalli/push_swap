@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:28:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:17:03 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:53:10 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	get_actions_in_stack_a(t_actions *tmp, t_actions *def,
 	{
 		if ((head->numb > value && ((t_node *)(head->previous))->numb < value)
 			|| (head->numb > value && ((t_node *)(head->previous))->numb == max)
-			|| (head->numb < value && ((t_node *)(head->previous))->numb == max && value > max))
+			|| (head->numb < value
+			&& ((t_node *)(head->previous))->numb == max && value > max))
 			break ;
 		head = head->next;
 		(tmp->a.ind)++;

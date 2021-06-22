@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:37:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:07:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:59:31 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ void	align_stack_a(t_stacks *stacks)
 		tmp = tmp->next;
 		i++;
 	}
-	if (i < (stacks->a.size/2))
+	if (i < (stacks->a.size / 2))
 		op = "ra";
 	else
 		op = "rra";
-
 	while (stacks->a.head->numb != min)
 		call_operation(op, stacks);
 }

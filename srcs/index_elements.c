@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 15:19:07 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 03:38:13 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:59:52 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
 			i++;
 		tmp->index = i;
 		tmp = tmp->next;
-		// ft_printf("%i\n", i);
 	}
-
 }
 
 void	index_elements_in_stack_a(t_stack *a)

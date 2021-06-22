@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:03:42 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:52:48 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	push_to_stack_b(t_stacks *stacks)
 void	push_to_stack_a(t_stacks *stacks)
 {
 	t_actions	*def;
-	int i = 0;
 
 	def = NULL;
 	def = ft_calloc(1, sizeof(t_actions));
