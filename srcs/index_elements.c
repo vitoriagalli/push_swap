@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 15:19:07 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:59:52 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 19:01:21 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	*create_table_with_sorting_values(t_stack *a)
 	int		*tab;
 	size_t	i;
 
-	tab = malloc(a->size * sizeof(int));
+	tab = ft_calloc(1, a->size * sizeof(int));
 	if (!tab)
 		return (NULL);
 	i = 0;
@@ -68,11 +68,13 @@ void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
 	}
 }
 
-void	index_elements_in_stack_a(t_stack *a)
+void	index_elements_in_stack_a(t_stacks *stacks)
 {
 	int		*tab;
 
-	tab = create_table_with_sorting_values(a);
-	atribute_indexes_in_stack_struct(a, tab);
+	tab = create_table_with_sorting_values(&stacks->a);
+	if (!tab)
+		exit_push_swap(stacks);
+	atribute_indexes_in_stack_struct(&stacks->a, tab);
 	free(tab);
 }

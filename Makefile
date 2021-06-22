@@ -9,7 +9,7 @@ HEAD = -I./$(LIBFT_DIR) -I./$(INCLUDES_DIR)
 SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
-CFLAGS = #-Wall -Werror -Wextra #-w
+CFLAGS = -Wall -Werror -Wextra
 DFLAGS = -g -fsanitize=address
 LFLAGS = -L./libft -lft
 RM = /bin/rm -rf
@@ -37,6 +37,7 @@ OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
+						sort_small_list.c \
 						index_elements.c \
 						markup_head.c \
 						smallest_action.c \

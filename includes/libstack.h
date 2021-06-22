@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 04:00:37 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:32:36 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	print_stacks(t_stacks stacks);
 t_node	*ft_nodenew(int numb);
 void	ft_nodeadd_back(t_node **lst, t_node *new);
 void	ft_nodeadd_front(t_node **lst, t_node *new);
+t_node	*ft_nodelast(t_node *lst);
 
 #endif

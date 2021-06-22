@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:52:48 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:45:46 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	push_to_stack_a(t_stacks *stacks)
 
 	def = NULL;
 	def = ft_calloc(1, sizeof(t_actions));
+	if (!def)
+		exit_push_swap(stacks);
 	while (stacks->b.head != NULL)
 	{
 		find_smallest_action_to_push_to_a(stacks, def);
@@ -51,11 +53,20 @@ void	push_to_stack_a(t_stacks *stacks)
 
 static void	algorithm(t_stacks *stacks)
 {
-	index_elements_in_stack_a(&stacks->a);
-	markup_head(&stacks->a);
-	push_to_stack_b(stacks);
-	push_to_stack_a(stacks);
-	align_stack_a(stacks);
+	if (stacks->a.size == 2)
+		sort_list_two(stacks);
+	else if (stacks->a.size == 3)
+		sort_list_three(stacks);
+	else if (stacks->a.size <= 5)
+		sort_list_five(stacks);
+	else
+	{
+		index_elements_in_stack_a(stacks);
+		markup_head(&stacks->a);
+		push_to_stack_b(stacks);
+		push_to_stack_a(stacks);
+		align_stack_a(stacks);
+	}
 }
 
 int	main(int argc, char **argv)

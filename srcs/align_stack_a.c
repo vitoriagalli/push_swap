@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:37:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:59:31 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:26:54 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	align_stack_a(t_stacks *stacks)
 {
 	int		min;
-	int		i;
+	size_t	i;
 	t_node	*tmp;
 	char	*op;
 
-	i = 1;
+	i = 0;
 	tmp = stacks->a.head;
 	min = get_min_value(tmp);
 	while (tmp->numb != min)

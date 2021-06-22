@@ -6,11 +6,23 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:17:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 01:58:45 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:32:30 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
+
+t_node	*ft_nodelast(t_node *lst)
+{
+	t_node	*last;
+
+	if (!lst)
+		return (NULL);
+	last = lst;
+	while (last->next)
+		last = last->next;
+	return (last);
+}
 
 t_node	*ft_nodenew(int numb)
 {

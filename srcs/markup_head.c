@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:59:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 19:08:19 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 	int		num_keep_a;
 
 	num_keep_a = 0;
-	tmp = a ->head;
+	tmp = a->head;
 	while (tmp->numb != markup_head)
 		tmp = tmp->next;
 	index = tmp->index;

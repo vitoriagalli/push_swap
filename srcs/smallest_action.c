@@ -6,23 +6,11 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:28:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 17:53:10 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 23:32:43 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_node	*ft_nodelast(t_node *lst)
-{
-	t_node	*last;
-
-	if (!lst)
-		return (NULL);
-	last = lst;
-	while (last->next)
-		last = last->next;
-	return (last);
-}
 
 void	calculate_n_op_stack(t_info *info)
 {
