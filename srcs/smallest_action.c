@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:28:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 03:04:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/22 14:09:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,36 @@ void	calculate_n_op(t_info *info)
 
 }
 
+int		max_value(t_node *tmp)
+{
+	int	max;
+
+	max = MIN_INT;
+	while (tmp)
+	{
+		if (tmp->numb > max)
+			max = tmp->numb;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
 void	calculate_actions_in_stack_a(t_actions *tmp, t_actions *def,
 	t_stacks *stacks, int value)
 {
 	t_node		*head;
+	int			max;
 
 	tmp->a.ind = 0;
 	head = stacks->a.head;
 	head->previous = ft_nodelast(head);
+	max = max_value(head);
 	while (head)
 	{
 		// ft_printf("%d %d\n", head->numb, value);
 		if ((head->numb > value && ((t_node *)(head->previous))->numb < value)
-			|| (head->numb > value && ((t_node *)(head->previous))->numb > head->numb)
-			|| (head->numb < value && ((t_node *)(head->previous))->numb < head->numb))
+			|| (head->numb > value && ((t_node *)(head->previous))->numb == max)
+			|| (head->numb < value && head->numb == max))
 			break ;
 		head = head->next;
 		(tmp->a.ind)++;
