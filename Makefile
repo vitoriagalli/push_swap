@@ -64,7 +64,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 # #                                CHECKER                                      #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-SRCS_CHECKER_FILES = checker.c
+SRCS_CHECKER_FILES = checker_bonus.c
 
 SRCS_CHECKER = $(addprefix $(SRCS_DIR)/,$(SRCS_CHECKER_FILES))
 OBJS_CHECKER = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_CHECKER))

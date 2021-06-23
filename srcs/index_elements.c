@@ -6,12 +6,15 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 15:19:07 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:57:48 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 00:25:25 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** put all the stack elements in an array in ascending order
+*/
 static int	*create_table_with_sorting_values(t_stack *a)
 {
 	t_node	*tmp;
@@ -33,6 +36,9 @@ static int	*create_table_with_sorting_values(t_stack *a)
 	return (tab);
 }
 
+/*
+** for each node in the stack, indicate the according index
+*/
 static void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
 {
 	t_node	*tmp;
@@ -49,6 +55,9 @@ static void	atribute_indexes_in_stack_struct(t_stack *a, int *tab)
 	}
 }
 
+/*
+** make an index mark according to the values in ascending order
+*/
 void	index_elements_in_stack_a(t_stacks *stacks)
 {
 	int		*tab;

@@ -50,6 +50,12 @@ run()
 	done
 }
 
+if [ ! -f "checker" ]; then
+	echo -e "bin ./checker not found"
+	echo -e "please run:\033[1m make bonus\033[0m"
+	exit
+fi
+
 run "3" "3"
 run "4" "12"
 run "5" "12"

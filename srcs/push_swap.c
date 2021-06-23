@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:45:46 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 01:44:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	exit_push_swap(t_stacks *stacks)
 	exit(EXIT_FAILURE);
 }
 
+/*
+** push to b the marked nodes
+*/
 void	push_to_stack_b(t_stacks *stacks)
 {
 	int	init_size;
@@ -33,6 +36,10 @@ void	push_to_stack_b(t_stacks *stacks)
 	}
 }
 
+/*
+** for each node still present in the stack B
+** calculates the actions that consumes the least number of operations
+*/
 void	push_to_stack_a(t_stacks *stacks)
 {
 	t_actions	*def;
@@ -51,6 +58,9 @@ void	push_to_stack_a(t_stacks *stacks)
 	free(def);
 }
 
+/*
+** algorithm decision making according to list size
+*/
 static void	algorithm(t_stacks *stacks)
 {
 	if (stacks->a.size == 2)

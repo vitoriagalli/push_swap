@@ -6,12 +6,18 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:53:59 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 01:43:38 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+** starting from the markup head, a node is going to be kept in the stack A
+** if its index is bigger than the previous one.
+** the nodes that do not satisfy this condition are marked as
+** false and are pushed to the stack B
+*/
 static int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 {
 	t_node	*tmp;
@@ -37,6 +43,10 @@ static int	nodes_to_keep_a(t_stack *a, int markup_head, bool def)
 	return (num_keep_a);
 }
 
+/*
+** iterate over all the elements in stack A
+** for each node as markup head, calculate the number of nodes kept in stack A
+*/
 static void	find_markup_head(t_stack *a)
 {
 	t_node	*tmp;
@@ -58,6 +68,11 @@ static void	find_markup_head(t_stack *a)
 	}
 }
 
+/*
+** find the markup head
+** the element that will keep the greatest amount of nodes in the stack A
+** than tag the nodes according to the best performance markup head
+*/
 void	markup_head(t_stack *a)
 {
 	int	num_keep_a;
