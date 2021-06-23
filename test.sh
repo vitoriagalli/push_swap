@@ -50,6 +50,12 @@ run()
 	done
 }
 
+if [ ! -f "push_swap" ]; then
+	echo -e "bin ./push_swap not found"
+	echo -e "please run:\033[1m make\033[0m"
+	exit
+fi
+
 if [ ! -f "checker" ]; then
 	echo -e "bin ./checker not found"
 	echo -e "please run:\033[1m make bonus\033[0m"
