@@ -6,19 +6,19 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 01:53:45 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/24 00:25:04 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-static void	read_and_execute_commands(t_stacks *stacks)
+static void	read_and_execute_commands(t_stacks *stacks, bool verbose)
 {
 	char	*cmd;
 	int		ret;
 
-	ft_printf("size %i\n", stacks->a.size);
-	print_stacks(*stacks);
+	if (verbose)
+		print_stacks(*stacks);
 	while (true)
 	{
 		ret = get_next_line(STDIN_FILENO, &cmd);
@@ -26,7 +26,8 @@ static void	read_and_execute_commands(t_stacks *stacks)
 			break ;
 		operations(cmd, stacks);
 		free(cmd);
-		print_stacks(*stacks);
+		if (verbose)
+			print_stacks(*stacks);
 	}
 	free(cmd);
 }
@@ -46,12 +47,19 @@ int	main(int argc, char **argv)
 {
 	t_stacks	stacks;
 	char		**argv_split;
+	bool		verbose;
 
-	argv_split = unify_args(argc, argv);
+	if (argc == 1)
+		return (EXIT_FAILURE);
+	verbose = !(ft_strcmp(argv[1], "-v"));
+	if (verbose)
+		argv_split = unify_args(--argc, &argv[1]);
+	else
+		argv_split = unify_args(argc, argv);
 	validate_args(argc, argv_split);
 	build_stacks(argv_split, &stacks);
 	ft_array_clear((void **)argv_split);
-	read_and_execute_commands(&stacks);
+	read_and_execute_commands(&stacks, verbose);
 	check_if_is_sorted(&stacks);
 	clear_stacks(&stacks);
 	return (EXIT_SUCCESS);
