@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 01:44:09 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 02:27:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	push_to_stack_a(t_stacks *stacks)
 */
 static void	algorithm(t_stacks *stacks)
 {
+	if (is_sorted(stacks))
+		return ;
 	if (stacks->a.size == 2)
 		sort_list_two(stacks);
 	else if (stacks->a.size == 3)
