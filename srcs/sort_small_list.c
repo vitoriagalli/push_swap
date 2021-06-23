@@ -6,14 +6,14 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:01:43 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 01:44:23 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 14:10:13 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** atribute the node values in a array of ints
+** atribute node values in a array of ints
 */
 void	atribute_values(t_node *node, int *tab, int size)
 {
@@ -43,7 +43,7 @@ void	sort_list_two(t_stacks *stacks)
 }
 
 /*
-** sort three elements is stack A (without the help of stack B)
+** sort three elements is stack A (without help of stack B)
 */
 void	sort_list_three(t_stacks *stacks)
 {
@@ -71,7 +71,7 @@ void	sort_list_three(t_stacks *stacks)
 }
 
 /*
-** iterate the stack A and check for min and max values to push to stack B
+** iterate stack A and check for min and max values to push to stack B
 ** check the head of the stack and the last node as well
 */
 void	push_min_and_max_value_to_stack_b(t_stacks *stacks, int min, int max)
@@ -101,10 +101,10 @@ void	push_min_and_max_value_to_stack_b(t_stacks *stacks, int min, int max)
 }
 
 /*
-** push the min and max value in stack A to the stack B
-** (if the list size = 4, push only the min)
-** sort the stack A with the remaining nodes
-** push back the nodes from B
+** push min and max value in stack A to the stack B
+** (if list size = 4, push only min value)
+** sort stack A with remaining nodes
+** push back all nodes from B
 */
 void	sort_list_five(t_stacks *stacks)
 {

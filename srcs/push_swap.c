@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:47:50 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 02:27:09 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/23 14:09:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	push_to_stack_b(t_stacks *stacks)
 }
 
 /*
-** for each node still present in the stack B
+** for each node still present in stack B
 ** calculates the actions that consumes the least number of operations
 */
 void	push_to_stack_a(t_stacks *stacks)
