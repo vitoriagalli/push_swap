@@ -6,6 +6,7 @@
 
 ## Introduction
 
+This project comprises an interesting case study regarding sorting algorithms and its performances, being part of the core curriculum of all 42 schools worldwide. The task is simple: given a sequence of random numbers disposed in a stack data structure (stack A), sort them with the help of an empty auxiliary stack (stack B) and a set of specific stack operations. The operations allowed are described as follows, as written in our task:
 
 #### Game rules
 
@@ -13,19 +14,18 @@ The game is composed of 2 stacks named A and B.
 The goal is to sort in ascending order the stack A with the minimum possible number of operations.
 To do this you have the following operations at your disposal
 
-operation | action |
----|------|
-`sa` | swap a - swap the first 2 elements at the top of stack_a |
-`sb` | swap b - swap the first 2 elements at the top of stack_b |
-`ss` | sa and sb at the same time |
-`pa` | push a - take the first element at the top of b and put it at the top of a |
-`pb` | push b - take the first element at the top of a and put it at the top of b |
-`ra` | rotate a - shift up all elements of stack_a by 1. The first element becomes the last one |
-`rb` | rotate b - shift up all elements of stack_b by 1. The first element becomes the last one |
-`rr` | ra and rb at the same time |
-`rra` |  reverse rotate a - shift down all elements of stack_a by 1. The last element becomes the first one |
-`rrb` |  reverse rotate b - shift down all elements of stack_b by 1. The last element becomes the first one |
-`rrr` | rra and rrb at the same time |
+
+`sa` : swap a - swap the first 2 elements at the top of stack_a
+`sb` : swap b - swap the first 2 elements at the top of stack_b
+`ss` : `sa` and `sb` at the same time
+`pa` : push a - take the first element at the top of b and put it at the top of a
+`pb` : push b - take the first element at the top of a and put it at the top of b
+`ra` : rotate a - shift up all elements of stack_a by 1. The first element becomes the last one
+`rb` : rotate b - shift up all elements of stack_b by 1. The first element becomes the last one
+`rr` : `ra` and `rb` at the same time
+`rra` : reverse rotate a - shift down all elements of stack_a by 1. The last element becomes the first one
+`rrb` : reverse rotate b - shift down all elements of stack_b by 1. The last element becomes the first one
+`rrr` : `rra` and `rrb` at the same time
 
 
 ## Usage
@@ -51,15 +51,58 @@ will be followed by ’\n’. When EOF is triggered, the program will execute th
 
 ```bash
 $ make
-$ ./push_swap 9 -1 4 -7 11
-...
+$ ./push_swap 7 -1 4 9 6
+ra
+pb
+ra
+pb
+ra
+ra
+pa
+ra
+pa
+```
+
+```bash
 $ make bonus
-$ ./checker 9 -1 4 -7 11
-$ ./checker -v 9 -1 4 -7 11
+$ ./checker 5 3 1
+sa
+rra
+OK
+...
+$ ./checker -v 5 3 1
+
+size:   3       0
+stack:  5
+        3
+        1
+        _       _
+        a       b
+> sa
+
+size:   3       0
+stack:  3
+        5
+        1
+        _       _
+        a       b
+> rra
+
+size:   3       0
+stack:  1
+        3
+        5
+        _       _
+        a       b
+> OK
 ...
 $ make test
 ```
 
+#### Algorithm
+
+The implemented algorithm was inspired by the following [algorithm](https://github.com/VBrazhnik/Push_swap/wiki/Algorithm).
+Is a simpler and less performative version since the markup mode is made only by index, in other variance. The step to check if swap (sa) is necessary was not executed as well.
 
 
 
@@ -72,7 +115,7 @@ $ make test
 
 https://github.com/VBrazhnik/Push_swap/wiki/Algorithm
 
-ARG=$(ruby -e "puts (1..500).to_a.shuffle.join(' ')"); ./push_swap $ARG | wc -l
+ARG=$(ruby -e "puts (1..500).to_a.shuffle.join(' ')"); ./push_swap $ARG : wc -l
 
 make fclean; mkdir -p .objs/stack ; make
 

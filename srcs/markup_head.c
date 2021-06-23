@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:03:10 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 01:43:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/24 01:11:42 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	find_markup_head(t_stack *a)
 /*
 ** find the markup head
 ** the element that will keep the greatest amount of nodes in the stack A
-** than tag the nodes according to the best performance markup head
+** than tag the nodes according to the best perform markup head
 */
 void	markup_head(t_stack *a)
 {
