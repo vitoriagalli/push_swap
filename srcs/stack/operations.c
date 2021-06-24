@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/21 01:06:27 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/24 03:12:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	operate_push(char *op, t_stacks *stacks)
 	else if (!ft_strcmp(op, "pb"))
 		push(&stacks->b, &stacks->a);
 	else
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 }
 
 static void	operate_rotate(char *op, t_stacks *stacks)
@@ -58,7 +58,7 @@ static void	operate_rotate(char *op, t_stacks *stacks)
 		reverse_rotate(&stacks->b);
 	}
 	else
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 }
 
 void	operations(char *op, t_stacks *stacks)
@@ -72,5 +72,5 @@ void	operations(char *op, t_stacks *stacks)
 	else if (op[0] == 'r')
 		operate_rotate(op, stacks);
 	else
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 }
