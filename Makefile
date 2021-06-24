@@ -10,7 +10,7 @@ SRCS_DIR = srcs
 OBJS_DIR = .objs
 CC = clang
 CFLAGS = -Wall -Werror -Wextra
-DFLAGS = -g -fsanitize=address
+DFLAGS = -g #-fsanitize=address
 LFLAGS = -L./libft -lft
 RM = /bin/rm -rf
 
@@ -37,13 +37,13 @@ OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
-						sort_small_list.c \
-						index_elements.c \
-						markup_head.c \
-						smallest_action.c \
-						align_stack_a.c \
-						atribute_and_operate.c \
-						utils.c
+						algorithm/sort_small_list.c \
+						algorithm/index_elements.c \
+						algorithm/markup_head.c \
+						algorithm/smallest_action.c \
+						algorithm/align_stack_a.c \
+						algorithm/atribute_and_operate.c \
+						algorithm/utils.c
 
 SRCS_PUSH_SWAP = $(addprefix $(SRCS_DIR)/,$(SRCS_PUSH_SWAP_FILES))
 OBJS_PUSH_SWAP = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_PUSH_SWAP))
@@ -55,6 +55,7 @@ $(NAME) : $(LIBFT) $(OBJS_STACK) $(OBJS_PUSH_SWAP)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)/stack
+	@mkdir -p $(OBJS_DIR)/algorithm
 	@$(CC) $(DFLAGS) $(CFLAGS) $(HEAD) -c $< -o $@
 	@echo -n "$< "
 	@tput setaf 28; echo "✔"
