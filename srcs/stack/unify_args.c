@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 03:57:17 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/24 03:11:57 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/24 22:50:36 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	validate_args(int argc, char **argv)
 	if (!validate_params(argv))
 	{
 		ft_array_clear((void **)argv);
-		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 }
