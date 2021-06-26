@@ -33,7 +33,6 @@ check()
 {
 	SIZE=$1
 	get_max_ops $SIZE
-
 	LIST=$(ruby -e "puts (1..$SIZE).to_a.shuffle.join(' ')")
 	OP_SOLUTION=$(./push_swap $LIST)
 	NUM_OP=$(./push_swap $LIST | wc -l)
