@@ -9,10 +9,30 @@ call_header()
 	echo ""
 }
 
+get_max_ops()
+{
+	L_SIZE=$1
+	if ((0<=L_SIZE && L_SIZE<=3))
+	then
+		MAX_OP=3
+	elif ((4<=L_SIZE && L_SIZE<=5))
+	then
+		MAX_OP=12
+	elif ((5<=L_SIZE && L_SIZE<=100))
+	then
+		MAX_OP=700
+	elif ((101<=L_SIZE && L_SIZE<=500))
+	then
+		MAX_OP=5500
+	else
+		MAX_OP=10000
+	fi
+}
+
 check()
 {
-	SIZE="$1"
-	MAX_OP="$2"
+	SIZE=$1
+	get_max_ops $SIZE
 
 	LIST=$(ruby -e "puts (1..$SIZE).to_a.shuffle.join(' ')")
 	OP_SOLUTION=$(./push_swap $LIST)
@@ -29,9 +49,9 @@ check()
 		echo -n -e "\tmax: " "$MAX_OP"
 		if [ "$NUM_OP" -le "$MAX_OP" ]
 		then
-			echo -e "   \033[0;32m✔\033[0m"
+			echo -e "   \033[0;32mOK ✔\033[0m"
 		else
-			echo -e "   \033[0;31m✘\033[0m"
+			echo -e "   \033[0;31mK0 ✘\033[0m"
 		fi
 	}
 	fi
@@ -39,11 +59,10 @@ check()
 
 run()
 {
-	SIZE="$1"
-	MAX_OP="$2"
-	call_header "$SIZE"
-	for i in range {1..10}; do
-		check "$SIZE" "$MAX_OP"
+	SIZE=$1
+	call_header $SIZE
+	for i in range {1..15}; do
+		check $SIZE
 	done
 }
 
@@ -59,8 +78,11 @@ if [ ! -f "checker" ]; then
 	exit
 fi
 
-run "3" "3"
-run "4" "12"
-run "5" "12"
-run "100" "700"
-run "500" "5500"
+if [ "$1" != "" ]; then
+	run $1
+else
+	run 3
+	run 5
+	run 100
+	run 500
+fi
