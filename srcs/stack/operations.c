@@ -6,71 +6,35 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/24 22:50:29 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/27 04:00:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-static void	operate_swap(char *op, t_stacks *stacks)
-{
-	if (!ft_strcmp(op, "sa"))
-		swap(&stacks->a);
-	else if (!ft_strcmp(op, "sb"))
-		swap(&stacks->b);
-	else if (!ft_strcmp(op, "ss"))
-	{
-		swap(&stacks->a);
-		swap(&stacks->b);
-	}
-	else
-		ft_putendl_fd("Error", STDERR_FILENO);
-}
-
-static void	operate_push(char *op, t_stacks *stacks)
-{
-	if (!ft_strcmp(op, "pa"))
-		push(&stacks->a, &stacks->b);
-	else if (!ft_strcmp(op, "pb"))
-		push(&stacks->b, &stacks->a);
-	else
-		ft_putendl_fd("Error", STDERR_FILENO);
-}
-
-static void	operate_rotate(char *op, t_stacks *stacks)
-{
-	if (!ft_strcmp(op, "ra"))
-		rotate(&stacks->a);
-	else if (!ft_strcmp(op, "rb"))
-		rotate(&stacks->b);
-	else if (!ft_strcmp(op, "rr"))
-	{
-		rotate(&stacks->a);
-		rotate(&stacks->b);
-	}
-	else if (!ft_strcmp(op, "rra"))
-		reverse_rotate(&stacks->a);
-	else if (!ft_strcmp(op, "rrb"))
-		reverse_rotate(&stacks->b);
-	else if (!ft_strcmp(op, "rrr"))
-	{
-		reverse_rotate(&stacks->a);
-		reverse_rotate(&stacks->b);
-	}
-	else
-		ft_putendl_fd("Error", STDERR_FILENO);
-}
-
 void	operations(char *op, t_stacks *stacks)
 {
-	if (!op || !*op)
-		return ;
-	if (op[0] == 's')
-		operate_swap(op, stacks);
-	else if (op[0] == 'p')
-		operate_push(op, stacks);
-	else if (op[0] == 'r')
-		operate_rotate(op, stacks);
-	else
+	bool	valid;
+
+	valid = false;
+	if (!ft_strcmp(op, "pa"))
+		valid = push(&stacks->a, &stacks->b);
+	if (!ft_strcmp(op, "pb"))
+		valid = push(&stacks->b, &stacks->a);
+	if (!ft_strcmp(op, "sa") || !ft_strcmp(op, "ss"))
+		valid = swap(&stacks->a);
+	if (!ft_strcmp(op, "sb") || !ft_strcmp(op, "ss"))
+		valid = swap(&stacks->b);
+	if (!ft_strcmp(op, "ra") || !ft_strcmp(op, "rr"))
+		valid = rotate(&stacks->a);
+	if (!ft_strcmp(op, "rb") || !ft_strcmp(op, "rr"))
+		valid = rotate(&stacks->b);
+	if (!ft_strcmp(op, "rra") || !ft_strcmp(op, "rrr"))
+		valid = reverse_rotate(&stacks->a);
+	if (!ft_strcmp(op, "rrb") || !ft_strcmp(op, "rrr"))
+		valid = reverse_rotate(&stacks->b);
+	if (!ft_strcmp(op, ""))
+		valid = true;
+	if (!valid)
 		ft_putendl_fd("Error", STDERR_FILENO);
 }

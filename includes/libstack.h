@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:51:47 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/06/27 03:20:13 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ typedef struct s_stacks
 {
 	t_stack		a;
 	t_stack		b;
-	int			n_op;
 }				t_stacks;
 
-void	swap(t_stack *stack);
-void	push(t_stack *to, t_stack *from);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
+bool	swap(t_stack *stack);
+bool	push(t_stack *to, t_stack *from);
+bool	rotate(t_stack *stack);
+bool	reverse_rotate(t_stack *stack);
 char	**unify_args(int argc, char **argv);
 void	validate_args(int argc, char **argv);
 bool	validate_params(char **argv);
