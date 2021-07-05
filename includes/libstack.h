@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/27 03:20:13 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 00:02:06 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_node
 	int			index;
 	bool		keep_a;
 	void		*next;
-	void		*previous;
 }				t_node;
 
 typedef struct s_stack

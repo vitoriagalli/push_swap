@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:17:31 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:32:30 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 00:28:07 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_node	*ft_nodenew(int numb)
 		return (NULL);
 	elem->numb = numb;
 	elem->next = NULL;
-	elem->previous = NULL;
 	return (elem);
 }
 
@@ -51,7 +50,6 @@ void	ft_nodeadd_back(t_node **lst, t_node *new)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		new->previous = tmp;
 	}
 }
 
@@ -60,10 +58,7 @@ void	ft_nodeadd_front(t_node **lst, t_node *new)
 	if (!new)
 		return ;
 	if (*lst)
-	{
 		new->next = *lst;
-		(*lst)->previous = new;
-	}
 	*lst = new;
 }
 

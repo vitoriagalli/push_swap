@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 14:28:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/23 14:11:40 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 00:27:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,20 @@ void	get_actions_in_stack_a(t_actions *tmp, t_actions *def,
 	t_stacks *stacks, int value)
 {
 	t_node		*head;
+	t_node		*previous;
 	int			max;
 
 	tmp->a.ind = 0;
 	head = stacks->a.head;
-	head->previous = ft_nodelast(head);
+	previous = ft_nodelast(head);
 	max = get_max_value(head);
 	while (head)
 	{
-		if ((head->numb > value && ((t_node *)(head->previous))->numb < value)
-			|| (head->numb > value && ((t_node *)(head->previous))->numb == max)
-			|| (head->numb < value
-			&& ((t_node *)(head->previous))->numb == max && value > max))
+		if ((head->numb > value && previous->numb < value)
+			|| (head->numb > value && previous->numb == max)
+			|| (head->numb < value && (previous->numb == max && value > max)))
 			break ;
+		previous = head;
 		head = head->next;
 		(tmp->a.ind)++;
 	}

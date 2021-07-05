@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:11:03 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/20 15:33:34 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/05 23:53:32 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 typedef struct s_list {
 	void			*content;
-	struct s_list	*previous;
 	struct s_list	*next;
 }					t_list;
 

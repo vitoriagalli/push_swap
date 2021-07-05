@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 14:02:28 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/20 15:33:38 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/05 23:53:51 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	elem->content = content;
 	elem->next = NULL;
-	elem->previous = NULL;
 	return (elem);
 }
