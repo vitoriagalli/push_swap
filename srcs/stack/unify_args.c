@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 03:57:17 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/24 22:50:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:15:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exit_program(t_stacks *stacks)
 {
+	ft_putendl_fd("Error", STDERR_FILENO);
 	clear_stacks(stacks);
 	exit(EXIT_FAILURE);
 }

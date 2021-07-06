@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/24 00:25:04 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:56:16 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 static void	read_and_execute_commands(t_stacks *stacks, bool verbose)
 {
-	char	*cmd;
+	char	*op;
 	int		ret;
+	bool	valid_op;
 
 	if (verbose)
 		print_stacks(*stacks);
 	while (true)
 	{
-		ret = get_next_line(STDIN_FILENO, &cmd);
+		ret = get_next_line(STDIN_FILENO, &op);
 		if (ret <= 0)
-			break ;
-		operations(cmd, stacks);
-		free(cmd);
+			exit_program(stacks);
+		valid_op = operations(op, stacks);
+		free(op);
+		if (!valid_op)
+			exit_program(stacks);
 		if (verbose)
 			print_stacks(*stacks);
 	}
-	free(cmd);
+	free(op);
 }
 
 static void	check_if_is_sorted(t_stacks *stacks)

@@ -6,13 +6,13 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 15:53:00 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/27 04:00:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:47:09 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libstack.h"
 
-void	operations(char *op, t_stacks *stacks)
+bool	operations(char *op, t_stacks *stacks)
 {
 	bool	valid;
 
@@ -33,8 +33,5 @@ void	operations(char *op, t_stacks *stacks)
 		valid = reverse_rotate(&stacks->a);
 	if (!ft_strcmp(op, "rrb") || !ft_strcmp(op, "rrr"))
 		valid = reverse_rotate(&stacks->b);
-	if (!ft_strcmp(op, ""))
-		valid = true;
-	if (!valid)
-		ft_putendl_fd("Error", STDERR_FILENO);
+	return (valid);
 }

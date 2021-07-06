@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:26:27 by vscabell          #+#    #+#             */
-/*   Updated: 2021/07/06 00:02:06 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:44:27 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**unify_args(int argc, char **argv);
 void	validate_args(int argc, char **argv);
 bool	validate_params(char **argv);
 void	build_stacks(char **argv, t_stacks *stacks);
-void	operations(char *op, t_stacks *stacks);
+bool	operations(char *op, t_stacks *stacks);
 bool	is_sorted(t_stacks *stacks);
 void	clear_stacks(t_stacks *stacks);
 void	exit_program(t_stacks *stacks);
