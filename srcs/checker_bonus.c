@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:17:41 by vscabell          #+#    #+#             */
-/*   Updated: 2021/07/06 14:56:16 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:35:51 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ static void	read_and_execute_commands(t_stacks *stacks, bool verbose)
 	while (true)
 	{
 		ret = get_next_line(STDIN_FILENO, &op);
-		if (ret <= 0)
+		if (ret < 0)
 			exit_program(stacks);
+		if (!ret)
+			break ;
 		valid_op = operations(op, stacks);
 		free(op);
 		if (!valid_op)
