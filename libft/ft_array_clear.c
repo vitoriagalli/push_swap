@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:54:08 by vscabell          #+#    #+#             */
-/*   Updated: 2021/04/04 00:30:45 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:55:43 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_array_clear(void **arr)
 	int		i;
 
 	len = 0;
-	if (!arr || !*arr)
+	if (!arr)
 		return ;
 	while (arr[len])
 		len++;
