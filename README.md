@@ -109,7 +109,7 @@ $ make norm
 
 The implemented algorithm was inspired by the following [wiki](https://github.com/VBrazhnik/Push_swap/wiki/Algorithm), which explain all the steps to sort the stack.
 
-However, I executed simpler and less performative version since the markup mode is made only by index. The step to check if swap (sa) is necessary was not executed as well.
+I executed simpler and less performative version, although faster since the markup mode is checked only by index. The step to find out if swap (sa) is necessary was not executed as well.
 
 With this [push_swap_visualizer](https://github.com/o-reo/push_swap_visualizer) you can follow the operations and the algorithm behavior.
 
