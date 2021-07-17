@@ -33,7 +33,7 @@ void	calculate_n_op_stack(t_info *info)
 /*
 ** add the number of operations needed in stack A and stack B
 ** if both nodes are in tha same half, optimize the operation
-** ra and rb cant be replaced by rr, per exemple
+** ra and rb can be replaced by rr, per exemple
 */
 void	get_total_op(t_actions *tmp, t_actions *def)
 {
