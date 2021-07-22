@@ -34,9 +34,8 @@ check()
 	SIZE=$1
 	get_max_ops $SIZE
 	LIST=$(ruby -e "puts (1..$SIZE).to_a.shuffle.join(' ')")
-	OP_SOLUTION=$(./push_swap $LIST)
 	NUM_OP=$(./push_swap $LIST | wc -l)
-	IS_SORTED=$(echo "$OP_SOLUTION" | ./checker $LIST | grep "OK")
+	IS_SORTED=$(./push_swap $LIST | ./checker $LIST | grep "OK")
 
 	if [ "$?" -ne "0" ]
 	then
