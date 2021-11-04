@@ -38,7 +38,6 @@ OBJS_STACK = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS_STACK))
 
 SRCS_PUSH_SWAP_FILES =	push_swap.c \
 						algorithm/sort_small_list.c \
-						algorithm/index_elements.c \
 						algorithm/markup_head.c \
 						algorithm/smallest_action.c \
 						algorithm/align_stack_a.c \
@@ -61,9 +60,9 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@tput setaf 28; echo "✔"
 	@tput sgr0
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# #                                CHECKER                                      #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #                                CHECKER                                    #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 SRCS_CHECKER_FILES = checker_bonus.c
 

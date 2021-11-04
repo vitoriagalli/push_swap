@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:57:18 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/11/04 01:34:00 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	sort_list_five(t_stacks *stacks);
 ** sorting algorithms utils
 */
 
-void	index_elements_in_stack_a(t_stacks *stacks);
 void	markup_head(t_stack *a);
 void	find_smallest_action_to_push_to_a(t_stacks *stacks, t_actions *def);
 void	attribute_operations(t_actions *def);
