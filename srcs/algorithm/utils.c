@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 02:39:17 by vscabell          #+#    #+#             */
-/*   Updated: 2021/06/22 23:57:22 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/11/07 20:16:13 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,4 @@ int	min_value(int n1, int n2)
 	if (n1 < n2)
 		return (n1);
 	return (n2);
-}
-
-void	sort_int_tab(int *tab, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < (size - 1))
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-				ft_swap(&tab[i], &tab[j]);
-			j++;
-		}
-		i++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 01:18:33 by vscabell          #+#    #+#             */
-/*   Updated: 2021/11/04 01:34:00 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/11/07 20:15:42 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void	call_operation(char *op, t_stacks *stacks);
 int		get_max_value(t_node *tmp);
 int		get_min_value(t_node *tmp);
 int		min_value(int n1, int n2);
-void	sort_int_tab(int *tab, int size);
 
 #endif
